@@ -1,3 +1,13 @@
-body{
+.imgContainer {
+  display: flex;
+}
+.imgBox {
+  width: 330px;
+  margin-left: 20px;
+}
+.imgBox > img {
+  width: 100%;
+}
+body {
   background: pink;
 }

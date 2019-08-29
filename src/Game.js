@@ -6,7 +6,15 @@ class Game extends Component {
   render() {
     return (
       <div>
-        <img src="../imageStock/ccTest.png" alt="" />
+        <div>hi</div>
+        <div className="imgContainer">
+          <div className="imgBox" id="yes">
+            <img src="../imageStock/ccTest.png" alt="" />
+          </div>
+          <div className="imgBox" id="no">
+            <img src="../imageStock/ccTest.png" alt="" />
+          </div>
+        </div>
       </div>
     );
   }
