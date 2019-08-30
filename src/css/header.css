@@ -1,10 +1,11 @@
 body {
   font-family: 'Open Sans', sans-serif;
+  margin: 0;
 }
 .header {
   display: flex;
   /* border: 1px solid green; */
-  justify-content: space-around;
+  justify-content: space-between;
   /* height: 50px; */
   align-items: center;
   margin: 15px auto;
@@ -22,5 +23,6 @@ Media Query
   .header {
     max-width: 600px;
     margin: 15px auto;
+    justify-content: space-around;
   }
 }

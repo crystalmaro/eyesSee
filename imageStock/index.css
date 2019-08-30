@@ -23,8 +23,9 @@
   padding: 15px;
   width: 300px;
   height: 150px;
-  border-radius: 10px;
-  box-shadow: 0px 8px 10px 0px #ccc;
+  border: 1px dashed red;
+  /* border-radius: 10px; */
+  /* box-shadow: 0px 8px 10px 0px #ccc; */
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -84,8 +85,9 @@ Variery1: Quote --- EASY + HARD
 Variery2: CHRIS WANG Profile
 =========================================== */
 .item2 {
-  padding-top: 7px;
-  border: 1px solid darkgray;
+  /* padding-top: 7px; */
+  /* border: 1px solid darkgray; */
+  /* box-shadow: inset 0px 0px 0px 2px darkgrey; */
   font-size: 13px;
   text-align: center;
 }
@@ -133,7 +135,7 @@ Variery2: CHRIS WANG PROFILE --- EASY + HARD
 Variery3: SIGNIN (START SAVING)
 =========================================== */
 .item3 {
-  border: 1px solid darkgray;
+  /* border: 1px solid darkgray; */
   font-size: 10px;
   letter-spacing: 0.5px;
 }
@@ -146,14 +148,14 @@ Variery3: SIGNIN (START SAVING)
   color: grey;
   border: 1px solid darkgray;
   border-radius: 5px 5px 0 0;
-  padding: 5px;
+  padding: 2px 5px;
 }
 .item3 > div:nth-child(3) {
   color: grey;
   border: 1px solid darkgray;
   border-radius: 0 0 5px 5px;
   border-top: none;
-  padding: 5px;
+  padding: 2px 5px;
 }
 .item3 > div:nth-child(4) {
   color: grey;
@@ -214,42 +216,50 @@ Variery3: SIGNIN (START SAVING) --- EASY + HARD
 Variery4: LESSON CARD
 =========================================== */
 .item4 {
-  font-size: 10px;
+  font-size: 16px;
   padding: 0;
   height: 180px;
   width: 330px;
+
+  /* box-sizing: border-box; */
 }
 .item4 > div {
   padding: 0 10px;
 }
 .item4 > div:nth-child(1) {
+  display: inline-block;
+  /* width: 330px; */
+  width: 94%;
   color: white;
   background-color: rgb(241, 167, 139);
   padding-top: 10px;
-  border-radius: 10px 10px 0 0;
+  padding-left: 10px;
+  /* border-radius: 10px 10px 0 0; */
 }
 .item4 > div:nth-child(1) > div:last-child {
   display: inline-block;
-  font-size: 15px;
+  /* font-size: 15px; */
   text-align: center;
   color: rgb(241, 167, 139);
   background-color: rgb(255, 233, 224);
-  margin-top: -10px;
+  /* margin-top: -20px; */
   margin-left: 213px;
   padding: 4px 20px 2px;
   border-radius: 10px 10px 0 0;
 }
 .item4 > div:nth-child(2) {
+  display: none;
   font-size: 14px;
   padding-top: 7px;
 }
 .item4 > div:nth-child(3) {
-  padding-top: 8px;
-  padding-bottom: 17px;
-  font-size: 8px;
-  line-height: 12px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  font-size: 16px;
+  line-height: 18px;
 }
 .item4 > div:nth-child(4) {
+  font-size: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -260,11 +270,12 @@ Variery4: LESSON CARD
   display: flex;
   align-items: center;
   justify-content: center;
+  /* background: red; */
 }
 .item4 > div:nth-child(4) > div > div {
   line-height: 12px;
   width: 15%;
-  padding: 7px 3px 5px 0px;
+  padding: 7px 3px 7px 0px;
 }
 .item4 > div:nth-child(4) > div:first-child {
   border-right: 1px dashed grey;
@@ -297,8 +308,8 @@ Variery5: PRODUCT CARD (CACTUS)
   align-items: stretch;
   width: 330px;
   height: 180px;
-  border-radius: 10px;
-  border: 1px solid darkgray;
+  /* border-radius: 10px; */
+  /* border: 1px solid darkgray; */
   padding: 0;
 }
 .item5 > div:nth-child(1) {
@@ -306,7 +317,7 @@ Variery5: PRODUCT CARD (CACTUS)
   background-image: url('item5_cactus.jpg');
   background-size: cover;
   background-position: center center;
-  border-radius: 10px 0 0 10px;
+  /* border-radius: 10px 0 0 10px; */
 }
 .item5 > div:nth-child(2) {
   width: 60%;

@@ -1,17 +1,15 @@
-body {
-  margin: 0;
-}
 .gameContainer {
+  display: grid;
   margin: auto;
   cursor: pointer;
-  display: grid;
   justify-content: center;
   justify-items: center;
-  grid-template-columns: 330px;
-  grid-template-rows: 90px 90px 10px 90px 90px;
+  grid-template-columns: 300px;
+  grid-template-rows: 80px 80px 15px 80px 80px;
 }
 .imgBox {
-  overflow: hidden;
+  /* border: 1px solid green; */
+  /* overflow: hidden; */
   width: 300px;
   height: 163px;
   border-radius: 10px;
@@ -25,25 +23,11 @@ body {
   grid-row-start: 4;
   grid-row-end: 6;
 }
-.imgBox > img {
+img {
   width: 100%;
 }
-/* reserved for click events */
-.imgBox.clickImg {
-  grid-row-start: 2;
-  grid-row-end: 5;
-}
-.imgBox.clickImg > img {
-  width: 100%;
-}
-
-/* =======================
-Media Query
-======================= */
 @media (min-width: 650px) {
   .gameContainer {
-    display: grid;
-    justify-content: center;
     grid-template-columns: 165px 165px 20px 165px 165px;
     grid-template-rows: 180px;
   }
@@ -65,4 +49,13 @@ Media Query
     grid-row-start: 1;
     grid-row-end: 2;
   }
+}
+/* =======================
+Click Events
+======================= */
+.imgBox.clicked {
+  grid-row-start: 2;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 2;
 }

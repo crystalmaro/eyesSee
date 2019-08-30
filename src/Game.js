@@ -4,21 +4,24 @@ import './css/game.css';
 
 class Game extends Component {
   state = {
-    className: 'imgBox',
+    origClass: 'imgBox',
   };
 
-  // this.setState((preState) => {
-  //   return {step: preState.step+1}
-  // })
-
   clickImg = e => {
-    // alert('hi');
+    console.log(e.target.parentNode.id);
+
+    // let classname = [...this.state.className];
     this.setState({
-      // return {
-      className: 'imgBox clickImg',
-      // };
-      // alert((preState.className += ':nth-child(1).clickImg'));
+      origClass: 'imgBox clicked',
     });
+    // this.setState(e => {
+    e.target.parentNode.style = ' zIndex: 10 ';
+    // });
+    // this.setState(preState => {
+    //   return { className: preState + ' clicked' };
+    // });
+
+    // e.target.parentNode.style = { border: '3px solid red' };
   };
 
   render() {
@@ -26,15 +29,16 @@ class Game extends Component {
       <div>
         <div className="gameContainer">
           <div
+            style={{ zIndex: 1 }}
             onClick={this.clickImg}
-            className={this.state.className}
+            className={this.state.origClass}
             id="yes"
           >
-            <img src="../imageStock/ccTest.png" alt="" />
+            <img src="../imageStock/ccTest1.png" alt="" />
           </div>
 
-          <div className={this.state.className} id="no">
-            <img src="../imageStock/ccTest.png" alt="" />
+          <div onClick={this.clickImg} className={this.state.origClass} id="no">
+            <img src="../imageStock/ccTest2.png" alt="" />
           </div>
         </div>
       </div>
