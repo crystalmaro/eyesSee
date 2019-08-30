@@ -23,7 +23,7 @@
   padding: 15px;
   width: 300px;
   height: 150px;
-  border: 1px dashed red;
+  border: 1px dashed green;
   /* border-radius: 10px; */
   /* box-shadow: 0px 8px 10px 0px #ccc; */
   font-family: 'Open Sans', sans-serif;
@@ -199,18 +199,19 @@ Variery3: SIGNIN (START SAVING) --- EASY + HARD
 2. capitalization
    ======== HARD reasons:
 1. letter spacing
-2. border-radius
-.easy3-1>div:nth-child(2),
-.easy3-1>div:nth-child(3){
+2. border-radius*/
+.easy3-1 > div:nth-child(2),
+.easy3-1 > div:nth-child(3) {
   margin-left: 5px;
 }
-.hard3-1>div:nth-child(2){
+.hard3-1 > div:nth-child(2) {
   letter-spacing: 0px;
 }
-.hard3-2>div:nth-child(3){
-  border: 1px solid darkgray;border-radius: 0 5px 5px 5px;border-top: none;
+.hard3-2 > div:nth-child(3) {
+  border: 1px solid darkgray;
+  border-radius: 0 5px 5px 5px;
+  border-top: none;
 }
-
 
 /* ======================================== 
 Variery4: LESSON CARD
@@ -379,7 +380,7 @@ Variery5: PRODUCT CARD (CACTUS) --- EASY + HARD
   padding-left: 5px;
 }
 .hard5-1 > div:nth-child(1) {
-  border-radius: 10px 0 3px 10px;
+  border-radius: 0 0 6px 0;
 }
 .hard5-2 > div:nth-child(2) > div:nth-child(5) > div:last-child {
   box-shadow: none;
