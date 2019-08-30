@@ -1,0 +1,26 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+.header {
+  display: flex;
+  /* border: 1px solid green; */
+  justify-content: space-around;
+  /* height: 50px; */
+  align-items: center;
+  margin: 15px auto;
+  font-size: 25px;
+  max-width: 300px;
+}
+.header > div {
+  border: 1px solid red;
+}
+
+/* =======================
+Media Query
+======================= */
+@media (min-width: 650px) {
+  .header {
+    max-width: 600px;
+    margin: 15px auto;
+  }
+}

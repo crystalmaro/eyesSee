@@ -1,0 +1,17 @@
+.messageContainer {
+  text-align: center;
+  margin: auto;
+  margin-top: 5px;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result {
+  width: 30px;
+  height: 30px;
+  background-color: green;
+  margin-right: 5px;
+  border-radius: 15px;
+}
