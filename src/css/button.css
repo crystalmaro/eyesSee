@@ -1,7 +1,7 @@
 .buttonContainer {
   display: flex;
   /* border: 1px solid red; */
-  justify-content: space-between;
+  justify-content: space-evenly;
   max-width: 300px;
   margin: auto;
   margin-top: 20px;
@@ -11,11 +11,14 @@
   /* border: 1px solid red; */
   cursor: pointer;
   font-size: 20px;
-  width: 120px;
+  /* font-weight: bold; */
+  width: 130px;
   text-align: center;
-  color: white;
-  background-color: rgb(139, 187, 241);
+  color: #566e6b;
+  background-color: #d0d6d6;
+  /* background-color: white; */
   border-radius: 5px;
   padding: 7px 0;
-  box-shadow: 0px 5px 5px 0px #ccc;
+  box-shadow: inset 0px 0px 1px 1px #d0d6d6;
+  border: 1px solid #3b3837;
 }

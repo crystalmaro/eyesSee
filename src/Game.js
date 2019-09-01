@@ -5,23 +5,22 @@ import './css/game.css';
 class Game extends Component {
   state = {
     origClass: 'imgBox',
+    yesOnTop: true,
   };
 
   clickImg = e => {
+    // overlap both images
+    this.setState(preState => {
+      return { origClass: preState.origClass + ' clicked' };
+    });
+    // decide which image on top
     console.log(e.target.parentNode.id);
 
-    // let classname = [...this.state.className];
-    this.setState({
-      origClass: 'imgBox clicked',
-    });
-    // this.setState(e => {
-    e.target.parentNode.style = ' zIndex: 10 ';
-    // });
-    // this.setState(preState => {
-    //   return { className: preState + ' clicked' };
-    // });
-
-    // e.target.parentNode.style = { border: '3px solid red' };
+    if (e.target.parentNode.id === 'no') {
+      this.setState({
+        yesOnTop: false,
+      });
+    }
   };
 
   render() {
@@ -29,16 +28,21 @@ class Game extends Component {
       <div>
         <div className="gameContainer">
           <div
-            style={{ zIndex: 1 }}
+            style={this.state.yesOnTop == true ? { zIndex: 1 } : null}
             onClick={this.clickImg}
             className={this.state.origClass}
             id="yes"
           >
-            <img src="../imageStock/ccTest1.png" alt="" />
+            <img src="../imageStock/final_images/item4.png" alt="" />
           </div>
 
-          <div onClick={this.clickImg} className={this.state.origClass} id="no">
-            <img src="../imageStock/ccTest2.png" alt="" />
+          <div
+            style={this.state.yesOnTop == false ? { zIndex: 1 } : null}
+            onClick={this.clickImg}
+            className={this.state.origClass}
+            id="no"
+          >
+            <img src="../imageStock/final_images/item4easy1.png" alt="" />
           </div>
         </div>
       </div>

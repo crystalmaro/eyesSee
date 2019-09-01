@@ -1,3 +1,8 @@
+body {
+  background-color: #3b3837;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
 .gameContainer {
   display: grid;
   margin: auto;
@@ -12,8 +17,9 @@
   /* overflow: hidden; */
   width: 300px;
   height: 163px;
+  background: #b0b0b0;
   border-radius: 10px;
-  box-shadow: 0px 5px 5px 0px #ccc;
+  /* box-shadow: 1px -1px -1px 1px #b0b0b0; */
 }
 .imgBox:nth-child(1) {
   grid-row-start: 1;
@@ -25,6 +31,7 @@
 }
 img {
   width: 100%;
+  border-radius: 10px;
 }
 @media (min-width: 650px) {
   .gameContainer {
@@ -35,7 +42,7 @@ img {
     width: 330px;
     height: 182px;
     border-radius: 10px;
-    box-shadow: 0px 5px 5px 0px #ccc;
+    /* box-shadow: 0px 5px 5px 0px #ccc; */
   }
   .imgBox:nth-child(1) {
     grid-column-start: 1;
@@ -58,4 +65,12 @@ Click Events
   grid-row-end: 5;
   grid-column-start: 1;
   grid-column-end: 2;
+}
+@media (min-width: 650px) {
+  .imgBox.clicked {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
 }
