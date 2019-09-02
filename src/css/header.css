@@ -1,16 +1,20 @@
+#root {
+  background-color: #3b3837;
+  color: #d0d6d6;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 auto;
+  text-align: center;
+}
 .header {
   display: flex;
-  /* border: 1px solid green; */
   justify-content: space-between;
-  /* height: 50px; */
   align-items: center;
   margin: 15px auto;
   font-size: 25px;
   max-width: 300px;
   color: #d0d6d6;
-}
-.header > div {
-  border: 1px solid red;
 }
 
 /* =======================

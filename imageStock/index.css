@@ -325,7 +325,7 @@ Variery5: PRODUCT CARD (CACTUS)
 }
 .item5 > div:nth-child(1) {
   width: 40%;
-  background-image: url('item5_cactus.jpg');
+  background-image: url('5cactus.jpg');
   background-size: cover;
   background-position: center center;
   /* border-radius: 10px 0 0 10px; */
