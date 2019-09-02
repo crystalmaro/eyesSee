@@ -6,13 +6,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #d0d6d6;
 }
 
 .result {
   width: 30px;
   height: 30px;
-  background-color: green;
   margin-right: 5px;
   border-radius: 15px;
 }

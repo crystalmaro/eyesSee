@@ -7,25 +7,36 @@ class Game extends Component {
     origClass: 'imgBox',
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> feature/image-selection
     compareClass: 'button',
     isClicked: false,
     yesOnTop: true,
     isCorrect: true,
     yesImg: '../imageStock/yes.png',
     noImg: '../imageStock/no.png',
+<<<<<<< HEAD
 =======
     yesOnTop: true,
 >>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
 =======
     yesOnTop: true,
 >>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
+=======
+>>>>>>> feature/image-selection
   };
 
   clickImg = e => {
-    // overlap both images
     this.setState(preState => {
-      return { origClass: preState.origClass + ' clicked' };
+      return {
+        // overlap both images
+        origClass: preState.origClass + ' clicked',
+        // display current round result
+        isClicked: true,
+      };
     });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -33,10 +44,16 @@ class Game extends Component {
     console.log(e.target.parentNode.id);
 
 >>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
+=======
+>>>>>>> feature/image-selection
     if (e.target.parentNode.id === 'no') {
       this.setState({
+        // decide which image on top
         yesOnTop: false,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> feature/image-selection
         // check current round result
         isCorrect: false,
       });
@@ -70,6 +87,7 @@ class Game extends Component {
       }
       this.setState({
         compareClass: 'button compare',
+<<<<<<< HEAD
       });
     }
   };
@@ -105,6 +123,33 @@ class Game extends Component {
       });
     }
   };
+=======
+      });
+    }
+  };
+  compareTouchDown = e => {
+    this.compareMouseDown();
+  };
+  compareMouseUp = e => {
+    if (this.state.isClicked) {
+      if (!this.state.yesOnTop) {
+        this.setState({
+          yesOnTop: true,
+          isCorrect: true,
+        });
+      }
+      if (this.state.yesOnTop) {
+        this.setState({
+          yesOnTop: false,
+          isCorrect: false,
+        });
+      }
+      this.setState({
+        compareClass: 'button',
+      });
+    }
+  };
+>>>>>>> feature/image-selection
   compareTouchEnd = e => {
     this.compareMouseUp();
   };
@@ -121,6 +166,7 @@ class Game extends Component {
           >
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <img src="../imageStock/final_images/item2.png" alt="" />
 =======
             <img src="../imageStock/final_images/item4.png" alt="" />
@@ -128,6 +174,9 @@ class Game extends Component {
 =======
             <img src="../imageStock/final_images/item4.png" alt="" />
 >>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
+=======
+            <img src="../imageStock/final_images/item2.png" alt="" />
+>>>>>>> feature/image-selection
           </div>
 
           <div
@@ -138,6 +187,9 @@ class Game extends Component {
           >
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> feature/image-selection
             <img src="../imageStock/final_images/item2hard2.png" alt="" />
           </div>
         </div>
@@ -178,12 +230,15 @@ class Game extends Component {
           </div>
           <div onClick={this.clickNext} className="button">
             NEXT
+<<<<<<< HEAD
 =======
             <img src="../imageStock/final_images/item4easy1.png" alt="" />
 >>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
 =======
             <img src="../imageStock/final_images/item4easy1.png" alt="" />
 >>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
+=======
+>>>>>>> feature/image-selection
           </div>
         </div>
       </div>

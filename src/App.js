@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Game from './Game';
 =======
 import Header from './Header';
+=======
+>>>>>>> feature/image-selection
 import Game from './Game';
-import Button from './Button';
-import Message from './Message';
 import Progress from './Progress';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -20,11 +21,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
+        {/* <Header /> */}
         <Game />
-        <Message />
-        <Button />
+        {/* <Message /> */}
+        {/* <Button /> */}
         <Progress />
+        {/* <Firebase /> */}
       </div>
     );
   }
