@@ -5,26 +5,12 @@ import './css/game.css';
 class Game extends Component {
   state = {
     origClass: 'imgBox',
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> feature/image-selection
     compareClass: 'button',
     isClicked: false,
     yesOnTop: true,
     isCorrect: true,
     yesImg: '../imageStock/yes.png',
     noImg: '../imageStock/no.png',
-<<<<<<< HEAD
-=======
-    yesOnTop: true,
->>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
-=======
-    yesOnTop: true,
->>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
-=======
->>>>>>> feature/image-selection
   };
 
   clickImg = e => {
@@ -36,24 +22,10 @@ class Game extends Component {
         isClicked: true,
       };
     });
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    // decide which image on top
-    console.log(e.target.parentNode.id);
-
->>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
-=======
->>>>>>> feature/image-selection
     if (e.target.parentNode.id === 'no') {
       this.setState({
         // decide which image on top
         yesOnTop: false,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> feature/image-selection
         // check current round result
         isCorrect: false,
       });
@@ -87,43 +59,6 @@ class Game extends Component {
       }
       this.setState({
         compareClass: 'button compare',
-<<<<<<< HEAD
-      });
-    }
-  };
-  compareTouchDown = e => {
-    this.compareMouseDown();
-  };
-  compareMouseUp = e => {
-    if (this.state.isClicked) {
-      if (!this.state.yesOnTop) {
-        this.setState({
-          yesOnTop: true,
-          isCorrect: true,
-        });
-      }
-      if (this.state.yesOnTop) {
-        this.setState({
-          yesOnTop: false,
-          isCorrect: false,
-        });
-      }
-      this.setState({
-        compareClass: 'button',
-=======
->>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
-=======
-    // decide which image on top
-    console.log(e.target.parentNode.id);
-
-    if (e.target.parentNode.id === 'no') {
-      this.setState({
-        yesOnTop: false,
->>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
-      });
-    }
-  };
-=======
       });
     }
   };
@@ -149,7 +84,6 @@ class Game extends Component {
       });
     }
   };
->>>>>>> feature/image-selection
   compareTouchEnd = e => {
     this.compareMouseUp();
   };
@@ -164,19 +98,7 @@ class Game extends Component {
             className={this.state.origClass}
             id="yes"
           >
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
             <img src="../imageStock/final_images/item2.png" alt="" />
-=======
-            <img src="../imageStock/final_images/item4.png" alt="" />
->>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
-=======
-            <img src="../imageStock/final_images/item4.png" alt="" />
->>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
-=======
-            <img src="../imageStock/final_images/item2.png" alt="" />
->>>>>>> feature/image-selection
           </div>
 
           <div
@@ -185,11 +107,6 @@ class Game extends Component {
             className={this.state.origClass}
             id="no"
           >
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> feature/image-selection
             <img src="../imageStock/final_images/item2hard2.png" alt="" />
           </div>
         </div>
@@ -230,15 +147,6 @@ class Game extends Component {
           </div>
           <div onClick={this.clickNext} className="button">
             NEXT
-<<<<<<< HEAD
-=======
-            <img src="../imageStock/final_images/item4easy1.png" alt="" />
->>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
-=======
-            <img src="../imageStock/final_images/item4easy1.png" alt="" />
->>>>>>> parent of 3cb8c61... finish initial image selection and compare mouse events
-=======
->>>>>>> feature/image-selection
           </div>
         </div>
       </div>
