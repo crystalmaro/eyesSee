@@ -14,15 +14,19 @@ class Game extends Component {
   };
 
   clickImg = e => {
-    this.setState(preState => {
-      return {
-        // overlap both images
-        origClass: preState.origClass + ' clicked',
-        // display current round result
-        isClicked: true,
-      };
-    });
-    if (e.target.parentNode.id === 'no') {
+    // this.setState(preState => {
+    //   return {
+    //     origClass: preState.origClass + ' clicked',
+    //     isClicked: true,
+    //   };
+    // });
+    this.setState({
+      // overlap both images
+      origClass: 'imgBox clicked',
+      // display current round result
+      isClicked: true,
+    })
+    if (e.target.parentNode.name === 'no') {
       this.setState({
         // decide which image on top
         yesOnTop: false,
@@ -91,12 +95,13 @@ class Game extends Component {
   render() {
     return (
       <div>
-        <div className="gameContainer">
+        <div className="gameContainer" id="1" >
           <div
             style={this.state.yesOnTop == true ? { zIndex: 1 } : null}
             onClick={this.clickImg}
             className={this.state.origClass}
             id="yes"
+            name="yes"
           >
             <img src="../imageStock/final_images/item2.png" alt="" />
           </div>
@@ -106,6 +111,8 @@ class Game extends Component {
             onClick={this.clickImg}
             className={this.state.origClass}
             id="no"
+            name="no"
+
           >
             <img src="../imageStock/final_images/item2easy1.png" alt="" />
           </div>
@@ -118,13 +125,11 @@ class Game extends Component {
         >
           <div className="result">
             <img
-              // src={
-              //   this.state.isCorrect
-              //     ? ('../imageStock/yes.png')
-              //     : ('../imageStock/no.png')
-              // }
-              // src={'../imageStock/yes.png'}
-              src={this.state.noImg}
+              src={
+                this.state.isCorrect
+                  ? ('../imageStock/yes.png')
+                  : this.state.noImg
+              }
             />
           </div>
           <div className="message">Capitalization Consistency</div>
