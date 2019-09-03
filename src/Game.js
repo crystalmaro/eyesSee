@@ -107,7 +107,7 @@ class Game extends Component {
             className={this.state.origClass}
             id="no"
           >
-            <img src="../imageStock/final_images/item2hard2.png" alt="" />
+            <img src="../imageStock/final_images/item2easy1.png" alt="" />
           </div>
         </div>
         <div
@@ -116,24 +116,18 @@ class Game extends Component {
             this.state.isClicked ? { display: 'flex' } : { display: 'none' }
           }
         >
-          <div
-            className="result"
-            style={
-              // this.state.isCorrect == true
-              this.state.isCorrect
-                ? { backgroundColor: 'green' }
-                : { backgroundColor: 'red' }
-            }
-          >
-            {/* <img
-              src={
-                this.state.isCorrect == true
-                  ? { src: '../imageStock/yes.png' }
-                  : { src: '../imageStock/no.png' }
-              }
-              /> */}
+          <div className="result">
+            <img
+              // src={
+              //   this.state.isCorrect
+              //     ? ('../imageStock/yes.png')
+              //     : ('../imageStock/no.png')
+              // }
+              // src={'../imageStock/yes.png'}
+              src={this.state.noImg}
+            />
           </div>
-          <div className="message">Icon Resolution</div>
+          <div className="message">Capitalization Consistency</div>
         </div>
         <div className="buttonContainer">
           <div
