@@ -98,7 +98,7 @@ class Game extends Component {
             className={this.state.origClass}
             id="yes"
           >
-            <img src="../imageStock/final_images/item2.png" alt="" />
+            <img src="../imageStock/final_images/item4.png" alt="" />
           </div>
 
           <div
@@ -107,7 +107,7 @@ class Game extends Component {
             className={this.state.origClass}
             id="no"
           >
-            <img src="../imageStock/final_images/item2hard2.png" alt="" />
+            <img src="../imageStock/final_images/item4easy2.png" alt="" />
           </div>
         </div>
         <div
@@ -118,22 +118,21 @@ class Game extends Component {
         >
           <div
             className="result"
-            style={
-              // this.state.isCorrect == true
-              this.state.isCorrect
-                ? { backgroundColor: 'green' }
-                : { backgroundColor: 'red' }
-            }
+          // style={
+          //   this.state.isCorrect
+          //     ? { backgroundColor: 'green' }
+          //     : { backgroundColor: 'red' }
+          // }
           >
-            {/* <img
+            <img
               src={
                 this.state.isCorrect == true
-                  ? { src: '../imageStock/yes.png' }
-                  : { src: '../imageStock/no.png' }
+                  ? (this.state.yesImg)
+                  : (this.state.noImg)
               }
-              /> */}
+            />
           </div>
-          <div className="message">Icon Resolution</div>
+          <div className="message">line style consistency</div>
         </div>
         <div className="buttonContainer">
           <div
