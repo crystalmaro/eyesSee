@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <FirebaseDatabaseProvider firebase={firebase}>
         <div>
-          <Header />
+          {/* <Header /> */}
           <Game />
           {/* <Message /> */}
           {/* <Button /> */}
