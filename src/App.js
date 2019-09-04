@@ -21,6 +21,7 @@ firebase.initializeApp(firebaseConfig);
 
 
 class App extends Component {
+
   render() {
     return (
       <FirebaseDatabaseProvider firebase={firebase}>
@@ -29,7 +30,7 @@ class App extends Component {
           <Game />
           {/* <Message /> */}
           {/* <Button /> */}
-          <Progress />
+          {/* <Progress /> */}
           {/* <Firebase /> */}
         </div>
       </FirebaseDatabaseProvider>
