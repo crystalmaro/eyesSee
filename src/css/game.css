@@ -41,11 +41,11 @@ Game Container
   z-index: -1;
   height: 50%;
   width: 90%;
-  left: 5%;
-  right: 5%;
+  /* left: 5%; */
+  /* right: 5%; */
   bottom: 0px;
   border-radius: 10px;
-  box-shadow: 0 10px 50px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 50px rgb(200, 200, 200, 0.6);
 }
 .imgBox:nth-child(1) {
   grid-row-start: 1;
@@ -121,7 +121,7 @@ Button Container
   right: 5%;
   bottom: 0px;
   border-radius: 10px;
-  box-shadow: 0 10px 50px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 50px rgb(200, 200, 200, 0.6);
 }
 .button.compare {
   margin-top: 4px;
