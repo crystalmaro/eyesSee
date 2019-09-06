@@ -51,7 +51,9 @@ class Game extends Component {
       }
     }
     // progress bar incrementation
-    this.setState((preState) => { return { progressBar: preState.progressBar + (300 / 20) } })
+    if (!this.state.isClicked) {
+      this.setState((preState) => { return { progressBar: preState.progressBar + (300 / 20) } })
+    }
   };
   // ============================
   // UI events - click next
