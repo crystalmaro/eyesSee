@@ -1,7 +1,8 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import './css/game.css';
-import firebase from 'firebase';
+// import firebase from 'firebase';
+import Card from './Card';
 
 class Game extends Component {
   state = {
@@ -12,13 +13,6 @@ class Game extends Component {
     isCorrect: true,
     yesImg: '../imageStock/yes.png',
     noImg: '../imageStock/no.png',
-
-    data: [], // Fire - complete data loaded from firebase
-    totalRound: [], // Fire - array of number 0 - 19
-    // totalEasyRound: [], // totalRound index 0 - 9
-    // totalHardRound: [], // totalRound index 10 - 19
-    randomRound: [], // Fire - randomized EasyRound, followed by randomize HardRound
-
     currentRound: 0,
     score: 0,
     progressBar: 0,
@@ -64,7 +58,7 @@ class Game extends Component {
   // ============================
   clickNext = e => {
     if (this.state.isClicked
-      && this.state.currentRound < this.state.data.length - 1) {
+      && this.state.currentRound < this.props.imgData.length - 1) {
       this.setState({
         origClass: 'imgBox',
         isClicked: false,
@@ -109,28 +103,47 @@ class Game extends Component {
 
   render() {
     let content;
-    let data = this.props.data;
-    // let totalRound = this.props.totalRound;
+    let imgData = this.props.imgData;
     let randomRound = this.props.randomRound;
 
     if (randomRound.length >= 20) {
+      // =====================
+      // TT_______TT: NOTHING WORKS (showing undefined)
+      // this.imgData
+      // this.props.imgData
+      // imgData
+      // <Card
+      //   clickImg={this.clickImg}
+      //   yesOnTop={this.state.yesOnTop}
+      //   origClass={this.state.origClass}
+      //   imgData={this.imgData}
+      //   randomRound={this.randomRound}
+      //   currentRound={this.state.currentRound}
+      //   isYes='no'
+      // />
+      // =====================
+
       let yes =
         <div
+          onClick={this.clickImg}
           style={this.state.yesOnTop == true ? { zIndex: 1 } : null}
-          onClick={this.clickImg} className={this.state.origClass}
+          className={this.state.origClass}
           id='yes'
-          level={data[randomRound[this.state.currentRound]].level}
+          level={imgData[randomRound[this.state.currentRound]].level}
         >
-          <img src={data[randomRound[this.state.currentRound]].yes} alt="" />
-        </div>;
+          <img src={imgData[randomRound[this.state.currentRound]].yes} alt="" />
+        </div>
+
+
       let no =
         <div
+          onClick={this.clickImg}
           style={this.state.yesOnTop == false ? { zIndex: 1 } : null}
-          onClick={this.clickImg} className={this.state.origClass}
+          className={this.state.origClass}
           id='no'
-          level={data[randomRound[this.state.currentRound]].level}
+          level={imgData[randomRound[this.state.currentRound]].level}
         >
-          <img src={data[randomRound[this.state.currentRound]].no} alt="" />
+          <img src={imgData[randomRound[this.state.currentRound]].no} alt="" />
         </div>
 
       let first, second;
@@ -143,9 +156,13 @@ class Game extends Component {
         second = yes;
       }
 
+
       content =
         <div>
           <div className="gameContainer" id={randomRound[this.state.currentRound]}  >
+            {/* =================
+            <Card />
+            ================= */}
             {first}
             {second}
           </div>
@@ -155,15 +172,9 @@ class Game extends Component {
             style={this.state.isClicked ? { display: 'flex' } : { display: 'none' }}
           >
             <div className="result">
-              <img
-                src={
-                  this.state.isCorrect
-                    ? this.state.yesImg
-                    : this.state.noImg
-                }
-              />
+              <img src={this.state.isCorrect ? this.state.yesImg : this.state.noImg} />
             </div>
-            <div className="message">{data[randomRound[this.state.currentRound]].reason}</div>
+            <div className="message">{imgData[randomRound[this.state.currentRound]].reason}</div>
           </div>
 
           <div className="buttonContainer">
@@ -187,7 +198,7 @@ class Game extends Component {
                 style={this.state.progressBar >= 300 ? { borderRadius: '14px', width: `${this.state.progressBar}px` } : { width: `${this.state.progressBar}px` }}
               ></div>
               <div className="progressNumber">
-                {data[randomRound[this.state.currentRound]].level} {this.state.currentRound + 1}/{randomRound.length}
+                {imgData[randomRound[this.state.currentRound]].level} {this.state.currentRound + 1}/{randomRound.length}
               </div>
             </div>
           </div>

@@ -23,14 +23,15 @@ firebase.initializeApp(firebaseConfig);
 class App extends Component {
 
   state = {
-    hello: 'yooo there',
-    data: [], // Fire - complete data loaded from firebase
-    totalRound: [], // Fire - array of number 0 - 19
-    randomRound: [], // Fire - randomized EasyRound, followed by randomize HardRound
+    hello: 'hi',
+    // ===== Firebase imageStock data
+    imgData: [], // all data loaded from firebase
+    totalRound: [], // array of number 0 - 19
+    randomRound: [], // randomized EasyRound, followed by randomize HardRound
   }
 
   // ============================
-  // load firebase data
+  // load firebase data - imageStock
   // ============================
   loadFirebase = e => {
     const db = firebase.firestore();
@@ -39,10 +40,10 @@ class App extends Component {
       .get().then(querySnapshot => {
         querySnapshot.forEach(doc => {
           // load and save firebase data into state
-          let data = [...this.state.data, doc.data()]
-          // generate a number array for the length of this.state.data
-          let totalRound = [...this.state.totalRound, this.state.data.length]
-          this.setState({ data, totalRound });
+          let imgData = [...this.state.imgData, doc.data()]
+          // generate a number array for the length of this.state.imgData
+          let totalRound = [...this.state.totalRound, this.state.imgData.length]
+          this.setState({ imgData, totalRound });
         });
         let totalEasyRound = this.state.totalRound.slice(0, 10)
         let totalHardRound = this.state.totalRound.slice(10)
@@ -60,9 +61,7 @@ class App extends Component {
         console.log(this.state.randomRound);
       });
   };
-  componentDidMount() {
-    this.loadFirebase();
-  }
+  componentDidMount() { this.loadFirebase() }
 
   render() {
 
@@ -72,11 +71,8 @@ class App extends Component {
           {/* <Header /> */}
           <Game
             hello={this.state.hello}
-            data={this.state.data}
-            totalRound={this.state.totalRound}
+            imgData={this.state.imgData}
             randomRound={this.state.randomRound}
-
-
           />
           {/* <Message /> */}
           {/* <Button /> */}

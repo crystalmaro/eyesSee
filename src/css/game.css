@@ -41,11 +41,12 @@ Game Container
   z-index: -1;
   height: 50%;
   width: 90%;
-  /* left: 5%; */
-  /* right: 5%; */
+  left: 5%;
+  right: 5%;
+  /* top: 30%; */
   bottom: 0px;
   border-radius: 10px;
-  box-shadow: 0 10px 50px rgb(200, 200, 200, 0.6);
+  box-shadow: 0 5px 20px rgb(200, 200, 200, 0.6);
 }
 .imgBox:nth-child(1) {
   grid-row-start: 1;
@@ -70,6 +71,20 @@ img {
     border-radius: 10px;
     /* box-shadow: 0px 5px 5px 0px #ccc; */
   }
+  .imgBox::before{
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    height: 50%;
+    width: 90%;
+    left: 5%;
+    right: 5%;
+    /* top: 30%; */
+    bottom: 0px;
+    border-radius: 10px;
+    box-shadow: 0 5px 30px rgb(200, 200, 200, 0.6);
+  }
   .imgBox:nth-child(1) {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -81,6 +96,49 @@ img {
     grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: 2;
+  }
+}
+/* =======================
+Game Container - Click Events
+======================= */
+.imgBox.clicked {
+  grid-row-start: 2;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.imgBox.clicked::before{
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: -1;
+  height: 50%;
+  width: 90%;
+  left: 5%;
+  right: 5%;
+  bottom: 15%;
+  border-radius: 10px;
+  box-shadow: 0 5px 30px rgb(200, 200, 200, 0.6);
+}
+@media (min-width: 650px) {
+  .imgBox.clicked {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  .imgBox.clicked::before{
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    height: 50%;
+    width: 90%;
+    left: 5%;
+    right: 5%;
+    bottom: 15%;
+    border-radius: 10px;
+    box-shadow: 0 20px 30px rgb(200, 200, 200, 0.6);
   }
 }
 /* =======================
@@ -115,13 +173,13 @@ Button Container
   display: block;
   position: absolute;
   z-index: -1;
-  height: 50%;
+  height: 90%;
   width: 90%;
   left: 5%;
   right: 5%;
   bottom: 0px;
   border-radius: 10px;
-  box-shadow: 0 10px 50px rgb(200, 200, 200, 0.6);
+  box-shadow: 0 5px 30px rgb(200, 200, 200, 0.6);
 }
 .button.compare {
   margin-top: 4px;
@@ -181,20 +239,4 @@ Progress Container
   font-size: 13px;
   line-height: 20px;
 }
-/* =======================
-Click Events
-======================= */
-.imgBox.clicked {
-  grid-row-start: 2;
-  grid-row-end: 5;
-  grid-column-start: 1;
-  grid-column-end: 2;
-}
-@media (min-width: 650px) {
-  .imgBox.clicked {
-    grid-column-start: 2;
-    grid-column-end: 5;
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-}
+
