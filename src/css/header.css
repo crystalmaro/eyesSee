@@ -1,13 +1,14 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin: 15px auto;
-  font-size: 25px;
+  /* font-size: 25px; */
   max-width: 300px;
-  color: #d0d6d6;
+  color: #595959;
 }
+/* input field for add/update firebase data */
 input{
   display: block;
   margin: auto;

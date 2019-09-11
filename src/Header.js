@@ -48,21 +48,27 @@ class Header extends Component {
   }
   addFirebase = e => {
     e.preventDefault();
-    alert("hi")
-    const db = firebase.firestore();
-    db.collection("imageStock").doc(this.state.doc).set({
-      key: Number(this.state.key),
-      level: this.state.level,
-      yes: this.state.yes,
-      no: this.state.no,
-      reason: this.state.reason,
-    })
+
     this.setState({
       yes: '',
       no: '',
-      reason: '',
+      // reason: '',
     })
+
+    const db = firebase.firestore();
+    // db.collection("imageStock").doc(this.state.doc).set({
+    return db.collection("imageStock").doc(this.state.doc).update({
+      // key: Number(this.state.key),
+      // level: this.state.level,
+      yes: this.state.yes,
+      no: this.state.no,
+      // reason: this.state.reason,
+    })
+
   }
+
+
+
   // ================== 
   // add data into firebase
   // ==================
@@ -102,17 +108,17 @@ class Header extends Component {
                 onChange={this.updateFire}
                 value={this.state.doc}
               />
-              <input
+              {/* <input
                 type="text"
                 name="key"
                 placeholder="key"
                 onChange={this.updateFire}
                 value={this.state.key}
-              />
-              <select name="level" onChange={this.updateFire} value={this.state.level}>
+              /> */}
+              {/* <select name="level" onChange={this.updateFire} value={this.state.level}>
                 <option name="easy" value="easy">easy</option>
                 <option name="hard" value="hard">hard</option>
-              </select>
+              </select> */}
               <input
                 type="text"
                 name="yes"
@@ -127,13 +133,13 @@ class Header extends Component {
                 onChange={this.updateFire}
                 value={this.state.no}
               />
-              <input
+              {/* <input
                 type="text"
                 name="reason"
                 placeholder="reason"
                 onChange={this.updateFire}
                 value={this.state.reason}
-              />
+              /> */}
               <button type="submit">Add to Firebase</button>
             </form>
           </div>

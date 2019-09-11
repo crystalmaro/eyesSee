@@ -2,17 +2,31 @@
 body
 ======================= */
 body{
-  background-color: #3b3837;
+  /* background-color: #3b3837; */
   /* background-color: #f1f3f5; */
+  background: #eef2f3;  /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to top, #d2d2d2, #eef2f3 );   */
+  /* Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to top, #d2d2d2, #eef2f3 );  */
+  /*W/3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+*/
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
 }
 #root {
   /* background-color: #3b3837; */
-  color: #d0d6d6;
+  color: #595959;
   height: 100vh;
   width: 100vw;
   font-family: 'Open Sans', sans-serif;
   margin: 0 auto;
   text-align: center;
+  font-family: 'Titillium Web', sans-serif;
 }
 /* =======================
 Game Container
@@ -46,7 +60,7 @@ Game Container
   /* top: 30%; */
   bottom: 0px;
   border-radius: 10px;
-  box-shadow: 0 5px 20px rgb(200, 200, 200, 0.6);
+  box-shadow: 0 5px 20px rgb(100, 100, 100, 0.6);
 }
 .imgBox:nth-child(1) {
   grid-row-start: 1;
@@ -83,7 +97,7 @@ img {
     /* top: 30%; */
     bottom: 0px;
     border-radius: 10px;
-    box-shadow: 0 5px 30px rgb(200, 200, 200, 0.6);
+    box-shadow: 0 5px 30px rgb(100, 100, 100, 0.6);
   }
   .imgBox:nth-child(1) {
     grid-column-start: 1;
@@ -106,6 +120,7 @@ Game Container - Click Events
   grid-row-end: 5;
   grid-column-start: 1;
   grid-column-end: 2;
+  
 }
 .imgBox.clicked::before{
   content: '';
@@ -118,7 +133,7 @@ Game Container - Click Events
   right: 5%;
   bottom: 15%;
   border-radius: 10px;
-  box-shadow: 0 5px 30px rgb(200, 200, 200, 0.6);
+  box-shadow: 0 5px 30px rgb(100, 100, 100, 0.6);
 }
 @media (min-width: 650px) {
   .imgBox.clicked {
@@ -126,6 +141,7 @@ Game Container - Click Events
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 2;
+    transition: 1s;
   }
   .imgBox.clicked::before{
     content: '';
@@ -138,7 +154,7 @@ Game Container - Click Events
     right: 5%;
     bottom: 15%;
     border-radius: 10px;
-    box-shadow: 0 20px 30px rgb(200, 200, 200, 0.6);
+    box-shadow: 0 20px 30px rgb(100, 100, 100, 0.6);
   }
 }
 /* =======================
@@ -149,7 +165,7 @@ Button Container
   justify-content: space-evenly;
   max-width: 300px;
   margin: auto;
-  margin-top: 25px;
+  margin-top: 35px;
   height: 45px;
 }
 .button {
@@ -158,12 +174,13 @@ Button Container
   vertical-align: middle;
   line-height: 23px;
   cursor: pointer;
-  color: #364453;
-  background-color: #f1f3f5;
+  color: #595959;
+  background-color: #ffb7b0;
+  opacity: 0.7;
   width: 130px;
   max-height: 23px;
   padding: 7px 0;
-  box-shadow: inset 0px 0px 1px 1px #f1f3f5;
+  box-shadow: inset 0px 0px 1px 1px #ffb7b0;
   border: 1px solid #3b3837;
   border-radius: 5px;
   position: relative;
@@ -184,21 +201,67 @@ Button Container
 .button.compare {
   margin-top: 4px;
 }
+a{
+  text-decoration: none;
+  color: #595959;
+}
 /* =======================
 Message Container
 ======================= */
 .messageContainer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   margin: auto;
-  margin-top: 20px;
+  margin-top: -60px;
+  margin-bottom: -10px;
+  color: #595959;
+  /* border: 1px solid blue; */
 }
-.result {
+.result{
+  /* margin-top: -100px; */
+  display: flex;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+}
+.result>img {
   width: 30px;
   height: 30px;
   margin-right: 5px;
   border-radius: 15px;
+  opacity: 0.8;
+  transition: 0.4s;
+}
+
+.messageContainer>div:nth-child(2) {
+/* border: 1px solid blue; */
+margin-top: 20px;
+margin-bottom: -10px;
+}
+
+.messageContainer>div:nth-child(2)>span {
+background-color: #ffb7b0;
+border-radius: 5px;
+padding: 1px 5px;
+color: #595959;
+opacity: 0.8;
+font-size: 11px;
+border: 1px solid #595959;
+vertical-align: middle;
+}
+
+@media (min-width: 650px) {
+ .messageContainer{
+  /* border: 1px solid red; */
+  margin-top: 20px;
+ }
+.messageContainer>div:nth-child(2) {
+  margin-top: 15px;
+  margin-bottom: -10px;
+  /* border: 1px solid blue; */
+}
 }
 /* =======================
 Progress Container
@@ -208,32 +271,36 @@ Progress Container
   vertical-align: middle;
   max-width: 300px;
   bottom: 0;
-  color: #d0d6d6;
+  color: #595959;
+  opacity: 0.7;
 }
 .progressBack {
   display: inline-block;
   text-align: center;
   height: 20px;
-  width: 300px;
+  width: 301px;
   margin: 0 auto;
-  border-radius: 15px;
+  border-radius: 14px;
   position: relative;
   vertical-align: middle;
-  box-shadow: inset 0px 0px 1px 1px #d0d6d6;
+  /* box-shadow: inset 0px 0px 1px 1px #d0d6d6; */
   border: 1px solid #3b3837;
 }
 .progressFront {
   position: absolute;
-  background-color: #d0d6d6;
-  height: 20px;
-  width: 200px;
+  background-color: #ffb7b0;
+  /* opacity: 0.7; */
+  height: 99%;
+  width: 0px;
   border-radius: 14px 0 0 14px;
   vertical-align: middle;
+  transition: 0.5s;
 }
+
 .progressNumber {
   margin: 0 110px;
   position: absolute;
-  color: #566e6b;
+  color: #595959;
   width: 80px;
   text-align: center;
   font-size: 13px;

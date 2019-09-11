@@ -1,0 +1,144 @@
+.resultContainer {
+	height: 100%;
+	width: 100%;
+	margin: 100px 0;
+	/* position: sticky; */
+	z-index: 3;
+}
+/* .resultContainer>.resultBackground{
+  background-color: grey;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  height: 100%;
+} */
+.resultContainer > .resultMain {
+	background-color: rgb(0, 0, 0);
+	background-color: rgb(0, 0, 0, 0.6);
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	box-shadow: 1px 1px 100px 30px #595959;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	height: 500px;
+	margin: auto;
+	padding: 15px;
+	/* margin-top: -270px; */
+	z-index: 5;
+	color: white;
+	font-size: 40px;
+}
+@media (min-width: 650px) {
+	.resultContainer > .resultMain {
+		width: 400px;
+		height: 400px;
+		margin-top: -330px;
+	}
+}
+.resultContainer > .resultMain > div {
+	margin: 5px 0;
+}
+.resultContainer > .resultMain > div:not(:last-child) {
+	overflow: hidden; /* Ensures the content is not revealed until the animation */
+	white-space: nowrap; /* Keeps the content on a single line */
+	-webkit-animation: typing 3.5s steps(40, end);
+	animation: typing 3.5s steps(40, end);
+}
+/* The typing effect */
+@-webkit-keyframes typing {
+	from {
+		-webkit-width: 0;
+		width: 0;
+	}
+	to {
+		-webkit-width: 100%;
+		width: 100%;
+	}
+}
+@keyframes typing {
+	from {
+		-webkit-width: 0;
+		width: 0;
+	}
+	to {
+		-webkit-width: 100%;
+		width: 100%;
+	}
+}
+
+.resultContainer > .resultMain > div:last-child {
+	-webkit-animation: jello-horizontal 1s 5 both;
+	animation: jello-horizontal 1s 5 both;
+}
+@-webkit-keyframes jello-horizontal {
+	0% {
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+	30% {
+		-webkit-transform: scale3d(1.25, 0.75, 1);
+		transform: scale3d(1.25, 0.75, 1);
+	}
+	40% {
+		-webkit-transform: scale3d(0.75, 1.25, 1);
+		transform: scale3d(0.75, 1.25, 1);
+	}
+	50% {
+		-webkit-transform: scale3d(1.15, 0.85, 1);
+		transform: scale3d(1.15, 0.85, 1);
+	}
+	65% {
+		-webkit-transform: scale3d(0.95, 1.05, 1);
+		transform: scale3d(0.95, 1.05, 1);
+	}
+	75% {
+		-webkit-transform: scale3d(1.05, 0.95, 1);
+		transform: scale3d(1.05, 0.95, 1);
+	}
+	100% {
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}
+@keyframes jello-horizontal {
+	0% {
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+	30% {
+		-webkit-transform: scale3d(1.25, 0.75, 1);
+		transform: scale3d(1.25, 0.75, 1);
+	}
+	40% {
+		-webkit-transform: scale3d(0.75, 1.25, 1);
+		transform: scale3d(0.75, 1.25, 1);
+	}
+	50% {
+		-webkit-transform: scale3d(1.15, 0.85, 1);
+		transform: scale3d(1.15, 0.85, 1);
+	}
+	65% {
+		-webkit-transform: scale3d(0.95, 1.05, 1);
+		transform: scale3d(0.95, 1.05, 1);
+	}
+	75% {
+		-webkit-transform: scale3d(1.05, 0.95, 1);
+		transform: scale3d(1.05, 0.95, 1);
+	}
+	100% {
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+.resultFooter {
+	font-size: 14px;
+	text-align: left;
+	bottom: 0;
+	position: absolute;
+}
