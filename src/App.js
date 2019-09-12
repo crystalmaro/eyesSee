@@ -25,14 +25,34 @@ class App extends Component {
 		// ===== Firebase imageStock data
 		imgData: [], // all data loaded from firebase
 		totalRound: [], // array of number 0 - 19
-		randomRound: [] // randomized EasyRound, followed by randomize HardRound
+		randomRound: [], // randomized EasyRound, followed by randomize HardRound
+		// ===== NEW Firebase masterScore data (ARRAY)
+		globalScoreArray: []
 	};
 
 	// ============================
-	// load firebase data - imageStock
+	// load firebase data - masterScore & imageStock
 	// ============================
 	loadFirebase = (e) => {
 		const db = firebase.firestore();
+		// ===== masterScore
+		db.collection('masterScore').doc('scoreInfo').get().then((doc) => {
+			if (doc.exists) {
+				// let obj = doc.data();
+				// for (const key in obj) {
+				// 	console.log(`${key} -> ${obj[key]}`);
+				// }
+
+				this.setState({
+					// ===== NEW Firebase masterScore data (ARRAY)
+					globalScoreArray: doc.data().scoreData.sort(function(a, b) {
+						return b - a;
+					})
+				});
+			}
+		});
+
+		// ===== imageStock
 		db
 			.collection('imageStock')
 			// .where("level", "==", "easy")
@@ -78,7 +98,11 @@ class App extends Component {
 					<div>
 						{/* <Header /> */}
 
-						<Game imgData={this.state.imgData} randomRound={this.state.randomRound} />
+						<Game
+							imgData={this.state.imgData}
+							randomRound={this.state.randomRound}
+							globalScoreArray={this.state.globalScoreArray}
+						/>
 
 						{/* <Route
 							exact

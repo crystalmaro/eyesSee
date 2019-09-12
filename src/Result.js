@@ -15,19 +15,16 @@ class Result extends Component {
 		return (
 			<div className="resultContainer">
 				<div className="resultBackground" />
-
 				<div className="resultMain">
 					<div>eyesSee</div>
-					<div>Score: {this.props.score}</div>
-
-					<div>Rank: top 5%</div>
+					<div>Score: {this.props.currentScore}</div>
+					<div>Rank: top {this.props.ranking}%</div>
 					<FacebookShareButton url={this.state.shareURL}>
 						<FacebookIcon size={60} borderRadius={10} />
 					</FacebookShareButton>
 				</div>
-
 				<div className="resultFooter">
-					<div>credits</div>
+					{/* <div>credits</div> */}
 					<div>Developed by Crystal Wang</div>
 				</div>
 			</div>

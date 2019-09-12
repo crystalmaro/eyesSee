@@ -5,7 +5,7 @@ import Result from './Result';
 import './css/game.css';
 
 import Progress from './Progress';
-// import firebase from 'firebase';
+import firebase from 'firebase';
 import Card from './Card';
 
 class Game extends Component {
@@ -18,24 +18,44 @@ class Game extends Component {
 		yesImg: './imageStock/yes.png',
 		noImg: './imageStock/no.png',
 		currentRound: 0,
-		score: 0,
+		currentScore: 0,
 		progressBar: 0,
 		isResultReady: false,
-		isYes: 'yes'
+		isYes: 'yes', // reserved for <Card />
+		ranking: 0 // NEW global score
 	};
 
 	// ============================
 	// UI events - click image
 	// ============================
 	clickImg = (e) => {
-		// overlap both images
-		// display current round correctness & reason
+		// 1. overlap both images & show current round answer
+		// (this.state.isClicked), (this.state.origClass)
+		this.overlapImages(e);
+		// 2. decide which image on top & decide current round answer
+		// (this.state.yesOnTop), (this.state.isCorrect)
+		this.checkImage(e);
+		// 3. scorekeeping
+		// (this.state.currentScore)
+		this.addScore(e);
+		// 4. progress bar incrementation
+		// (this.state.isClicked), (this.state.progressBar)
+		this.addProgressBar(e);
+		// 5. NEXT button changes to RESULT on last round, after image selection
+		if (this.state.currentRound == this.props.imgData.length - 1) {
+			this.setState({ isResultReady: true });
+			// if (this.state.isResultReady) {
+			this.calculateRanking(e);
+			// }
+		}
+	};
+	overlapImages = (e) => {
 		this.setState({
 			origClass: 'imgBox clicked',
 			isClicked: true
 		});
-		// decide which image on top
-		// check current round result
+	};
+	checkImage = (e) => {
 		switch (e.target.parentNode.id) {
 			case 'no':
 				this.setState({
@@ -50,41 +70,59 @@ class Game extends Component {
 				});
 				break;
 		}
-		// scorekeeping
-		if (e.target.parentNode.id === 'yes') {
+	};
+	addScore = (e) => {
+		if (e.target.parentNode.id == 'yes') {
 			switch (e.target.parentNode.getAttribute('level')) {
 				case 'easy':
 					this.setState((preState) => {
-						return { score: preState.score + 100 };
+						return { currentScore: preState.currentScore + 100 };
 					});
 					break;
 				case 'hard':
 					this.setState((preState) => {
-						return { score: preState.score + 150 };
+						return { currentScore: preState.currentScore + 150 };
 					});
 					break;
 			}
 		}
-		// progress bar incrementation
+	};
+	addProgressBar = (e) => {
 		if (!this.state.isClicked && this.state.progressBar < 300) {
 			this.setState((preState) => {
 				return { progressBar: preState.progressBar + 300 / 20 };
 			});
 		}
-		// NEXT button changes to RESULT on round 20, after image selection
-		if (this.state.currentRound == this.props.imgData.length - 1) {
-			this.setState({ isResultReady: true });
-		}
-
-		// ::::::::::::: @todo ranking calculation
-		// <Game /> send score to firebase when clicking the last image
-		// <Result /> get all score data from firebase, and calculate current average and ranking
-		// save the ranking to state, and pass it as props to <Result />
 	};
+
 	// ============================
 	// UI events - click next
 	// ============================
 	clickNext = (e) => {
+		this.resetRound(e);
+	};
+	resetRound = (e) => {
+		if (this.state.isClicked) {
+			switch (this.state.currentRound == this.props.imgData.length - 1) {
+				case false:
+					this.setState((preState) => {
+						// increment current round count
+						return { currentRound: preState.currentRound + 1 };
+					});
+					this.setState({
+						// reset state for the next round
+						origClass: 'imgBox',
+						isClicked: false,
+						yesOnTop: true,
+						isCorrect: true
+					});
+					break;
+				// case true:
+				// 	break;
+			}
+			return;
+		}
+
 		// if (this.state.isClicked
 		//   && this.state.currentRound < this.props.imgData.length - 1) {
 		//   // increment current round count
@@ -102,39 +140,36 @@ class Game extends Component {
 		// } if (this.state.currentRound == this.props.imgData.length - 1) {
 		//   alert('result page working in progress')
 		// }
-
-		if (this.state.isClicked) {
-			switch (this.state.currentRound == this.props.imgData.length - 1) {
-				case true:
-					alert('result page working in progress, please be patient');
-					break;
-				case false:
-					this.setState((preState) => {
-						// increment current round count
-						return { currentRound: preState.currentRound + 1 };
-					});
-					this.setState({
-						// reset state for the next round
-						origClass: 'imgBox',
-						isClicked: false,
-						yesOnTop: true,
-						isCorrect: true
-					});
-					break;
-			}
-		}
 	};
-
-	// showNextRound = async (e) => {
-	//   await this.clickNext(e)
-	//   this.setState({
-	//     origClass: 'imgBox',
-	//     isClicked: false,
-	//     yesOnTop: true,
-	//     isCorrect: true,
-	//   });
-	// }
-
+	calculateRanking = (e) => {
+		// 1. calculate accuracy rate
+		let point = Math.round(this.state.currentScore / 3000 * 100);
+		console.log('accuracy rate: ' + point);
+		// let percentage = Math.floor(point * 100);
+		// 2. add current score into array
+		let newArr = this.props.globalScoreArray.slice();
+		newArr.push(point);
+		// 3. sort the array in descending order
+		newArr.sort(function(a, b) {
+			return b - a;
+		});
+		console.log('newArr :' + newArr);
+		// 4. final score = arr.indexOf(percentage) / arr.length
+		let index = Number(newArr.indexOf(point)) + 1;
+		console.log('index+1 :' + index);
+		console.log('length:' + newArr.length);
+		let ranking = Math.round(index / newArr.length * 100);
+		console.log('rank:' + ranking);
+		// 5. save the ranking to state, and pass the ranking to <Result />
+		this.setState({
+			ranking
+		});
+		// 6. save the newly updated array back to firebase
+		const db = firebase.firestore();
+		return db.collection('masterScore').doc('scoreInfo').set({
+			scoreData: newArr
+		});
+	};
 	// ============================
 	// UI events - click compare
 	// ============================
@@ -316,13 +351,18 @@ class Game extends Component {
 				<Route exact path="/">
 					<div className="header">
 						<div>eyesSee</div>
-						<div>score: {this.state.score}</div>
+						<div>score: {this.state.currentScore}</div>
 					</div>
 					{content}
 				</Route>
 
 				{/* <Progress progressBar={this.state.progressBar} imgData={this.imgData} randomRound={this.randomRound} currentRound={this.state.currentRound} /> */}
-				<Route path="/result" component={(props) => <Result {...props} score={this.state.score} />} />
+				<Route
+					path="/result"
+					component={(props) => (
+						<Result {...props} currentScore={this.state.currentScore} ranking={this.state.ranking} />
+					)}
+				/>
 			</div>
 		);
 	}
