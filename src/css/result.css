@@ -1,9 +1,9 @@
 .resultContainer {
-	height: 100%;
-	width: 100%;
-	margin: 100px 0;
+	/* height: 100%; */
+	/* width: 100%; */
+	/* margin: 100px 0; */
 	/* position: sticky; */
-	z-index: 3;
+	/* z-index: 3; */
 }
 /* .resultContainer>.resultBackground{
   background-color: grey;
@@ -137,6 +137,7 @@
 .resultFooter {
 	font-size: 14px;
 	text-align: left;
-	bottom: 0;
+  bottom: 0;
+  left: 0;
 	position: absolute;
 }
