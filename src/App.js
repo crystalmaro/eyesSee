@@ -102,6 +102,7 @@ class App extends Component {
 				<ThemeContextProvider>
 					<ThemeContext.Consumer>
 						{(context) => {
+							// ! theme switching re-set all states in GAME
 							const { isLightTheme, light, dark } = context;
 							const theme = isLightTheme ? light : dark;
 							return (
