@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import Intro from './component/Intro';
 import Game from './component/Game';
 import { Header, ThemeToggle } from './component/Header';
 import { FirebaseDatabaseProvider } from '@react-firebase/database';
 // import firebaseConfig from 'firebase';
 import firebase from 'Firebase';
 import '@firebase/firestore';
-import { Route, BrowserRouter } from 'react-router-dom';
-import ThemeContextProvider from './contexts/ThemeContext';
+import { Route, Router, BrowserRouter, NavLink } from 'react-router-dom';
+import ThemeContextProvider, { ThemeContext } from './contexts/ThemeContext';
 
 import Test from './Test';
 
@@ -87,6 +88,7 @@ class App extends Component {
 					this.setState({ randomRound });
 				}
 				console.log(this.state.randomRound);
+				// console.log(this.state.imgData);
 			});
 	};
 	componentDidMount() {
@@ -95,31 +97,53 @@ class App extends Component {
 
 	render() {
 		return (
-			<ThemeContextProvider>
-				<FirebaseDatabaseProvider firebase={firebase}>
-					<BrowserRouter>
-						<Header />
-						<ThemeToggle />
-						{/* <Test /> */}
+			// <FirebaseDatabaseProvider firebase={firebase}>
+			<BrowserRouter>
+				<ThemeContextProvider>
+					<ThemeContext.Consumer>
+						{(context) => {
+							const { isLightTheme, light, dark } = context;
+							const theme = isLightTheme ? light : dark;
+							return (
+								<div className="main" style={{ backgroundColor: theme.bg, color: theme.font }}>
+									<header>
+										<div>
+											<NavLink exact to="/">
+												Intro
+											</NavLink>
+											<NavLink to="/game">Game</NavLink>
+										</div>
+										<ThemeToggle />
+									</header>
 
-						<Game
+									<Route exact path="/" component={Intro} />
+									<Route
+										path="/game"
+										component={(props) => (
+											<Game
+												{...props}
+												imgData={this.state.imgData}
+												randomRound={this.state.randomRound}
+												globalScoreArray={this.state.globalScoreArray}
+											/>
+										)}
+									/>
+
+									{/* <Header /> */}
+									{/* <Test /> */}
+
+									{/* <Game
 							imgData={this.state.imgData}
 							randomRound={this.state.randomRound}
 							globalScoreArray={this.state.globalScoreArray}
-						/>
-
-						{/* <Route
-							exact
-							path="/"
-							component={(props) => (
-								<Game {...props} imgData={this.state.imgData} randomRound={this.state.randomRound} />
-							)}
 						/> */}
-
-						{/* <Route path='/result' component={Result} /> */}
-					</BrowserRouter>
-				</FirebaseDatabaseProvider>
-			</ThemeContextProvider>
+								</div>
+							);
+						}}
+					</ThemeContext.Consumer>
+				</ThemeContextProvider>
+			</BrowserRouter>
+			// </FirebaseDatabaseProvider>
 		);
 	}
 }

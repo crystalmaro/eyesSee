@@ -42,7 +42,7 @@ class Game extends Component {
 		// 4. progress bar incrementation
 		this.addProgressBar(e);
 		// 5. NEXT button changes to RESULT on last round, after image selection
-		if (this.state.currentRound == this.state.imgData.length - 1) {
+		if (this.state.currentRound == this.state.currentRound.length - 1) {
 			this.setState({ isResultReady: true });
 			// if (this.state.isResultReady) {
 			this.calculateRanking(e);
@@ -138,7 +138,7 @@ class Game extends Component {
 	};
 	resetRound = (e) => {
 		if (this.state.isClicked) {
-			switch (this.state.currentRound == this.state.imgData.length - 1) {
+			switch (this.state.currentRound == this.state.currentRound.length - 1) {
 				case false:
 					this.setState((preState) => {
 						// increment current round count
@@ -226,10 +226,20 @@ class Game extends Component {
 							}}
 						>
 							{this.props.children}
-							<main style={{ background: theme.bg, color: theme.font }}>
+							<main>
 								<Route exact path="/">
 									<div className="header">
-										<div>eyesSee</div>
+										<div className="logo">
+											<img
+												src={
+													isLightTheme ? (
+														'./imageStock/logo.png'
+													) : (
+														'./imageStock/logo-white.png'
+													)
+												}
+											/>
+										</div>
 										<div>score: {this.state.currentScore}</div>
 									</div>
 									{content}

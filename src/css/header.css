@@ -12,28 +12,6 @@ input {
 	margin: auto;
 	width: 300px;
 }
-.theme {
-	width: 56px;
-	height: 30px;
-	background-color: #d0d6d6;
-	border-radius: 28px;
-}
-.theme > div {
-	width: 30px;
-	height: 30px;
-	border-radius: 28px;
-	background-color: #595959;
-	opacity: 0.7;
-	transition: 0.4s;
-	vertical-align: middle;
-	text-align: center;
-}
-
-.theme > div > img {
-	vertical-align: middle;
-	text-align: center;
-	width: 60%;
-}
 
 /* =======================
 Media Query
