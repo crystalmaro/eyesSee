@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import Game from './component/Game';
-import Progress from './component/Progress';
 import { Header, ThemeToggle } from './component/Header';
-// import Game from './Game';
-import Result from './component/Result';
 import { FirebaseDatabaseProvider } from '@react-firebase/database';
 // import firebaseConfig from 'firebase';
 import firebase from 'Firebase';
 import '@firebase/firestore';
 import { Route, BrowserRouter } from 'react-router-dom';
 import ThemeContextProvider from './contexts/ThemeContext';
-import GameContextProvider from './contexts/GameContext';
 
 import Test from './Test';
 
@@ -101,18 +97,17 @@ class App extends Component {
 		return (
 			<ThemeContextProvider>
 				<FirebaseDatabaseProvider firebase={firebase}>
-					{/* <GameContextProvider> */}
 					<BrowserRouter>
-						{/* <div> */}
 						<Header />
 						<ThemeToggle />
-						<Test />
+						{/* <Test /> */}
 
 						<Game
 							imgData={this.state.imgData}
 							randomRound={this.state.randomRound}
 							globalScoreArray={this.state.globalScoreArray}
 						/>
+
 						{/* <Route
 							exact
 							path="/"
@@ -122,9 +117,7 @@ class App extends Component {
 						/> */}
 
 						{/* <Route path='/result' component={Result} /> */}
-						{/* </div> */}
 					</BrowserRouter>
-					{/* </GameContextProvider> */}
 				</FirebaseDatabaseProvider>
 			</ThemeContextProvider>
 		);
