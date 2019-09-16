@@ -1,27 +1,47 @@
-
 .header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 15px auto;
-  /* font-size: 25px; */
-  max-width: 300px;
-  color: #595959;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 15px auto;
+	/* font-size: 25px; */
+	max-width: 300px;
 }
 /* input field for add/update firebase data */
-input{
-  display: block;
-  margin: auto;
-  width: 300px;
+input {
+	display: block;
+	margin: auto;
+	width: 300px;
+}
+.theme {
+	width: 56px;
+	height: 30px;
+	background-color: #d0d6d6;
+	border-radius: 28px;
+}
+.theme > div {
+	width: 30px;
+	height: 30px;
+	border-radius: 28px;
+	background-color: #595959;
+	opacity: 0.7;
+	transition: 0.4s;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.theme > div > img {
+	vertical-align: middle;
+	text-align: center;
+	width: 60%;
 }
 
 /* =======================
 Media Query
 ======================= */
 @media (min-width: 650px) {
-  .header {
-    max-width: 600px;
-    margin: 15px auto;
-    justify-content: space-around;
-  }
+	.header {
+		max-width: 600px;
+		margin: 15px auto;
+		justify-content: space-around;
+	}
 }
