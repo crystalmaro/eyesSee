@@ -10,6 +10,7 @@ import firebase from 'Firebase';
 import '@firebase/firestore';
 import { Route, BrowserRouter } from 'react-router-dom';
 import ThemeContextProvider from './contexts/ThemeContext';
+import GameContextProvider from './contexts/GameContext';
 
 import Test from './Test';
 
@@ -100,11 +101,12 @@ class App extends Component {
 		return (
 			<ThemeContextProvider>
 				<FirebaseDatabaseProvider firebase={firebase}>
+					{/* <GameContextProvider> */}
 					<BrowserRouter>
 						{/* <div> */}
 						<Header />
 						<ThemeToggle />
-						{/* <Test /> */}
+						<Test />
 
 						<Game
 							imgData={this.state.imgData}
@@ -122,6 +124,7 @@ class App extends Component {
 						{/* <Route path='/result' component={Result} /> */}
 						{/* </div> */}
 					</BrowserRouter>
+					{/* </GameContextProvider> */}
 				</FirebaseDatabaseProvider>
 			</ThemeContextProvider>
 		);

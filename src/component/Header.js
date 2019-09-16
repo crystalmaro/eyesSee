@@ -23,16 +23,6 @@ class ThemeToggle extends Component {
 class Header extends Component {
 	// static contextType = ThemeContext;
 
-	state = {
-		test: 'hh',
-		key: 1,
-		yes: '',
-		no: '',
-		level: 'easy',
-		reason: '',
-		doc: 1
-	};
-
 	render() {
 		return (
 			<ThemeContext.Consumer>
