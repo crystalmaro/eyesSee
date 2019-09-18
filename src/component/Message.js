@@ -1,14 +1,14 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 // import './css/message.css';
-import { GameContext } from './Game';
+import { GameContext } from '../contexts/GameContext';
 
 class Message extends Component {
 	render() {
 		return (
 			<GameContext.Consumer>
 				{(context) => {
-					const { isClicked, isCorrect, yesImg, noImg, imgData, randomRound, currentRound } = context;
+					const { isClicked, isCorrect, yesImg, noImg, currentRound, imgData, randomRound } = context;
 					return (
 						<div className="messageContainer" style={isClicked ? { display: 'flex' } : { display: 'none' }}>
 							<div className="result">

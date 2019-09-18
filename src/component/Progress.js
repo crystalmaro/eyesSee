@@ -1,29 +1,40 @@
 /* eslint-disable */
 
-import React, { useContext } from 'react';
-import { GameContext } from './Game';
+import React, { Component } from 'react';
+import { GameContext } from '../contexts/GameContext';
 
-const Progress = () => {
-	const { currentRound, progressBar, imgData, randomRound } = useContext(GameContext);
-	return (
-		<div className="progressContainer">
-			<div className="progressBack">
-				<div
-					className="progressFront"
-					style={
-						progressBar >= 300 ? (
-							{ borderRadius: '14px', width: `${progressBar}px` }
-						) : (
-							{ width: `${progressBar}px` }
-						)
-					}
-				/>
-				<div className="progressNumber">
-					{imgData[randomRound[currentRound]].level} {currentRound + 1} / {randomRound.length}
-				</div>
-			</div>
-		</div>
-	);
-};
+class Progress extends Component {
+	// const Progress = () => {
+	// const { currentRound, progressBar } = useContext(GameContext);
+
+	render() {
+		return (
+			<GameContext.Consumer>
+				{(context) => {
+					const { progressBar, currentRound, imgData, randomRound } = context;
+					return (
+						<div className="progressContainer">
+							<div className="progressBack">
+								<div
+									className="progressFront"
+									style={
+										progressBar >= 300 ? (
+											{ borderRadius: '14px', width: `${progressBar}px` }
+										) : (
+											{ width: `${progressBar}px` }
+										)
+									}
+								/>
+								<div className="progressNumber">
+									{imgData[randomRound[currentRound]].level} {currentRound + 1} / {randomRound.length}
+								</div>
+							</div>
+						</div>
+					);
+				}}
+			</GameContext.Consumer>
+		);
+	}
+}
 
 export default Progress;

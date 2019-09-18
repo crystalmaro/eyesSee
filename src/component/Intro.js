@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
 import Game from './Game';
+import Result from './Result';
+import { ThemeContext } from '../contexts/ThemeContext';
+import { ThemeToggle } from './Header';
 
 class Intro extends Component {
 	state = {
@@ -9,7 +12,7 @@ class Intro extends Component {
 				key: 1,
 				yes: './imageStock/intro1.png',
 				no: './imageStock/intro2.png',
-				reason: 'this is just the tutorial'
+				reason: 'can chagne color theme on top (star)'
 			},
 			{
 				key: 2,
@@ -129,55 +132,73 @@ class Intro extends Component {
 
 	render() {
 		return (
-			<main>
-				<div className="gameContainer">
-					<div
-						onClick={this.clickImg}
-						style={this.state.yesOnTop ? { zIndex: 1 } : null}
-						className={this.state.origClass}
-						id="yes"
-					>
-						<img src={this.state.introData[this.state.introRound].yes} alt="" />
-					</div>
-					<div
-						onClick={this.clickImg}
-						style={this.state.yesOnTop ? null : { zIndex: 1 }}
-						className={this.state.origClass}
-						id="no"
-					>
-						<img src={this.state.introData[this.state.introRound].no} alt="" />
-					</div>
-				</div>
+			<ThemeContext.Consumer>
+				{(context) => {
+					const { isLightTheme, light, dark } = context;
+					const theme = isLightTheme ? light : dark;
+					return (
+						<main className="main" style={{ backgroundColor: theme.bg, color: theme.font }}>
+							<header>
+								<NavLink to="/game">Skip to Game</NavLink>
+								<ThemeToggle />
+							</header>
+							<div className="gameContainer">
+								<div
+									onClick={this.clickImg}
+									style={this.state.yesOnTop ? { zIndex: 1 } : null}
+									className={this.state.origClass}
+									id="yes"
+								>
+									<img src={this.state.introData[this.state.introRound].yes} alt="" />
+								</div>
+								<div
+									onClick={this.clickImg}
+									style={this.state.yesOnTop ? null : { zIndex: 1 }}
+									className={this.state.origClass}
+									id="no"
+								>
+									<img src={this.state.introData[this.state.introRound].no} alt="" />
+								</div>
+							</div>
 
-				<div
-					className="messageContainer"
-					style={this.state.isClicked ? { display: 'flex' } : { display: 'none' }}
-				>
-					<div className="result">
-						<img src={this.state.isCorrect ? this.state.yesImg : this.state.noImg} />
-						<div className="message">{this.state.introData[this.state.introRound].reason}</div>
-					</div>
-					<div>
-						Click and hold <span>COMPARE</span> to compare
-					</div>
-				</div>
+							<div
+								className="messageContainer"
+								style={this.state.isClicked ? { display: 'flex' } : { display: 'none' }}
+							>
+								<div className="result">
+									<img src={this.state.isCorrect ? this.state.yesImg : this.state.noImg} />
+									<div className="message">{this.state.introData[this.state.introRound].reason}</div>
+								</div>
+								<div>
+									Click and hold <span>COMPARE</span> to compare
+								</div>
+							</div>
 
-				<div className="buttonContainer">
-					<div
-						onMouseDown={this.compareMouseDown}
-						onTouchStart={this.compareMouseDown}
-						onMouseUp={this.compareMouseUp}
-						onTouchEnd={this.compareMouseUp}
-						className={this.state.compareClass}
-					>
-						COMPARE
-					</div>
-					<div onClick={this.clickNext} className="button">
-						{this.state.isIntroDone ? <NavLink to="/game">START</NavLink> : 'NEXT'}
-					</div>
-					<Route path="/game" component={Game} />
-				</div>
-			</main>
+							<div className="buttonContainer">
+								<div
+									onMouseDown={this.compareMouseDown}
+									onTouchStart={this.compareMouseDown}
+									onMouseUp={this.compareMouseUp}
+									onTouchEnd={this.compareMouseUp}
+									className={this.state.compareClass}
+								>
+									COMPARE
+								</div>
+								<div onClick={this.clickNext} className="button">
+									{this.state.isIntroDone ? (
+										<NavLink to="/game">
+											<strong>START</strong>
+										</NavLink>
+									) : (
+										'NEXT'
+									)}
+								</div>
+								<Route path="/game" component={Game} />
+							</div>
+						</main>
+					);
+				}}
+			</ThemeContext.Consumer>
 		);
 	}
 }

@@ -9,7 +9,7 @@ header {
 	margin: 10px auto;
 }
 
-header > div > a {
+header > a {
 	border: 1px solid #595959;
 	background-color: #ffb7b0;
 	margin-right: 10px;
@@ -47,6 +47,10 @@ header > div > a {
 	width: 100%;
 	height: 100%;
 }
+.main > header > .score {
+	border: 1px solid red;
+}
+
 /* =======================
 body
 ======================= */

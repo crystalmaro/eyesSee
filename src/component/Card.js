@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { GameContext } from './Game';
+import { GameContext } from '../contexts/GameContext';
 
 class Card extends Component {
 	render() {
+		console.log('cr');
 		return (
 			<GameContext.Consumer>
 				{(context) => {
-					const { clickImg, yesOnTop, origClass, imgData, randomRound, currentRound } = context;
+					const { clickImg, yesOnTop, origClass, currentRound, imgData, randomRound } = context;
 					let first;
 					let second;
+
 					const yes = (
 						<div
 							onClick={clickImg}
