@@ -1,0 +1,48 @@
+@keyframes rot_orig {
+	from {
+		transform: rotate(0deg) translate(0, -33px) rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg) translate(0, -33px) rotate(-360deg);
+	}
+}
+
+.alt1 {
+	position: absolute;
+	top: 20%;
+	right: 50%;
+}
+
+.dot,
+.orig,
+.one,
+.two,
+.three,
+.four {
+	position: absolute;
+	top: 15%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 70px;
+}
+
+.orig {
+	animation: rot_orig 1.5s infinite ease-in-out;
+}
+
+.one {
+	animation-delay: 0s;
+	color: #29c6cd;
+}
+.two {
+	animation-delay: 100ms;
+	color: #f6e4c4;
+}
+.three {
+	animation-delay: 200ms;
+	color: #fea386;
+}
+.four {
+	animation-delay: 300ms;
+	color: #f19584;
+}

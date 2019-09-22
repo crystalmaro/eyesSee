@@ -9,7 +9,14 @@ class Button extends Component {
 			// <BrowserRouter>
 			<GameContext.Consumer>
 				{(context) => {
-					const { compareMouseDown, compareMouseUp, compareClass, clickNext, isResultReady } = context;
+					const {
+						compareMouseDown,
+						compareMouseUp,
+						compareClass,
+						clickNext,
+						isResultReady,
+						isClicked
+					} = context;
 					return (
 						<div className="buttonContainer">
 							<div
@@ -21,7 +28,7 @@ class Button extends Component {
 							>
 								COMPARE
 							</div>
-							<div onClick={clickNext} className="button">
+							<div onClick={clickNext} className={isClicked ? 'button isClicked' : 'button'}>
 								{isResultReady ? (
 									<NavLink to="/result">
 										<strong>RESULT</strong>
@@ -30,7 +37,6 @@ class Button extends Component {
 									'NEXT'
 								)}
 							</div>
-							<Route path="/result" component={Result} />
 						</div>
 					);
 				}}

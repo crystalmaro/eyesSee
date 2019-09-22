@@ -3,11 +3,10 @@ import { GameContext } from '../contexts/GameContext';
 
 class Card extends Component {
 	render() {
-		console.log('cr');
 		return (
 			<GameContext.Consumer>
 				{(context) => {
-					const { clickImg, yesOnTop, origClass, currentRound, imgData, randomRound } = context;
+					const { clickImg, yesOnTop, origClass, currentRound, imgData, randomRound, currentScore } = context;
 					let first;
 					let second;
 
@@ -19,7 +18,7 @@ class Card extends Component {
 							id="yes"
 							level={imgData[randomRound[currentRound]].level}
 						>
-							<img src={imgData[randomRound[currentRound]].yes} alt="" />
+							<img src={`${imgData[randomRound[currentRound]].yes}`} alt="" />
 						</div>
 					);
 

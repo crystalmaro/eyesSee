@@ -12,25 +12,23 @@ class Result extends Component {
 	};
 
 	render() {
-		console.log('where is andy');
-		console.log(this);
-
 		return (
 			<GameContext.Consumer>
 				{(context) => {
 					console.log(context);
 
-					const { currentScore, ranking } = context;
+					const { currentScore, ranking, rankingMsg, globalScoreArray } = context;
 
 					return (
 						<div className="resultContainer">
-							<div className="resultBackground" />
 							<div className="resultMain">
-								<div>eyesSee</div>
+								<div>
+									<img src="./imageStock/595959.png" />
+								</div>
 								<div>Score: {currentScore}</div>
 								<div>Rank: top {ranking}%</div>
-								<div>(among {[ this.props.globalScoreArray ].length + 1} eyes)</div>
-								<div>(wip) rankingMsg</div>
+								<div>(among {globalScoreArray.length + 1} eyes)</div>
+								<div> {rankingMsg} </div>
 								<FacebookShareButton url={this.state.shareURL}>
 									<FacebookIcon size={60} borderRadius={10} />
 								</FacebookShareButton>

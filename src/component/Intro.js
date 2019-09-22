@@ -3,7 +3,7 @@ import { NavLink, Route } from 'react-router-dom';
 import Game from './Game';
 import Result from './Result';
 import { ThemeContext } from '../contexts/ThemeContext';
-import { ThemeToggle } from './Header';
+import ThemeToggle from './ThemeToggle';
 
 class Intro extends Component {
 	state = {
@@ -51,7 +51,8 @@ class Intro extends Component {
 	overlapImages = (e) => {
 		this.setState({
 			origClass: 'imgBox clicked',
-			isClicked: true
+			isClicked: true,
+			compareClass: 'button isClicked'
 		});
 	};
 	checkImage = (e) => {
@@ -118,7 +119,7 @@ class Intro extends Component {
 	};
 	compareMouseUp = (e) => {
 		if (this.state.isClicked) {
-			this.setState({ compareClass: 'button' });
+			this.setState({ compareClass: 'button isClicked' });
 			switch (this.state.yesOnTop) {
 				case true:
 					this.setState({ yesOnTop: false, isCorrect: false });
@@ -137,10 +138,15 @@ class Intro extends Component {
 					const { isLightTheme, light, dark } = context;
 					const theme = isLightTheme ? light : dark;
 					return (
-						<main className="main" style={{ backgroundColor: theme.bg, color: theme.font }}>
+						<main>
 							<header>
-								<NavLink to="/game">Skip to Game</NavLink>
-								<ThemeToggle />
+								<div className="logo">
+									<img src={theme.logo} />
+								</div>
+								<div>
+									<ThemeToggle />
+									<NavLink to="/game">Skip to Game</NavLink>
+								</div>
 							</header>
 							<div className="gameContainer">
 								<div
@@ -184,7 +190,10 @@ class Intro extends Component {
 								>
 									COMPARE
 								</div>
-								<div onClick={this.clickNext} className="button">
+								<div
+									onClick={this.clickNext}
+									className={this.state.isClicked ? 'button isClicked' : 'button'}
+								>
 									{this.state.isIntroDone ? (
 										<NavLink to="/game">
 											<strong>START</strong>

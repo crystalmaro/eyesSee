@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React, { Component } from 'react';
-// import './css/message.css';
 import { GameContext } from '../contexts/GameContext';
 
 class Message extends Component {

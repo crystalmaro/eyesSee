@@ -1,55 +1,46 @@
-.resultContainer > .resultMain > div:nth-child(3),
-.resultContainer > .resultMain > div:nth-child(4),
-.resultContainer > .resultMain > div:nth-child(5) {
-	color: red;
-	font-size: 20px;
-}
-
-.resultContainer {
-	/* height: 100%; */
-	/* width: 100%; */
-	/* margin: 100px 0; */
-	/* position: sticky; */
-	/* z-index: 3; */
-}
-/* .resultContainer>.resultBackground{
-  background-color: grey;
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-  height: 100%;
-} */
 .resultContainer > .resultMain {
-	background-color: rgb(0, 0, 0);
-	background-color: rgb(0, 0, 0, 0.8);
+	background-color: rgb(255, 183, 176, 0.7);
 	top: 50%;
 	left: 50%;
 	position: absolute;
 	transform: translate(-50%, -50%);
-	box-shadow: 1px 1px 100px 30px #595959;
+	box-shadow: 0px 5px 10px 0px #b0b0b0;
 	border-radius: 15px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	width: 80%;
-	height: 500px;
+	height: 400px;
 	margin: auto;
-	/* padding: 15px; */
-	/* margin-top: -270px; */
-	z-index: 5;
-	color: white;
-	font-size: 40px;
+	color: #595959;
+	font-size: 20px;
 }
 @media (min-width: 650px) {
 	.resultContainer > .resultMain {
 		width: 400px;
 		height: 400px;
-		/* margin-top: -330px; */
 	}
 }
+.resultContainer > .resultMain > div:nth-child(1) {
+	width: 150px;
+}
+.resultContainer > .resultMain > div:nth-child(1) > img {
+	width: 100%;
+}
+
+.resultContainer > .resultMain > div:nth-child(3),
+.resultContainer > .resultMain > div:nth-child(4) {
+	margin-top: -10px;
+}
+.resultContainer > .resultMain > div:nth-child(5) {
+	font-size: 12px;
+}
 .resultContainer > .resultMain > div:not(:last-child) {
-	overflow: hidden; /* Ensures the content is not revealed until the animation */
-	white-space: nowrap; /* Keeps the content on a single line */
+	overflow: hidden;
+	/* Ensures the content is not revealed until the animation */
+	white-space: nowrap;
+	/* Keeps the content on a single line */
 	-webkit-animation: typing 3.5s steps(40, end);
 	animation: typing 3.5s steps(40, end);
 }
@@ -147,4 +138,5 @@
 	bottom: 0;
 	left: 0;
 	position: absolute;
+	margin: 10px;
 }

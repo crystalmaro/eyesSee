@@ -1,39 +1,29 @@
 /* eslint-disable */
-import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
-import '../css/header.css';
-import firebase from 'firebase';
-// import firestore from 'firestore'
+import React, { useContext } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext';
+import { GameContext } from '../contexts/GameContext';
 
-class ThemeToggle extends Component {
-	static contextType = ThemeContext;
-	render() {
-		const { toggleTheme, isLightTheme } = this.context;
-		return (
-			<div className="theme" onClick={toggleTheme}>
-				<div style={isLightTheme ? null : { marginLeft: '17px' }}>
-					<img src={isLightTheme ? './imageStock/star.png' : './imageStock/sun.png'} />
-				</div>
+function Header() {
+	const gameContext = useContext(GameContext);
+	const themeContext = useContext(ThemeContext);
+
+	return (
+		<header className="score">
+			<div className="logo">
+				<img src={themeContext.isLightTheme ? themeContext.light.logo : themeContext.dark.logo} />
 			</div>
-		);
-	}
+			<div>
+				👀
+				{gameContext.currentScore > 0 ? gameContext.currentScore > 1000 ? (
+					` ${gameContext.currentScore}`
+				) : (
+					` 0${gameContext.currentScore}`
+				) : (
+					` 0000`
+				)}
+			</div>
+		</header>
+	);
 }
 
-class Header extends Component {
-	// static contextType = ThemeContext;
-
-	render() {
-		return (
-			<ThemeContext.Consumer>
-				{(context) => {
-					const { isLightTheme, light, dark } = context;
-					const theme = isLightTheme ? light : dark;
-					return <div>hello</div>;
-				}}
-			</ThemeContext.Consumer>
-		);
-	}
-}
-
-export { Header, ThemeToggle };
+export default Header;
