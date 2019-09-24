@@ -1,8 +1,20 @@
-@keyframes rot_orig {
+@-webkit-keyframes rot_orig {
 	from {
+		-webkit-transform: rotate(0deg) translate(0, -33px) rotate(0deg);
 		transform: rotate(0deg) translate(0, -33px) rotate(0deg);
 	}
 	to {
+		-webkit-transform: rotate(360deg) translate(0, -33px) rotate(-360deg);
+		transform: rotate(360deg) translate(0, -33px) rotate(-360deg);
+	}
+}
+@keyframes rot_orig {
+	from {
+		-webkit-transform: rotate(0deg) translate(0, -33px) rotate(0deg);
+		transform: rotate(0deg) translate(0, -33px) rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg) translate(0, -33px) rotate(-360deg);
 		transform: rotate(360deg) translate(0, -33px) rotate(-360deg);
 	}
 }
@@ -27,6 +39,7 @@
 }
 
 .orig {
+	-webkit-animation: rot_orig 1.5s infinite ease-in-out;
 	animation: rot_orig 1.5s infinite ease-in-out;
 }
 

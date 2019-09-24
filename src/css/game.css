@@ -2,7 +2,6 @@
 body
 ======================= */
 body {
-	/* background: #eef2f3;  */
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -28,8 +27,8 @@ Header
 header {
 	display: flex;
 	justify-content: space-between;
-	font-size: 20px;
 	width: 80%;
+	max-width: 800px;
 	margin: 10px auto;
 	align-items: center;
 }
@@ -41,9 +40,9 @@ header > div > a {
 	border: 1px solid #595959;
 	background-color: #ffb7b0;
 	margin-right: 10px;
-	padding: 0 10px;
+	padding: 0 5px;
 	border-radius: 5px;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .main {
@@ -83,7 +82,8 @@ ThemeToggle
 Game - header with logo
 ======================= */
 .logo {
-	width: 100px;
+	width: 90px;
+	height: 40px;
 }
 .logo > img {
 	width: 100%;
@@ -156,24 +156,50 @@ Game Container - Click Events
 	height: 100%;
 }
 .imgBox.clicked:nth-child(1) {
+	-webkit-animation: slide-in-top 0.2s ease;
 	animation: slide-in-top 0.2s ease;
 }
 .imgBox.clicked:nth-child(2) {
+	-webkit-animation: slide-in-bottom 0.2s ease;
 	animation: slide-in-bottom 0.2s ease;
 }
-@keyframes slide-in-top {
+@-webkit-keyframes slide-in-top {
 	0% {
+		-webkit-transform: translateY(-50px);
 		transform: translateY(-50px);
 	}
 	100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+}
+@keyframes slide-in-top {
+	0% {
+		-webkit-transform: translateY(-50px);
+		transform: translateY(-50px);
+	}
+	100% {
+		-webkit-transform: translateY(0);
 		transform: translateY(0);
 	}
 }
 @keyframes slide-in-bottom {
 	0% {
+		-webkit-transform: translateY(70px);
 		transform: translateY(70px);
 	}
 	100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+}
+@-webkit-keyframes slide-in-bottom {
+	0% {
+		-webkit-transform: translateY(70px);
+		transform: translateY(70px);
+	}
+	100% {
+		-webkit-transform: translateY(0);
 		transform: translateY(0);
 	}
 }
@@ -188,24 +214,50 @@ Game Container - Click Events
 		grid-row-end: 2;
 	}
 	.imgBox.clicked:nth-child(1) {
+		-webkit-animation: slide-in-left 0.2s ease-out;
 		animation: slide-in-left 0.2s ease-out;
 	}
 	.imgBox.clicked:nth-child(2) {
+		-webkit-animation: slide-in-right 0.2s ease-out;
 		animation: slide-in-right 0.2s ease-out;
 	}
-	@keyframes slide-in-left {
+	@-webkit-keyframes slide-in-left {
 		0% {
+			-webkit-transform: translateX(-100px);
 			transform: translateX(-100px);
 		}
 		100% {
+			-webkit-transform: translateX(0);
+			transform: translateX(0);
+		}
+	}
+	@keyframes slide-in-left {
+		0% {
+			-webkit-transform: translateX(-100px);
+			transform: translateX(-100px);
+		}
+		100% {
+			-webkit-transform: translateX(0);
+			transform: translateX(0);
+		}
+	}
+	@-webkit-keyframes slide-in-right {
+		0% {
+			-webkit-transform: translateX(100px);
+			transform: translateX(100px);
+		}
+		100% {
+			-webkit-transform: translateX(0);
 			transform: translateX(0);
 		}
 	}
 	@keyframes slide-in-right {
 		0% {
+			-webkit-transform: translateX(100px);
 			transform: translateX(100px);
 		}
 		100% {
+			-webkit-transform: translateX(0);
 			transform: translateX(0);
 		}
 	}
@@ -236,7 +288,6 @@ Button Container
 	width: 130px;
 	max-height: 23px;
 	padding: 7px 0;
-	/* box-shadow: inset 0px 0px 1px 1px #ffb7b0; */
 	box-shadow: 0px 2px 5px -1px #b0b0b0;
 	border: 1px solid #3b3837;
 	border-radius: 5px;
@@ -245,19 +296,6 @@ Button Container
 .button.isClicked:hover {
 	margin-top: 2px;
 }
-/* .button::before {
-	content: '';
-	display: block;
-	position: absolute;
-	z-index: -2;
-	height: 90%;
-	width: 90%;
-	left: 5%;
-	right: 5%;
-	bottom: 0px;
-	border-radius: 10px;
-	box-shadow: 0px 5px 10px 0px #b0b0b0;
-} */
 .button.compare {
 	margin-top: 6px;
 }
@@ -276,16 +314,12 @@ Message Container
 	margin: auto;
 	margin-top: -60px;
 	margin-bottom: -10px;
-	/* color: #595959; */
-	/* border: 1px solid blue; */
 }
 .result {
-	/* margin-top: -100px; */
 	display: flex;
 	width: 300px;
 	justify-content: center;
 	align-items: center;
-	/* transition doesn't work */
 }
 .result > img {
 	width: 30px;
@@ -293,11 +327,9 @@ Message Container
 	margin-right: 5px;
 	border-radius: 15px;
 	opacity: 0.8;
-	/* transition doesn't work */
 }
 
 .messageContainer > div:nth-child(2) {
-	/* border: 1px solid blue; */
 	margin-top: 20px;
 	margin-bottom: -10px;
 }
@@ -320,7 +352,6 @@ Message Container
 	.messageContainer > div:nth-child(2) {
 		margin-top: 15px;
 		margin-bottom: -10px;
-		/* border: 1px solid blue; */
 	}
 }
 /* =======================
@@ -331,8 +362,6 @@ Progress Container
 	vertical-align: middle;
 	max-width: 300px;
 	bottom: 0;
-	/* color: #595959; */
-	/* opacity: 0.7; */
 }
 .progressBack {
 	display: inline-block;
@@ -343,13 +372,11 @@ Progress Container
 	border-radius: 14px;
 	position: relative;
 	vertical-align: middle;
-	/* box-shadow: inset 0px 0px 1px 1px #d0d6d6; */
 	border: 1px solid #3b3837;
 }
 .progressFront {
 	position: absolute;
 	background-color: #ffb7b0;
-	/* opacity: 0.7; */
 	height: 99%;
 	width: 0px;
 	border-radius: 14px 0 0 14px;
