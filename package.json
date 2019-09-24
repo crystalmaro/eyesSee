@@ -48,15 +48,13 @@
 		"@firebase/firestore": "^1.5.0",
 		"@react-firebase/database": "^0.3.10",
 		"firebase": "^6.5.0",
-		"firebase-tools": "^7.3.1",
 		"firestore": "^1.1.6",
+		"intro.js": "^2.9.3",
+		"intro.js-react": "^0.2.0",
 		"react": "^16.9.0",
 		"react-dom": "^16.9.0",
-		"react-redux": "^7.1.1",
 		"react-router": "^5.0.1",
 		"react-router-dom": "^5.0.1",
-		"react-share": "^3.0.1",
-		"react-with-firebase-auth": "^1.0.4",
-		"redux": "^4.0.4"
+		"react-share": "^3.0.1"
 	}
 }

@@ -24,7 +24,8 @@ class GameContextProvider extends Component {
 		totalRound: [], // array of number 0 - 19
 		randomRound: [], // randomized EasyRound, followed by randomize HardRound
 		// ===== Firebase masterScore data
-		globalScoreArray: []
+		globalScoreArray: [],
+		timer: 0
 	};
 
 	// ============================
@@ -214,15 +215,14 @@ class GameContextProvider extends Component {
 							// increment current round count
 							return { currentRound: preState.currentRound + 1 };
 						},
-						// TODO: run currentRound+1 first before doing the below
-						// TODO: figure out why callback below doesnt work the way I expected
 						() => {
 							this.setState({
 								// reset state for the next round
 								origClass: 'imgBox',
 								isClicked: false,
 								yesOnTop: true,
-								isCorrect: true
+								isCorrect: true,
+								compareClass: 'button'
 							});
 							// console.log('inside : ' + this.state.currentRound);
 						}
@@ -266,7 +266,21 @@ class GameContextProvider extends Component {
 			}
 		}
 	};
-
+	// ============================
+	// timer - stopwatch
+	// ============================
+	getSeconds() {
+		return ('0' + this.state.timer % 60).slice(-2);
+	}
+	getMinutes() {
+		return Math.floor(this.state.timer / 60);
+	}
+	setTimer() {
+		// console.log(typeof this.state.timer);
+		// this.setState((preState)=>{
+		//   return{timer: preState.timer+1}
+		// })
+	}
 	render() {
 		return (
 			<GameContext.Provider
@@ -276,7 +290,10 @@ class GameContextProvider extends Component {
 					compareMouseDown: this.compareMouseDown,
 					compareMouseUp: this.compareMouseUp,
 					clickNext: this.clickNext,
-					loadFirebase: this.loadFirebase
+					loadFirebase: this.loadFirebase,
+					getSeconds: this.getSeconds,
+					getMinutes: this.getMinutes,
+					setTimer: this.setTimer
 				}}
 			>
 				{this.props.children}

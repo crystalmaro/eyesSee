@@ -1,18 +1,42 @@
 import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
 import Game from './Game';
-import Result from './Result';
 import { ThemeContext } from '../contexts/ThemeContext';
 import ThemeToggle from './ThemeToggle';
+import { Steps, Hints } from 'intro.js-react';
+import 'intro.js/introjs.css';
 
 class Intro extends Component {
 	state = {
+		stepsEnabled: true,
+		steps: [
+			{
+				element: '.gameContainer',
+				intro: 'click one of the two cards'
+			},
+			{
+				element: '.buttonContainer > div:nth-child(1)',
+				intro: 'click and hold to see difference between both cards '
+			},
+			{
+				element: '.buttonContainer > div:nth-child(2)',
+				intro: 'click to proceed to next round'
+			},
+			{
+				element: '.theme',
+				intro: 'check this out for different background!'
+			},
+			{
+				element: '.gameContainer > div:first-child',
+				intro: 'free answer: click DONE and then click this card'
+			}
+		],
 		introData: [
 			{
 				key: 1,
 				yes: './imageStock/intro1.png',
 				no: './imageStock/intro2.png',
-				reason: 'can chagne color theme on top (star)'
+				reason: 'click star on top for Dark Mode'
 			},
 			{
 				key: 2,
@@ -35,7 +59,6 @@ class Intro extends Component {
 	// ============================
 	// UI events - click image
 	// ============================
-
 	clickImg = (e) => {
 		// 1. overlap both images & show current round answer
 		this.overlapImages(e);
@@ -47,7 +70,6 @@ class Intro extends Component {
 			this.setState({ isIntroDone: true });
 		}
 	};
-
 	overlapImages = (e) => {
 		this.setState({
 			origClass: 'imgBox clicked',
@@ -71,7 +93,6 @@ class Intro extends Component {
 				break;
 		}
 	};
-
 	// ============================
 	// UI events - click next
 	// ============================
@@ -100,7 +121,6 @@ class Intro extends Component {
 			return;
 		}
 	};
-
 	// ============================
 	// UI events - click compare
 	// ============================
@@ -131,6 +151,13 @@ class Intro extends Component {
 		}
 	};
 
+	componentDidMount() {
+		introJs().start();
+	}
+
+	onExit = () => {
+		this.setState(() => ({ stepsEnabled: false }));
+	};
 	render() {
 		return (
 			<ThemeContext.Consumer>
@@ -148,6 +175,12 @@ class Intro extends Component {
 									<NavLink to="/game">Skip to Game</NavLink>
 								</div>
 							</header>
+							<Steps
+								enabled={this.state.stepsEnabled}
+								steps={this.state.steps}
+								initialStep={0}
+								onExit={this.onExit}
+							/>
 							<div className="gameContainer">
 								<div
 									onClick={this.clickImg}

@@ -16,7 +16,7 @@ body {
 	width: 100%;
 	height: 100%;
 	color: #595959;
-	font-family: 'Open Sans', sans-serif;
+	/* font-family: 'Open Sans', sans-serif; */
 	margin: 0 auto;
 	text-align: center;
 	font-family: 'Titillium Web', sans-serif;
@@ -100,6 +100,8 @@ Game Container
 	justify-items: center;
 	grid-template-columns: 300px;
 	grid-template-rows: 80px 80px 25px 80px 80px;
+	z-index: 3;
+	width: 300px;
 }
 .imgBox {
 	width: 300px;
@@ -124,6 +126,8 @@ Game Container
 	.gameContainer {
 		grid-template-columns: 165px 165px 20px 165px 165px;
 		grid-template-rows: 179px;
+		width: 700px;
+		height: 183px;
 	}
 	.imgBox {
 		width: 330px;
@@ -271,6 +275,7 @@ Button Container
 .buttonContainer {
 	display: flex;
 	justify-content: space-evenly;
+	align-items: center;
 	max-width: 300px;
 	margin: auto;
 	margin-top: 35px;
@@ -321,12 +326,35 @@ Message Container
 	justify-content: center;
 	align-items: center;
 }
+
 .result > img {
 	width: 30px;
 	height: 30px;
 	margin-right: 5px;
 	border-radius: 15px;
 	opacity: 0.8;
+	-webkit-animation: scale-in-center 0.3s ease-in-out;
+	animation: scale-in-center 0.3s ease-in-out;
+}
+@-webkit-keyframes scale-in-center {
+	0% {
+		-webkit-transform: scale(0.5);
+		transform: scale(0.5);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+@keyframes scale-in-center {
+	0% {
+		-webkit-transform: scale(0.5);
+		transform: scale(0.5);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
 }
 
 .messageContainer > div:nth-child(2) {

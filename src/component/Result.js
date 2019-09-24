@@ -1,8 +1,6 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import '../css/result.css';
-// import { Facebook } from 'react-sharingbuttons';
-// import Facebook from 'react-sharingbuttons/dist/buttons/Facebook';
 import { FacebookShareButton, FacebookIcon } from 'react-share';
 import { GameContext } from '../contexts/GameContext';
 
@@ -34,7 +32,9 @@ class Result extends Component {
 								</FacebookShareButton>
 							</div>
 							<div className="resultFooter">
-								<div>Developed by Crystal Wang</div>
+								<div>
+									Developed by <a href="#">Crystal Wang</a>
+								</div>
 							</div>
 						</div>
 					);

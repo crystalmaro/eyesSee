@@ -38,7 +38,7 @@
 .resultContainer > .resultMain > div:nth-child(5) {
 	font-size: 12px;
 }
-.resultContainer > .resultMain > div:not(:last-child) {
+.resultContainer > .resultMain > div:not(:last-child):not(:first-child) {
 	overflow: hidden;
 	/* Ensures the content is not revealed until the animation */
 	white-space: nowrap;
@@ -141,4 +141,8 @@
 	left: 0;
 	position: absolute;
 	margin: 10px;
+}
+
+.resultFooter > a {
+	color: #ffb7b0;
 }
