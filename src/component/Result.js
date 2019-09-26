@@ -13,9 +13,7 @@ class Result extends Component {
 		return (
 			<GameContext.Consumer>
 				{(context) => {
-					console.log(context);
-
-					const { currentScore, ranking, rankingMsg, globalScoreArray } = context;
+					const { currentScore, ranking, rankingMsg, globalScoreArray, getSeconds, getMinutes } = context;
 
 					return (
 						<div className="resultContainer">
@@ -25,8 +23,11 @@ class Result extends Component {
 								</div>
 								<div>Score: {currentScore}</div>
 								<div>Rank: top {ranking}%</div>
-								<div>(among {globalScoreArray.length + 1} eyes)</div>
+								<div>(Among {globalScoreArray.length + 1} eyes)</div>
 								<div> {rankingMsg} </div>
+								<div>
+									Time: {getMinutes()}:{getSeconds()}
+								</div>
 								<FacebookShareButton url={this.state.shareURL}>
 									<FacebookIcon size={60} borderRadius={10} />
 								</FacebookShareButton>

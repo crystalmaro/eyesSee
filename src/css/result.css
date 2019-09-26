@@ -29,11 +29,11 @@
 	width: 100%;
 }
 .resultContainer > .resultMain > div:nth-child(2) {
-	margin-top: -15px;
+	/* margin-top: -15px; */
 }
 .resultContainer > .resultMain > div:nth-child(3),
 .resultContainer > .resultMain > div:nth-child(4) {
-	margin-top: -10px;
+	/* margin-top: -10px; */
 }
 .resultContainer > .resultMain > div:nth-child(5) {
 	font-size: 12px;

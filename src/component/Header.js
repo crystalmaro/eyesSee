@@ -9,21 +9,21 @@ function Header() {
 	const themeContext = useContext(ThemeContext);
 
 	return (
-		<header className="score">
+		<header>
 			<div className="logo">
 				<img src={themeContext.isLightTheme ? themeContext.light.logo : themeContext.dark.logo} />
 			</div>
-
 			<div>
-				<Stopwatch />
 				👀
-				{gameContext.currentScore > 0 ? gameContext.currentScore > 1000 ? (
-					` ${gameContext.currentScore}`
-				) : (
-					` 0${gameContext.currentScore}`
-				) : (
-					` 0000`
-				)}
+				<div className={gameContext.scoreClass}>
+					{gameContext.currentScore > 0 ? gameContext.currentScore > 1000 ? (
+						` ${gameContext.currentScore}`
+					) : (
+						` 0${gameContext.currentScore}`
+					) : (
+						` 0000`
+					)}
+				</div>
 			</div>
 		</header>
 	);

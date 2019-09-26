@@ -9,6 +9,7 @@ import Message from './Message';
 import Button from './Button';
 import Progress from './Progress';
 import Result from './Result';
+import Stopwatch from './Stopwatch';
 // import ThemeContextProvider, { ThemeContext } from '../contexts/ThemeContext';
 // import { ThemeToggle } from './Header';
 
@@ -25,19 +26,20 @@ class Game extends Component {
 		let content;
 		if (this.context.randomRound.length >= 20) {
 			content = (
-				<div>
+				<main>
 					<Header />
+					<Stopwatch />
 					<Card />
 					<Message />
 					<Button />
 					<Progress />
-				</div>
+				</main>
 			);
 		} else {
 			content = (
-				<div>
+				<main>
 					<Loading />
-				</div>
+				</main>
 			);
 		}
 		return <main>{content}</main>;

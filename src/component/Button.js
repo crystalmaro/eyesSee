@@ -18,7 +18,7 @@ class Button extends Component {
 						isClicked
 					} = context;
 					return (
-						<div className="buttonContainer">
+						<div className="buttonContainer" style={isClicked ? { display: 'flex' } : { display: 'none' }}>
 							<div
 								onMouseDown={compareMouseDown}
 								onTouchStart={compareMouseDown}

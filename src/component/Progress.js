@@ -21,7 +21,7 @@ class Progress extends Component {
 										progressBar >= 300 ? (
 											{ borderRadius: '14px', width: `${progressBar}px` }
 										) : (
-											{ width: `${progressBar}px` }
+											{ width: `${progressBar}%` }
 										)
 									}
 								/>

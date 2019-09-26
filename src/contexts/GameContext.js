@@ -8,6 +8,7 @@ class GameContextProvider extends Component {
 	state = {
 		origClass: 'imgBox',
 		compareClass: 'button',
+		scoreClass: 'score',
 		isClicked: false,
 		yesOnTop: true,
 		isCorrect: true,
@@ -22,10 +23,11 @@ class GameContextProvider extends Component {
 		// ===== Firebase imageStock data
 		imgData: [], // all data loaded from firebase
 		totalRound: [], // array of number 0 - 19
-		randomRound: [], // randomized EasyRound, followed by randomize HardRound
+		randomRound: [], // randomized EasyRound, 1 followed by randomize HardRound
 		// ===== Firebase masterScore data
 		globalScoreArray: [],
-		timer: 0
+		timer: 0,
+		isTimerOn: true
 	};
 
 	// ============================
@@ -90,6 +92,7 @@ class GameContextProvider extends Component {
 	// UI events - click image
 	// ============================
 	clickImg = (e) => {
+		this.setState({ isTimerOn: false });
 		// 1. overlap both images & show current round answer
 		this.overlapImages(e);
 		// 2. decide which image on top & decide current round answer
@@ -124,7 +127,8 @@ class GameContextProvider extends Component {
 			case 'yes':
 				this.setState({
 					yesOnTop: true,
-					isCorrect: true
+					isCorrect: true,
+					scoreClass: 'score yes'
 				});
 				break;
 		}
@@ -132,12 +136,12 @@ class GameContextProvider extends Component {
 	addScore = (e) => {
 		if (e.target.parentNode.id == 'yes' && !this.state.isClicked) {
 			switch (e.target.parentNode.getAttribute('level')) {
-				case 'easy':
+				case 'Easy':
 					this.setState((preState) => {
 						return { currentScore: preState.currentScore + 100 };
 					});
 					break;
-				case 'hard':
+				case 'Hard':
 					this.setState((preState) => {
 						return { currentScore: preState.currentScore + 150 };
 					});
@@ -146,9 +150,10 @@ class GameContextProvider extends Component {
 		}
 	};
 	addProgressBar = (e) => {
-		if (!this.state.isClicked && this.state.progressBar < 300) {
+		// TODO change progressBar width from px to %
+		if (!this.state.isClicked && this.state.progressBar < 100) {
 			this.setState((preState) => {
-				return { progressBar: preState.progressBar + 300 / 20 };
+				return { progressBar: preState.progressBar + 100 / 20 };
 			});
 		}
 	};
@@ -205,6 +210,7 @@ class GameContextProvider extends Component {
 	// ============================
 	clickNext = (e) => {
 		this.resetRound(e);
+		this.setState({ isTimerOn: true });
 	};
 	resetRound = (e) => {
 		if (this.state.isClicked) {
@@ -222,7 +228,8 @@ class GameContextProvider extends Component {
 								isClicked: false,
 								yesOnTop: true,
 								isCorrect: true,
-								compareClass: 'button'
+								compareClass: 'button',
+								scoreClass: 'score'
 							});
 							// console.log('inside : ' + this.state.currentRound);
 						}
@@ -269,18 +276,24 @@ class GameContextProvider extends Component {
 	// ============================
 	// timer - stopwatch
 	// ============================
-	getSeconds() {
+	// ! below is reserved for Stopwatch (class component)
+	// ! but running the timer every second,
+	// ! changes the state within GameContext,
+	// ! when <Game> detects changes within render/return
+	// ! as being wrapped by <GameContext.Consumer>
+	// ! it re-renders and re-run the random function within <Card>
+	getSeconds = () => {
 		return ('0' + this.state.timer % 60).slice(-2);
-	}
-	getMinutes() {
+	};
+	getMinutes = () => {
 		return Math.floor(this.state.timer / 60);
-	}
-	setTimer() {
-		// console.log(typeof this.state.timer);
-		// this.setState((preState)=>{
-		//   return{timer: preState.timer+1}
-		// })
-	}
+	};
+	setTimer = () => {
+		this.setState((preState) => {
+			return { timer: preState.timer + 1 };
+		});
+	};
+
 	render() {
 		return (
 			<GameContext.Provider

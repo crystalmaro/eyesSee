@@ -8,7 +8,7 @@ class ThemeToggle extends Component {
 		const { toggleTheme, isLightTheme } = this.context;
 		return (
 			<div className="theme" onClick={toggleTheme}>
-				<div style={isLightTheme ? null : { marginLeft: '17px' }}>
+				<div style={isLightTheme ? null : { marginLeft: '20px' }}>
 					<img src={isLightTheme ? './imageStock/star.png' : './imageStock/sun.png'} />
 				</div>
 			</div>

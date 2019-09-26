@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Intro from './component/Intro';
+import Tutorial from './component/Tutorial';
 import Game from './component/Game';
 import Result from './component/Result';
 // import { Header, ThemeToggle } from './component/Header';
@@ -37,8 +38,9 @@ class App extends Component {
 								const theme = isLightTheme ? light : dark;
 								return (
 									<div className="main" style={{ backgroundColor: theme.bg, color: theme.font }}>
-										<Route exact path="/" component={Intro} />
-										<Route path="/game" component={Game} />
+										{/* <Route exact path="/" component={Intro} />
+										<Route path="/tutorial" component={Tutorial} /> */}
+										<Route exact path="/" component={Game} />
 										<Route path="/result" component={Result} />
 									</div>
 								);

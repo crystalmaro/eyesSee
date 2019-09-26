@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,700&display=swap");
+
 /* =======================
 body
 ======================= */
-body {
+button,
+.button {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -9,18 +12,21 @@ body {
 	-ms-user-select: none;
 	user-select: none;
 }
-#root {
+#root,
+main,
+.main {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	color: #595959;
+	color: inherit;
 	/* font-family: 'Open Sans', sans-serif; */
 	margin: 0 auto;
 	text-align: center;
 	font-family: 'Titillium Web', sans-serif;
 }
+
 /* =======================
 Header
 ======================= */
@@ -43,39 +49,105 @@ header > div > a {
 	padding: 0 5px;
 	border-radius: 5px;
 	font-size: 14px;
+	cursor: pointer;
+	color: #595959;
+}
+.score {
+	margin-left: 5px;
+	margin-top: -3px;
+}
+@media (min-width: 650px) {
+	header {
+		font-size: 30px;
+	}
+	.stopwatch {
+		font-size: 20px;
+		margin-top: 30px;
+	}
+}
+.score.yes {
+	overflow: hidden;
+	white-space: nowrap;
+	/* -webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both; */
+	-webkit-animation: typing-score 0.7s steps(20, end);
+	animation: typing-score 0.7s steps(20, end);
+}
+@-webkit-keyframes typing-score {
+	from {
+		-webkit-width: 0;
+		width: 0;
+	}
+	to {
+		-webkit-width: 100%;
+		width: 100%;
+	}
+}
+@keyframes typing-score {
+	from {
+		-webkit-width: 0;
+		width: 0;
+	}
+	to {
+		-webkit-width: 100%;
+		width: 100%;
+	}
+}
+@-webkit-keyframes slide-in-top {
+	0% {
+		-webkit-transform: translateY(-1000px);
+		transform: translateY(-1000px);
+		opacity: 0;
+	}
+	100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+@keyframes slide-in-top {
+	0% {
+		-webkit-transform: translateY(-1000px);
+		transform: translateY(-1000px);
+		opacity: 0;
+	}
+	100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		opacity: 1;
+	}
 }
 
-.main {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
 /* =======================
 ThemeToggle
 ======================= */
 .theme {
-	width: 42px;
+	width: 45px;
 	height: 25px;
 	background-color: #d0d6d6;
 	border-radius: 12px;
 	cursor: pointer;
 	margin: auto 10px;
+	display: flex;
+}
+.theme:hover {
+	box-shadow: 0px 2px 5px 0px #b0b0b0;
 }
 .theme > div {
-	width: 25px;
-	height: 25px;
+	width: 24px;
+	height: 23px;
 	border-radius: 12px;
-	background-color: #595959;
+	background-color: #282c35;
 	opacity: 0.7;
 	transition: 0.3s;
 	display: flex;
 	justify-content: center;
+	align-self: center;
+	margin-left: 1px;
 }
 
 .theme > div > img {
-	width: 60%;
+	width: 70%;
 	align-self: center;
 }
 /* =======================
@@ -84,6 +156,12 @@ Game - header with logo
 .logo {
 	width: 90px;
 	height: 40px;
+}
+@media (min-width: 650px) {
+	.logo {
+		width: 180px;
+		height: 80px;
+	}
 }
 .logo > img {
 	width: 100%;
@@ -100,13 +178,21 @@ Game Container
 	justify-items: center;
 	grid-template-columns: 300px;
 	grid-template-rows: 80px 80px 25px 80px 80px;
-	z-index: 3;
+	/* z-index: 3; */
 	width: 300px;
+	margin-top: 20px;
 }
 .imgBox {
 	width: 300px;
 	border-radius: 10px;
 	position: relative;
+}
+.imgBox:hover {
+	margin-top: 4px;
+	margin-right: 4px;
+}
+.imgBox.clicked:hover {
+	margin: 0;
 }
 .imgBox > img {
 	box-shadow: 0px 5px 10px 0px #b0b0b0;
@@ -126,12 +212,13 @@ Game Container
 	.gameContainer {
 		grid-template-columns: 165px 165px 20px 165px 165px;
 		grid-template-rows: 179px;
-		width: 700px;
+		/* width: 700px; */
 		height: 183px;
+		margin-top: 50px;
 	}
 	.imgBox {
-		width: 330px;
 		border-radius: 10px;
+		width: 330px;
 	}
 	.imgBox > img {
 		box-shadow: 0px 5px 10px 0px #b0b0b0;
@@ -147,6 +234,23 @@ Game Container
 		grid-column-end: 6;
 		grid-row-start: 1;
 		grid-row-end: 2;
+	}
+}
+@media (min-width: 1000px) {
+	.gameContainer {
+		/* grid-template-columns: 165px 165px 20px 165px 165px;
+		grid-template-rows: 179px;
+		width: 700px;
+		height: 183px; */
+		grid-template-columns: 215px 215px 26px 215px 215px;
+		grid-template-rows: 233px;
+		width: 80%;
+		margin-top: 50px;
+	}
+	.imgBox {
+		border-radius: 10px;
+		/* width: 330px; */
+		width: 429px;
 	}
 }
 /* =======================
@@ -299,7 +403,7 @@ Button Container
 	position: relative;
 }
 .button.isClicked:hover {
-	margin-top: 2px;
+	margin-top: 3px;
 }
 .button.compare {
 	margin-top: 6px;
@@ -318,7 +422,8 @@ Message Container
 	align-items: center;
 	margin: auto;
 	margin-top: -60px;
-	margin-bottom: -10px;
+	/* margin-bottom: -10px; */
+	/* height: 100px; */
 }
 .result {
 	display: flex;
@@ -333,13 +438,13 @@ Message Container
 	margin-right: 5px;
 	border-radius: 15px;
 	opacity: 0.8;
-	-webkit-animation: scale-in-center 0.3s ease-in-out;
-	animation: scale-in-center 0.3s ease-in-out;
+	-webkit-animation: scale-in-center 0.3s ease-in-out 0.2s both;
+	animation: scale-in-center 0.3s ease-in-out 0.2s both;
 }
 @-webkit-keyframes scale-in-center {
 	0% {
-		-webkit-transform: scale(0.5);
-		transform: scale(0.5);
+		-webkit-transform: scale(0);
+		transform: scale(0);
 	}
 	100% {
 		-webkit-transform: scale(1);
@@ -348,8 +453,8 @@ Message Container
 }
 @keyframes scale-in-center {
 	0% {
-		-webkit-transform: scale(0.5);
-		transform: scale(0.5);
+		-webkit-transform: scale(0);
+		transform: scale(0);
 	}
 	100% {
 		-webkit-transform: scale(1);
@@ -357,67 +462,130 @@ Message Container
 	}
 }
 
-.messageContainer > div:nth-child(2) {
-	margin-top: 20px;
-	margin-bottom: -10px;
+.messageContainer > div {
+	margin-top: 10px;
 }
 
-.messageContainer > div:nth-child(2) > span {
-	background-color: #ffb7b0;
+.messageContainer > div > span {
+	/* background-color: #ffb7b0;
 	border-radius: 5px;
 	padding: 1px 5px;
-	color: #595959;
 	opacity: 0.8;
 	font-size: 11px;
-	border: 1px solid #595959;
-	vertical-align: middle;
+  border: 1px solid #595959; */
+	border-radius: 5px;
+	border: 1px solid #ffb7b0;
+	padding: 0 4px;
 }
 
 @media (min-width: 650px) {
 	.messageContainer {
-		margin-top: 20px;
+		margin-top: 30px;
+		font-size: 20px;
 	}
-	.messageContainer > div:nth-child(2) {
+	.messageContainer > .result {
+		width: 600px;
+	}
+	.messageContainer > div {
+		/* margin-top: 60px; */
+	}
+	/* .messageContainer > div:nth-child(2) {
 		margin-top: 15px;
 		margin-bottom: -10px;
+	} */
+}
+@media (min-width: 1000px) {
+	.messageContainer {
+		margin-top: 80px;
 	}
 }
+/* =======================
+Intro Message
+======================= */
+.introMsg {
+	margin: 20px auto;
+	color: inherit;
+	-webkit-animation: pulsate-fwd 1.5s 0.5s ease-in-out 3 both;
+	animation: pulsate-fwd 1.5s 0.5s ease-in-out 3 both;
+}
+@-webkit-keyframes pulsate-fwd {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	50% {
+		-webkit-transform: scale(1.3);
+		transform: scale(1.3);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+@keyframes pulsate-fwd {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	50% {
+		-webkit-transform: scale(1.3);
+		transform: scale(1.3);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
 /* =======================
 Progress Container
 ======================= */
 .progressContainer {
-	margin: 20px auto;
+	margin: 40px auto;
 	vertical-align: middle;
-	max-width: 300px;
+	/* max-width: 300px; */
+	width: 100%;
 	bottom: 0;
+	position: fixed;
 }
 .progressBack {
-	display: inline-block;
-	text-align: center;
+	/* display: inline-block; */
+	/* text-align: center; */
 	height: 20px;
-	width: 301px;
+	width: 300px;
 	margin: 0 auto;
 	border-radius: 14px;
 	position: relative;
-	vertical-align: middle;
+	/* vertical-align: middle; */
 	border: 1px solid #3b3837;
 }
+
 .progressFront {
 	position: absolute;
 	background-color: #ffb7b0;
 	height: 99%;
-	width: 0px;
+	/* width: 0px; */
 	border-radius: 14px 0 0 14px;
-	vertical-align: middle;
+	/* vertical-align: middle; */
 	transition: 0.5s;
 }
 
 .progressNumber {
-	margin: 0 110px;
+	margin-left: 110px;
 	position: absolute;
 	color: #b0b0b0;
-	width: 80px;
+	/* width: 80px; */
 	text-align: center;
 	font-size: 13px;
-	line-height: 20px;
+}
+
+@media (min-width: 650px) {
+	.progressBack {
+		width: 500px;
+		height: 25px;
+	}
+	.progressNumber {
+		font-size: 16px;
+		margin-left: 210px;
+	}
 }
