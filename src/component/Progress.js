@@ -18,10 +18,12 @@ class Progress extends Component {
 								<div
 									className="progressFront"
 									style={
-										progressBar >= 300 ? (
+										progressBar !== 0 ? progressBar >= 300 ? (
 											{ borderRadius: '14px', width: `${progressBar}px` }
 										) : (
 											{ width: `${progressBar}%` }
+										) : (
+											{ width: '2%' }
 										)
 									}
 								/>

@@ -1,0 +1,107 @@
+.introLogo {
+	border: 1px solid green;
+	width: 30%;
+	margin: 0 auto;
+}
+.introLogo > img {
+	width: 100%;
+}
+.introContainer {
+	border: 1px solid red;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+.introContainer > div {
+	border: 3px solid blue;
+	height: 150px;
+	width: 50%;
+	/* margin: 10px; */
+}
+.introContainer > div:nth-child(1) {
+	-webkit-animation: first-slide-in-left 1s both;
+	animation: first-slide-in-left 1s both;
+}
+@-webkit-keyframes first-slide-in-left {
+	0% {
+		-webkit-transform: translateX(-1000px);
+		transform: translateX(-1000px);
+		opacity: 0;
+	}
+	100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+@keyframes first-slide-in-left {
+	0% {
+		-webkit-transform: translateX(-1000px);
+		transform: translateX(-1000px);
+		opacity: 0;
+	}
+	100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.introContainer > div:nth-child(2) {
+	align-self: flex-end;
+	-webkit-animation: second-slide-in-right 1s 0.5s both;
+	animation: second-slide-in-right 1s 0.5s both;
+}
+@-webkit-keyframes second-slide-in-right {
+	0% {
+		-webkit-transform: translateX(1000px);
+		transform: translateX(1000px);
+		opacity: 0;
+	}
+	100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+@keyframes second-slide-in-right {
+	0% {
+		-webkit-transform: translateX(1000px);
+		transform: translateX(1000px);
+		opacity: 0;
+	}
+	100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.introContainer > div:nth-child(3) {
+	-webkit-animation: third-slide-in-left 1s 1s both;
+	animation: third-slide-in-left 1s 1s both;
+}
+@-webkit-keyframes third-slide-in-left {
+	0% {
+		-webkit-transform: translateX(-1000px);
+		transform: translateX(-1000px);
+		opacity: 0;
+	}
+	100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+@keyframes third-slide-in-left {
+	0% {
+		-webkit-transform: translateX(-1000px);
+		transform: translateX(-1000px);
+		opacity: 0;
+	}
+	100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
