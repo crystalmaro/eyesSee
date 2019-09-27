@@ -28,7 +28,7 @@ class Intro extends Component {
 									<div>Let's take your design sensitivity to the next level</div>
 									<div>Train your artistic sensibility and literacy.</div>
 									<div>
-										<NavLink to="/tutorial">Demo</NavLink>
+										<NavLink to="/tutorial">Tutorial</NavLink>
 										<NavLink to="/game">Game</NavLink>
 									</div>
 								</div>
