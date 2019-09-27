@@ -6,19 +6,25 @@ import { ThemeContext } from '../contexts/ThemeContext';
 import ThemeToggle from './ThemeToggle';
 import { Steps, Hints } from 'intro.js-react';
 import 'intro.js/introjs.css';
+import '../css/tutorial.css';
 
 class Tutorial extends Component {
 	state = {
-		stepsEnabled: true,
+		stepsEnabled: false,
 		steps: [
+			// {
+			// 	element: 'header > div > a',
+			// 	intro:
+			// 		'🙋‍♂️Been here before? SKIP intro and proceed to game. 💁‍♂️Otherwise, click NEXT for a guided tour.'
+			// },
 			{
-				element: 'header > div > a',
-				intro:
-					'🙋‍♂️Been here before? SKIP intro and proceed to game. 💁‍♂️Otherwise, click NEXT for a guided tour.'
+				element: '.tutorialPage > .gameContainer',
+				intro: '🔍One of the cards is MORE CORRECT.'
+				// intro: 'click DONE to click on a card .'
 			},
 			{
-				element: '.gameContainer',
-				intro: '🔍One of the cards is MORE CORRECT.'
+				element: '.theme',
+				intro: 'theme toggle'
 				// intro: 'click DONE to click on a card .'
 			}
 		],
@@ -155,12 +161,15 @@ class Tutorial extends Component {
 	// ============================
 	// Step-by-step Guide
 	// ============================
-	componentDidMount() {
-		introJs().start();
-		this.setState((preState) => ({ hintsEnabled: !preState.hintsEnabled }));
-	}
+	// componentDidMount() {
+	// 	introJs().start();
+	// }
 	onExit = () => {
 		this.setState(() => ({ stepsEnabled: false }));
+	};
+
+	toggleDemo = () => {
+		this.setState(() => ({ stepsEnabled: true }));
 	};
 
 	render() {
@@ -170,8 +179,8 @@ class Tutorial extends Component {
 					const { isLightTheme, light, dark } = context;
 					const theme = isLightTheme ? light : dark;
 					return (
-						<main>
-							<header>
+						<div className="tutorialPage">
+							{/* <header>
 								<div className="logo">
 									<img src={theme.logo} />
 								</div>
@@ -179,7 +188,7 @@ class Tutorial extends Component {
 									<ThemeToggle />
 									<NavLink to="/">Back to Intro</NavLink>
 								</div>
-							</header>
+							</header> */}
 
 							<Steps
 								enabled={this.state.stepsEnabled}
@@ -189,11 +198,18 @@ class Tutorial extends Component {
 							/>
 							{/* <Hints enabled={this.state.hintsEnabled} hints={this.state.hints} /> */}
 
-							<div
+							{/* <div
 								className="introMsg"
 								style={this.state.isClicked ? { display: 'none' } : { display: 'block' }}
 							>
 								{this.state.introMsg}
+							</div> */}
+							<div className="tutorialMenu">
+								<div className="demoButton" onClick={this.toggleDemo}>
+									Demo
+								</div>
+								<ThemeToggle />
+								<NavLink to="/game">Game</NavLink>
 							</div>
 
 							<div className="gameContainer">
@@ -255,7 +271,7 @@ class Tutorial extends Component {
 									)}
 								</div>
 							</div>
-						</main>
+						</div>
 					);
 				}}
 			</ThemeContext.Consumer>

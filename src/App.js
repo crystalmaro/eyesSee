@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Intro from './component/Intro';
+import Intro2 from './component/Intro2';
 import Tutorial from './component/Tutorial';
 import Game from './component/Game';
 import Result from './component/Result';
@@ -38,7 +39,7 @@ class App extends Component {
 								const theme = isLightTheme ? light : dark;
 								return (
 									<div className="main" style={{ backgroundColor: theme.bg, color: theme.font }}>
-										<Route exact path="/" component={Intro} />
+										<Route exact path="/" component={Intro2} />
 										<Route path="/tutorial" component={Tutorial} />
 										<Route path="/game" component={Game} />
 										<Route path="/result" component={Result} />

@@ -14,8 +14,24 @@ class Intro extends Component {
 					const theme = isLightTheme ? light : dark;
 					return (
 						<main>
-							<div className="introLogo">
+							{/* <div className="introLogo">
 								<img src={theme.logo} />
+							</div> */}
+
+							<div className="introTop">
+								<div className="introTopFirst">
+									<div>
+										<img src="./imageStock/595959.png" />
+									</div>
+								</div>
+								<div className="introTopSecond">
+									<div>Let's take your design sensitivity to the next level</div>
+									<div>Train your artistic sensibility and literacy.</div>
+									<div>
+										<NavLink to="/tutorial">Demo</NavLink>
+										<NavLink to="/game">Game</NavLink>
+									</div>
+								</div>
 							</div>
 
 							<div className="introContainer">
@@ -40,8 +56,6 @@ class Intro extends Component {
 									</section>
 								</div>
 							</div>
-
-							<Tutorial />
 						</main>
 					);
 				}}
