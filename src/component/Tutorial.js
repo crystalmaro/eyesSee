@@ -10,24 +10,17 @@ import '../css/tutorial.css';
 
 class Tutorial extends Component {
 	state = {
-		stepsEnabled: false,
-		steps: [
-			// {
-			// 	element: 'header > div > a',
-			// 	intro:
-			// 		'🙋‍♂️Been here before? SKIP intro and proceed to game. 💁‍♂️Otherwise, click NEXT for a guided tour.'
-			// },
-			{
-				element: '.tutorialPage > .gameContainer',
-				intro: '🔍One of the cards is MORE CORRECT.'
-				// intro: 'click DONE to click on a card .'
-			},
-			{
-				element: '.theme',
-				intro: 'theme toggle'
-				// intro: 'click DONE to click on a card .'
-			}
-		],
+		// stepsEnabled: false,
+		// steps: [
+		// 	{
+		// 		element: '.tutorialPage > .gameContainer',
+		// 		intro: '🔍One of the cards is MORE CORRECT.'
+		// 	},
+		// 	{
+		// 		element: '.theme',
+		// 		intro: 'theme toggle'
+		// 	}
+		// ],
 		hintsEnable: true,
 		hints: [
 			{
@@ -51,7 +44,7 @@ class Tutorial extends Component {
 			}
 		],
 		introRound: 0,
-		introMsg: 'Please click a card.',
+		introMsg: 'Which UI is more correct?',
 		origClass: 'imgBox',
 		compareClass: 'button',
 		isClicked: false,
@@ -71,7 +64,7 @@ class Tutorial extends Component {
 		// 2. decide which image on top & decide current round answer
 		this.checkImage(e);
 
-		this.setState({ introMsg: 'Please read messages below.' });
+		this.setState({ introMsg: 'Please read the rules below.' });
 
 		// 5. NEXT button changes to RESULT on last round, after image selection
 		if (this.state.introRound == this.state.introData.length - 1) {
@@ -164,53 +157,34 @@ class Tutorial extends Component {
 	// componentDidMount() {
 	// 	introJs().start();
 	// }
-	onExit = () => {
-		this.setState(() => ({ stepsEnabled: false }));
-	};
+	// onExit = () => {
+	// 	this.setState(() => ({ stepsEnabled: false }));
+	// };
 
-	toggleDemo = () => {
-		this.setState(() => ({ stepsEnabled: true }));
-	};
+	// toggleDemo = () => {
+	// 	this.setState(() => ({ stepsEnabled: true }));
+	// };
 
 	render() {
 		return (
 			<ThemeContext.Consumer>
 				{(context) => {
-					const { isLightTheme, light, dark } = context;
+					const { isLightTheme, light, dark, stepsEnabled, steps, onExit, toggleTutorial } = context;
 					const theme = isLightTheme ? light : dark;
 					return (
 						<div className="tutorialPage">
-							{/* <header>
-								<div className="logo">
-									<img src={theme.logo} />
-								</div>
-								<div>
-									<ThemeToggle />
-									<NavLink to="/">Back to Intro</NavLink>
-								</div>
-							</header> */}
-
-							<Steps
-								enabled={this.state.stepsEnabled}
-								steps={this.state.steps}
-								initialStep={0}
-								onExit={this.onExit}
-							/>
-							{/* <Hints enabled={this.state.hintsEnabled} hints={this.state.hints} /> */}
-
-							{/* <div
-								className="introMsg"
-								style={this.state.isClicked ? { display: 'none' } : { display: 'block' }}
-							>
-								{this.state.introMsg}
-							</div> */}
-							<div className="tutorialMenu">
-								<div className="demoButton" onClick={this.toggleDemo}>
-									Demo
-								</div>
+							<Steps enabled={stepsEnabled} steps={steps} initialStep={0} onExit={onExit} />
+							<div className="tutorialHeader">
 								<ThemeToggle />
-								<NavLink to="/game">Game</NavLink>
+								<div
+									className="introMsg selectOff"
+									style={this.state.isClicked ? { display: 'none' } : { display: 'block' }}
+								>
+									{this.state.introMsg}
+								</div>
 							</div>
+
+							{/* <Hints enabled={this.state.hintsEnabled} hints={this.state.hints} /> */}
 
 							<div className="gameContainer">
 								<div
@@ -239,10 +213,10 @@ class Tutorial extends Component {
 									<img src={this.state.isCorrect ? this.state.yesImg : this.state.noImg} />
 									<div className="message">{this.state.introData[this.state.introRound].reason}</div>
 								</div>
-								<div
+								{/* <div
 									className="messageTheme"
 									style={this.state.introRound == 0 ? { display: 'flex' } : { display: 'none' }}
-								/>
+								/> */}
 							</div>
 
 							<div

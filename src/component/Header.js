@@ -3,18 +3,19 @@ import React, { useContext } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { GameContext } from '../contexts/GameContext';
 import Stopwatch from './Stopwatch';
+import ThemeToggle from './ThemeToggle';
 
 function Header() {
 	const gameContext = useContext(GameContext);
 	const themeContext = useContext(ThemeContext);
 
 	return (
-		<header>
+		<header className="gameHeader">
 			<div className="logo">
 				<img src={themeContext.isLightTheme ? themeContext.light.logo : themeContext.dark.logo} />
 			</div>
 			<div>
-				👀
+				<ThemeToggle />
 				<div className={gameContext.scoreClass}>
 					{gameContext.currentScore > 0 ? gameContext.currentScore > 1000 ? (
 						` ${gameContext.currentScore}`
