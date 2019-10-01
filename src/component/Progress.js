@@ -13,13 +13,13 @@ class Progress extends Component {
 				{(context) => {
 					const { progressBar, currentRound, imgData, randomRound } = context;
 					return (
-						<div className="progressContainer">
+						<div className="progressContainer selectOff">
 							<div className="progressBack">
 								<div
 									className="progressFront"
 									style={
-										progressBar !== 0 ? progressBar >= 300 ? (
-											{ borderRadius: '14px', width: `${progressBar}px` }
+										progressBar !== 0 ? progressBar >= 97 ? (
+											{ borderRadius: '14px', width: `${progressBar}%` }
 										) : (
 											{ width: `${progressBar}%` }
 										) : (

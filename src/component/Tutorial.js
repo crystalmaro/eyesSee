@@ -7,6 +7,7 @@ import ThemeToggle from './ThemeToggle';
 import { Steps, Hints } from 'intro.js-react';
 import 'intro.js/introjs.css';
 import '../css/tutorial.css';
+import Stopwatch from './Stopwatch';
 
 class Tutorial extends Component {
 	state = {
@@ -52,8 +53,36 @@ class Tutorial extends Component {
 		isCorrect: true,
 		yesImg: './imageStock/yes.png',
 		noImg: './imageStock/no.png',
-		isIntroDone: false
+		isIntroDone: false,
+		min: 1,
+		sec: 0
 	};
+
+	// componentDidMount() {
+	// 	this.myInterval = setInterval(() => {
+	// 		const { sec, min } = this.state;
+
+	// 		if (sec > 0) {
+	// 			this.setState(({ sec }) => ({
+	// 				sec: sec - 1
+	// 			}));
+	// 		}
+	// 		if (sec === 0) {
+	// 			if (min === 0) {
+	// 				clearInterval(this.myInterval);
+	// 			} else {
+	// 				1;
+	// 				this.setState(({ min }) => ({
+	// 					min: min - 1,
+	// 					sec: 59
+	// 				}));
+	// 			}
+	// 		}
+	// 	}, 1000);
+	// }
+	// componentWillUnmount() {
+	// 	clearInterval(this.myInterval);
+	// }
 
 	// ============================
 	// UI events - click image
@@ -174,6 +203,7 @@ class Tutorial extends Component {
 					return (
 						<div className="tutorialPage">
 							<Steps enabled={stepsEnabled} steps={steps} initialStep={0} onExit={onExit} />
+							<div>{/* {this.state.min}:{this.state.sec} */}</div>
 							<div className="tutorialHeader">
 								<ThemeToggle />
 								<div

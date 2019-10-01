@@ -19,15 +19,20 @@ class GameContextProvider extends Component {
 		progressBar: 0,
 		isResultReady: false,
 		ranking: 0,
-		rankingMes: '',
+		rankingMsg: 'did not set',
 		// ===== Firebase imageStock data
 		imgData: [], // all data loaded from firebase
 		totalRound: [], // array of number 0 - 19
-		randomRound: [], // randomized EasyRound, 1 followed by randomize HardRound
+		randomRound: [], // randomized EasyRound, followed by randomize HardRound
 		// ===== Firebase masterScore data
 		globalScoreArray: [],
-		timer: 0,
+		timer: 10, // TODO 10 sec for testing, will be 60 on production
 		isTimerOn: true
+		// isTransitionOn: true
+	};
+
+	isTransitionOn = () => {
+		this.setState({ isTransitionOn: !this.state.isTransitionOn });
 	};
 
 	// ============================
@@ -38,17 +43,14 @@ class GameContextProvider extends Component {
 		// ===== masterScore
 		db.collection('masterScore').doc('scoreInfo').get().then((doc) => {
 			if (doc.exists) {
-				// let obj = doc.data();
-				// for (const key in obj) {
-				// 	console.log(`${key} -> ${obj[key]}`);
-				// }
-
 				this.setState({
 					// ===== NEW Firebase masterScore data (ARRAY)
 					globalScoreArray: doc.data().scoreData.sort(function(a, b) {
 						return b - a;
 					})
 				});
+			} else {
+				console.log('firebase error');
 			}
 		});
 
@@ -104,9 +106,7 @@ class GameContextProvider extends Component {
 		// 5. NEXT button changes to RESULT on last round, after image selection
 		if (this.state.currentRound == this.state.randomRound.length - 1) {
 			this.setState({ isResultReady: true });
-			// if (this.state.isResultReady) {
 			this.calculateRanking(e);
-			// }
 		}
 	};
 	overlapImages = (e) => {
@@ -150,10 +150,9 @@ class GameContextProvider extends Component {
 		}
 	};
 	addProgressBar = (e) => {
-		// TODO change progressBar width from px to %
 		if (!this.state.isClicked && this.state.progressBar < 100) {
 			this.setState((preState) => {
-				return { progressBar: preState.progressBar + 100 / 20 };
+				return { progressBar: preState.progressBar + 100 / this.state.totalRound.length };
 			});
 		}
 	};
@@ -170,25 +169,24 @@ class GameContextProvider extends Component {
 		// 4. final score = arr.indexOf(percentage) / arr.length
 		let index = Number(newArr.indexOf(point)) + 1;
 		let ranking = Math.round(index / newArr.length * 100);
-		console.log('rank:' + ranking);
 		switch (true) {
-			case 0 < ranking < 10:
+			case ranking > 0 && ranking <= 10:
 				var rankingMsg = "Here's the Golden Ticket to join my developing team!";
 				break;
-			case 10 < ranking < 20:
+			case ranking > 10 && ranking <= 20:
 				var rankingMsg = "My grandma's eyes are better than yours, just saying.";
 				break;
-			case 20 < ranking < 40:
+			case ranking > 20 && ranking <= 40:
 				var rankingMsg = 'You need to get your eyes checked, like seriously.';
 				break;
-			case 40 < ranking < 60:
+			case ranking > 40 && ranking <= 60:
 				var rankingMsg = 'Might as well donate your eyes.';
 				break;
-			case 60 < ranking < 80:
-				var rankingMsg = 'Do you think this is a guessing game, hun?!';
+			case ranking > 60 && ranking <= 80:
+				var rankingMsg = 'This is not a guessing game...';
 				break;
-			case 80 < ranking < 100:
-				var rankingMsg = "Excellent job!! (No, not really you're horrible)";
+			case ranking > 80 && ranking <= 100:
+				var rankingMsg = "Excellent job!! (No, not really you're horrible.)";
 				break;
 			default:
 				var rankingMsg = 'Play again!';
@@ -199,8 +197,7 @@ class GameContextProvider extends Component {
 			rankingMsg
 		});
 		// 6. save the newly updated array back to firebase
-		const db = firebase.firestore();
-		return db.collection('masterScore').doc('scoreInfo').set({
+		return firebase.firestore().collection('masterScore').doc('scoreInfo').set({
 			scoreData: newArr
 		});
 	};
@@ -213,34 +210,22 @@ class GameContextProvider extends Component {
 		this.setState({ isTimerOn: true });
 	};
 	resetRound = (e) => {
-		if (this.state.isClicked) {
-			switch (this.state.currentRound == this.state.currentRound.length - 1) {
-				case false:
-					this.setState(
-						(preState) => {
-							// increment current round count
-							return { currentRound: preState.currentRound + 1 };
-						},
-						() => {
-							this.setState({
-								// reset state for the next round
-								origClass: 'imgBox',
-								isClicked: false,
-								yesOnTop: true,
-								isCorrect: true,
-								compareClass: 'button',
-								scoreClass: 'score'
-							});
-							// console.log('inside : ' + this.state.currentRound);
-						}
-					);
-					// console.log('outside : ' + this.state.currentRound);
-
-					break;
-				// case true:
-				// 	break;
-			}
-			return;
+		if (this.state.isClicked && this.state.currentRound !== this.state.currentRound.length - 1) {
+			this.setState(
+				(preState) => {
+					return { currentRound: preState.currentRound + 1 };
+				},
+				() => {
+					this.setState({
+						origClass: 'imgBox',
+						isClicked: false,
+						yesOnTop: true,
+						isCorrect: true,
+						compareClass: 'button',
+						scoreClass: 'score'
+					});
+				}
+			);
 		}
 	};
 
@@ -282,6 +267,7 @@ class GameContextProvider extends Component {
 	// ! when <Game> detects changes within render/return
 	// ! as being wrapped by <GameContext.Consumer>
 	// ! it re-renders and re-run the random function within <Card>
+	// 10/01/2019 currently not being used
 	getSeconds = () => {
 		return ('0' + this.state.timer % 60).slice(-2);
 	};
@@ -289,9 +275,15 @@ class GameContextProvider extends Component {
 		return Math.floor(this.state.timer / 60);
 	};
 	setTimer = () => {
+		// this.setState((preState) => {
+		// 	return { timer: preState.timer + 1 };
+		// });
+
+		// if(this.state.isTimerOn && this.state.timer >0){
 		this.setState((preState) => {
-			return { timer: preState.timer + 1 };
+			return { timer: preState.timer - 1 };
 		});
+		// }
 	};
 
 	render() {
@@ -306,7 +298,8 @@ class GameContextProvider extends Component {
 					loadFirebase: this.loadFirebase,
 					getSeconds: this.getSeconds,
 					getMinutes: this.getMinutes,
-					setTimer: this.setTimer
+					setTimer: this.setTimer, // 10/01/2019 currently not being used
+					isTransitionOn: this.isTransitionOn // 10/01/2019 currently not being used
 				}}
 			>
 				{this.props.children}

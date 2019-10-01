@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { GameContext } from '../contexts/GameContext';
-import { Route, Router, BrowserRouter, NavLink } from 'react-router-dom';
+import { Route, Router, BrowserRouter, NavLink, Link } from 'react-router-dom';
 import Result from './Result';
 
 class Button extends Component {
 	render() {
 		return (
-			// <BrowserRouter>
 			<GameContext.Consumer>
 				{(context) => {
 					const {
@@ -30,9 +29,9 @@ class Button extends Component {
 							</div>
 							<div onClick={clickNext} className={isClicked ? 'button isClicked' : 'button'}>
 								{isResultReady ? (
-									<NavLink to="/result">
+									<Link to="/result">
 										<strong>RESULT</strong>
-									</NavLink>
+									</Link>
 								) : (
 									'NEXT'
 								)}
@@ -41,7 +40,6 @@ class Button extends Component {
 					);
 				}}
 			</GameContext.Consumer>
-			// </BrowserRouter>
 		);
 	}
 }

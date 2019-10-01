@@ -10,6 +10,7 @@ import Button from './Button';
 import Progress from './Progress';
 import Result from './Result';
 import Stopwatch from './Stopwatch';
+import LevelTransition from './LevelTransition';
 // import ThemeContextProvider, { ThemeContext } from '../contexts/ThemeContext';
 // import { ThemeToggle } from './Header';
 
@@ -29,6 +30,7 @@ class Game extends Component {
 				<main>
 					<Header />
 					<Stopwatch />
+					{/* <LevelTransition /> */}
 					<Card />
 					<Message />
 					<Button />

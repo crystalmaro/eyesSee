@@ -25,6 +25,7 @@ main,
 	margin: 0 auto;
 	text-align: center;
 	font-family: 'Titillium Web', sans-serif;
+	overflow: scroll;
 }
 
 /* =======================
@@ -494,11 +495,11 @@ Message Container
 Progress Container
 ======================= */
 .progressContainer {
-	margin: 40px auto;
+	margin: 45px auto 0;
 	vertical-align: middle;
 	width: 100%;
-	bottom: 0;
-	position: fixed;
+	/* bottom: 0; */
+	/* position: fixed; */
 }
 .progressBack {
 	height: 20px;
@@ -522,7 +523,7 @@ Progress Container
 .progressNumber {
 	margin-left: 110px;
 	position: absolute;
-	color: #b0b0b0;
+	color: #7c7a7a;
 	text-align: center;
 	font-size: 13px;
 }

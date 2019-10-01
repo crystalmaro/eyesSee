@@ -25,9 +25,9 @@ class Result extends Component {
 								<div>Rank: top {ranking}%</div>
 								<div>(Among {globalScoreArray.length + 1} eyes)</div>
 								<div> {rankingMsg} </div>
-								<div>
+								{/* <div>
 									Time: {getMinutes()}:{getSeconds()}
-								</div>
+								</div> */}
 								<FacebookShareButton url={this.state.shareURL}>
 									<FacebookIcon size={60} borderRadius={10} />
 								</FacebookShareButton>
