@@ -6,7 +6,7 @@ Intro 2
 	margin: 0 auto 10px;
 	display: flex;
 	padding: 0 15px;
-	box-shadow: 0px 5px 10px -10px rgba(0, 0, 0, 1);
+	box-shadow: 0px 5px 10px -10px #b0b0b0;
 
 	/* background: linear-gradient(rgba(255, 183, 176), rgba(255, 183, 176, 0.1)); */
 	/* url(https://i.ibb.co/FXds30v/intro-background4.jpg); */
@@ -17,7 +17,7 @@ Intro 2
     rgba(255, 255, 0, 1) 100%
     linear-gradient(to left, rgba(255, 183, 176, 0.1)30%, rgba(255, 183, 176, 1)100%),
   ); */
-	background: linear-gradient(to top left, rgba(255, 183, 176, 0.1)55%, rgba(255, 183, 176, 1)30%),
+	background: linear-gradient(to top left, rgba(255, 183, 176, 0.1)55%, rgba(255, 183, 176, 0.7)30%),
 		url(https://i.ibb.co/C0xtxSk/plush-design-studio-kf-DHPp-CQEBQ-unsplash.jpg);
 	/* background-size: cover; */
 	background-repeat: no-repeat;
@@ -169,7 +169,7 @@ Media Query
 		/* font-size: 12px; */
 	}
 }
-@media (min-width: 600px) {
+@media (min-width: 650px) {
 	.introTop {
 		background-size: cover;
 		padding: 0 100px;

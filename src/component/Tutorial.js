@@ -198,12 +198,11 @@ class Tutorial extends Component {
 		return (
 			<ThemeContext.Consumer>
 				{(context) => {
-					const { isLightTheme, light, dark, stepsEnabled, steps, onExit, toggleTutorial } = context;
+					const { isLightTheme, light, dark, stepsEnabled, steps, onExit } = context;
 					const theme = isLightTheme ? light : dark;
 					return (
 						<div className="tutorialPage">
 							<Steps enabled={stepsEnabled} steps={steps} initialStep={0} onExit={onExit} />
-							<div>{/* {this.state.min}:{this.state.sec} */}</div>
 							<div className="tutorialHeader">
 								<ThemeToggle />
 								<div

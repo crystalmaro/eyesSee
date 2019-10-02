@@ -63,7 +63,7 @@
 }
 
 .resultContainer > .resultMain > div:last-child {
-	margin-top: 15px;
+	margin-top: 25px;
 	-webkit-animation: jello-horizontal 1s 5 both;
 	animation: jello-horizontal 1s 5 both;
 	cursor: pointer;

@@ -27,9 +27,27 @@ main,
 	font-family: 'Titillium Web', sans-serif;
 	overflow: scroll;
 }
-
 /* =======================
-Header
+Theme Toggle Icon (eyes)
+======================= */
+.theme {
+	width: 20px;
+	cursor: pointer;
+}
+.theme:hover {
+	transform: scale(1.2);
+}
+.theme > img {
+	width: 100%;
+}
+
+@media (min-width: 650px) {
+	.theme {
+		width: 30px;
+	}
+}
+/* =======================
+Game Header
 ======================= */
 .gameHeader {
 	display: flex;
@@ -41,6 +59,52 @@ Header
 }
 .gameHeader > div {
 	display: flex;
+}
+.gameHeader > .logo {
+	width: 90px;
+	height: 40px;
+}
+@media (min-width: 650px) {
+	.gameHeader > .logo {
+		width: 180px;
+		height: 80px;
+	}
+}
+.gameHeader > .logo > img {
+	width: 100%;
+	vertical-align: middle;
+}
+.gameHeader > .gameHeaderRight.yes > .theme {
+	-webkit-animation: scale-up-center 0.4s;
+	animation: scale-up-center 0.4s;
+}
+@-webkit-keyframes scale-up-center {
+	0% {
+		-webkit-transform: scale(0.5);
+		transform: scale(0.5);
+	}
+	50% {
+		-webkit-transform: scale(1.5);
+		transform: scale(1.5);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+@keyframes scale-up-center {
+	0% {
+		-webkit-transform: scale(0.5);
+		transform: scale(0.5);
+	}
+	50% {
+		-webkit-transform: scale(1.5);
+		transform: scale(1.5);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
 }
 .score {
 	margin-left: 5px;
@@ -64,100 +128,7 @@ Header
 		margin-top: 30px;
 	}
 }
-.score.yes {
-	overflow: hidden;
-	white-space: nowrap;
-	-webkit-animation: typing-score 0.7s steps(20, end);
-	animation: typing-score 0.7s steps(20, end);
-}
-@-webkit-keyframes typing-score {
-	from {
-		-webkit-width: 0;
-		width: 0;
-	}
-	to {
-		-webkit-width: 100%;
-		width: 100%;
-	}
-}
-@keyframes typing-score {
-	from {
-		-webkit-width: 0;
-		width: 0;
-	}
-	to {
-		-webkit-width: 100%;
-		width: 100%;
-	}
-}
-/* =======================
-ThemeToggle
-======================= */
 
-/* .theme {
-	width: 45px;
-	height: 25px;
-	background-color: #d0d6d6;
-	border-radius: 12px;
-	cursor: pointer;
-	margin: auto 10px;
-	display: flex;
-}
-.theme:hover {
-	box-shadow: 0px 2px 5px 0px #b0b0b0;
-}
-.theme > div {
-	width: 24px;
-	height: 23px;
-	border-radius: 12px;
-	background-color: #282c35;
-	opacity: 0.7;
-	transition: 0.3s;
-	display: flex;
-	justify-content: center;
-	align-self: center;
-	margin-left: 1px;
-}
-
-.theme > div > img {
-	width: 70%;
-	align-self: center;
-} */
-
-.theme {
-	width: 20px;
-	cursor: pointer;
-}
-.theme:hover {
-	transform: scale(1.2);
-}
-.theme > img {
-	width: 100%;
-}
-
-@media (min-width: 650px) {
-	.theme {
-		width: 30px;
-	}
-}
-
-/* =======================
-Game - header with logo
-======================= */
-.logo {
-	width: 90px;
-	height: 40px;
-}
-@media (min-width: 650px) {
-	.logo {
-		width: 180px;
-		height: 80px;
-	}
-}
-.logo > img {
-	width: 100%;
-	vertical-align: middle;
-}
 /* =======================
 Game Container
 ======================= */
@@ -453,44 +424,15 @@ Message Container
 	}
 }
 
-.messageContainer > div {
-	margin-top: 10px;
-}
-
-.messageContainer > div > span {
-	/* background-color: #ffb7b0;
-	border-radius: 5px;
-	padding: 1px 5px;
-	opacity: 0.8;
-	font-size: 11px;
-  border: 1px solid #595959; */
-	border-radius: 5px;
-	border: 1px solid #ffb7b0;
-	padding: 0 4px;
-}
-
 @media (min-width: 650px) {
 	.messageContainer {
-		margin-top: 30px;
+		margin-top: 40px;
 		font-size: 20px;
 	}
 	.messageContainer > .result {
 		width: 600px;
 	}
-	.messageContainer > div {
-		/* margin-top: 60px; */
-	}
-	/* .messageContainer > div:nth-child(2) {
-		margin-top: 15px;
-		margin-bottom: -10px;
-	} */
 }
-@media (min-width: 1000px) {
-	.messageContainer {
-		/* margin-top: 80px; */
-	}
-}
-
 /* =======================
 Progress Container
 ======================= */
@@ -498,8 +440,6 @@ Progress Container
 	margin: 45px auto 0;
 	vertical-align: middle;
 	width: 100%;
-	/* bottom: 0; */
-	/* position: fixed; */
 }
 .progressBack {
 	height: 20px;
@@ -507,7 +447,7 @@ Progress Container
 	margin: 0 auto;
 	border-radius: 14px;
 	position: relative;
-	border: 1px solid #b0b0b0;
+	box-shadow: 0px 5px 15px -7px #b0b0b0;
 }
 
 .progressFront {

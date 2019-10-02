@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ThemeToggle from './ThemeToggle';
 import Tutorial from './Tutorial';
+import About from './About';
 import { Route, BrowserRouter, NavLink, Link } from 'react-router-dom';
 import { ThemeContext } from '../contexts/ThemeContext';
 import '../css/intro.css';
 import 'intro.js/introjs.css';
 import '../css/tutorial.css';
+import '../css/about.css';
 
 class Intro extends Component {
 	render() {
@@ -35,8 +37,9 @@ class Intro extends Component {
 									</div>
 								</div>
 							</div>
-
 							<Tutorial />
+							<About />
+							<div className="introFooter">Copyright &copy; 2019 Crystal Wang. All rights reserved.</div>
 						</main>
 					);
 				}}

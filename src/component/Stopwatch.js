@@ -29,6 +29,8 @@
 // 	// 	return Math.floor(sec / 60);
 // 	// }
 
+// // useEffect combined componeentDidUpdate and componentDidMount
+
 // 	useEffect(
 // 		() => {
 // 			let interval = null;

@@ -9,6 +9,7 @@ class GameContextProvider extends Component {
 		origClass: 'imgBox',
 		compareClass: 'button',
 		scoreClass: 'score',
+		gameHeaderRight: 'gameHeaderRight',
 		isClicked: false,
 		yesOnTop: true,
 		isCorrect: true,
@@ -126,7 +127,7 @@ class GameContextProvider extends Component {
 				this.setState({
 					yesOnTop: true,
 					isCorrect: true,
-					scoreClass: 'score yes'
+					gameHeaderRight: 'gameHeaderRight yes'
 				});
 				break;
 		}
@@ -220,7 +221,7 @@ class GameContextProvider extends Component {
 						yesOnTop: true,
 						isCorrect: true,
 						compareClass: 'button',
-						scoreClass: 'score'
+						gameHeaderRight: 'gameHeaderRight'
 					});
 				}
 			);

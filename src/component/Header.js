@@ -14,7 +14,7 @@ function Header() {
 			<div className="logo">
 				<img src={themeContext.isLightTheme ? themeContext.light.logo : themeContext.dark.logo} />
 			</div>
-			<div>
+			<div className={gameContext.gameHeaderRight}>
 				<ThemeToggle />
 				<div className={gameContext.scoreClass}>
 					{gameContext.currentScore > 0 ? gameContext.currentScore > 1000 ? (

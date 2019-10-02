@@ -29,7 +29,7 @@ class Game extends Component {
 			content = (
 				<main>
 					<Header />
-					<Stopwatch />
+					{/* <Stopwatch /> */}
 					{/* <LevelTransition /> */}
 					<Card />
 					<Message />

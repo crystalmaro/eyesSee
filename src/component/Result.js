@@ -34,7 +34,7 @@ class Result extends Component {
 							</div>
 							<div className="resultFooter">
 								<div>
-									Developed by <a href="#">Crystal Wang</a>
+									Developed by <a href="https://www.linkedin.com/in/crystalwang8/">Crystal Wang</a>
 								</div>
 							</div>
 						</div>
