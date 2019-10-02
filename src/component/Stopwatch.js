@@ -66,7 +66,7 @@ import { GameContext } from '../contexts/GameContext';
 class Stopwatch extends Component {
 	static contextType = GameContext;
 
-	componentDidMount() {
+	shouldComponentUpdate() {
 		if (this.context.isTimerOn && this.context.timer > 0) {
 			setInterval(() => {
 				this.context.setTimer();

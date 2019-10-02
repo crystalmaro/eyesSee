@@ -67,7 +67,6 @@ class GameContextProvider extends Component {
 			let totalEasyRound = this.state.totalRound.slice(0, 10);
 			let totalHardRound = this.state.totalRound.slice(10);
 			// 4.0 generate randomized index order for array
-
 			if (this.state.randomRound.length < 20) {
 				// 4.1 - EASY
 				for (let a = totalEasyRound, i = a.length; i--; ) {
@@ -86,7 +85,6 @@ class GameContextProvider extends Component {
 					this.setState({ randomRound });
 				}
 			}
-			console.log(this.state.randomRound);
 		});
 	};
 
