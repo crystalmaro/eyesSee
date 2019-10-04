@@ -1,18 +1,18 @@
 /* =======================
 Tutorial Header
 ======================= */
-.tutorialPage > .tutorialHeader {
+.tutorialContainer > .tutorialHeader {
 	width: 330px;
 	margin: auto;
 }
 
-.tutorialPage > .tutorialHeader > .theme {
+.tutorialContainer > .tutorialHeader > .theme {
 	width: 20px;
 	cursor: pointer;
 	height: 100%;
 	margin-left: 300px;
 }
-.tutorialPage > .tutorialHeader > .introMsg {
+.tutorialContainer > .tutorialHeader > .introMsg {
 	font-size: 14px;
 	margin-top: -15px;
 	color: inherit;
@@ -44,20 +44,19 @@ Tutorial Header
 	}
 }
 @media (min-width: 650px) {
-	.tutorialPage > .tutorialHeader {
+	.tutorialContainer > .tutorialHeader {
 		width: 600px;
 	}
-	.tutorialPage > .tutorialHeader > .theme {
+	.tutorialContainer > .tutorialHeader > .theme {
 		margin-left: 570px;
 		width: 30px;
 	}
-	.tutorialPage > .tutorialHeader > .introMsg {
+	.tutorialContainer > .tutorialHeader > .introMsg {
 		margin-top: -20px;
 	}
 }
 @media (min-width: 1000px) {
-	.tutorialPage > .tutorialHeader > .introMsg {
-		/* margin-top: -20px; */
+	.tutorialContainer > .tutorialHeader > .introMsg {
 		font-size: 30px;
 	}
 }
@@ -65,7 +64,7 @@ Tutorial Header
 Tutorial Game Container
 ======================= */
 
-.tutorialPage > .gameContainer > .imgBox:nth-child(1) {
+.tutorialContainer > .gameContainer > .imgBox:nth-child(1) {
 	-webkit-animation: first-slide-in-left 0.7s both;
 	animation: first-slide-in-left 0.7s both;
 }
@@ -93,7 +92,7 @@ Tutorial Game Container
 		opacity: 1;
 	}
 }
-.tutorialPage > .gameContainer > .imgBox:nth-child(2) {
+.tutorialContainer > .gameContainer > .imgBox:nth-child(2) {
 	-webkit-animation: second-slide-in-right 0.7s 0.5s both;
 	animation: second-slide-in-right 0.7s 0.5s both;
 }
@@ -123,32 +122,28 @@ Tutorial Game Container
 }
 
 @media (min-width: 650px) {
-	.tutorialPage > .gameContainer {
+	.tutorialContainer > .gameContainer {
 		margin-top: 20px;
 	}
 }
 
 @media (min-width: 1000px) {
-	.tutorialPage > .gameContainer {
-		/* margin-top: 10px; */
+	.tutorialContainer > .messageContainer {
+		margin-top: 25px;
 	}
-	.tutorialPage > .messageContainer {
-		margin-top: 10px;
-	}
-	.tutorialPage > .buttonContainer {
+	.tutorialContainer > .buttonContainer {
 		margin-top: 20px;
-		/* max-width: 450px; */
 	}
 }
 
 /* =======================
 Tutorial Game Container - Click Events
 ======================= */
-.tutorialPage > .gameContainer > .imgBox.clicked:nth-child(1) {
+.tutorialContainer > .gameContainer > .imgBox.clicked:nth-child(1) {
 	-webkit-animation: slide-in-top 0.4s ease;
 	animation: slide-in-top 0.4s ease;
 }
-.tutorialPage > .gameContainer > .imgBox.clicked:nth-child(2) {
+.tutorialContainer > .gameContainer > .imgBox.clicked:nth-child(2) {
 	-webkit-animation: slide-in-bottom 0.4s ease;
 	animation: slide-in-bottom 0.4s ease;
 }
@@ -194,17 +189,11 @@ Tutorial Game Container - Click Events
 }
 
 @media (min-width: 650px) {
-	/* .imgBox.clicked {
-		grid-column-start: 2;
-		grid-column-end: 5;
-		grid-row-start: 1;
-		grid-row-end: 2;
-	} */
-	.tutorialPage > .gameContainer > .imgBox.clicked:nth-child(1) {
+	.tutorialContainer > .gameContainer > .imgBox.clicked:nth-child(1) {
 		-webkit-animation: slide-in-left 0.2s ease-out;
 		animation: slide-in-left 0.2s ease-out;
 	}
-	.tutorialPage > .gameContainer > .imgBox.clicked:nth-child(2) {
+	.tutorialContainer > .gameContainer > .imgBox.clicked:nth-child(2) {
 		-webkit-animation: slide-in-right 0.2s ease-out;
 		animation: slide-in-right 0.2s ease-out;
 	}
@@ -248,34 +237,4 @@ Tutorial Game Container - Click Events
 			transform: translateX(0);
 		}
 	}
-	/* .imgBox.clicked > img {
-		box-shadow: 0px 5px 10px 0px #b0b0b0;
-	} */
-}
-
-/* ============================== */
-.tutorialPage > .tutorialMenu > .demoButton,
-.tutorialPage > .tutorialMenu > a {
-	display: inline-block;
-	font-size: 20px;
-	text-align: center;
-	vertical-align: middle;
-	/* line-height: 23px; */
-	cursor: pointer;
-	color: #595959;
-	background-color: #ffb7b0;
-	width: 80px;
-	/* height: 23px; */
-	padding: 3px;
-	box-shadow: 0px 2px 5px -1px #b0b0b0;
-	border: 1px solid #3b3837;
-	border-radius: 5px;
-	/* box-sizing: border-box; */
-	margin: auto;
-}
-
-.tutorialPage > .tutorialMenu {
-	display: flex;
-	margin: auto;
-	width: 300px;
 }

@@ -5,39 +5,33 @@ import { FacebookShareButton, FacebookIcon } from 'react-share';
 import { GameContext } from '../contexts/GameContext';
 
 class Result extends Component {
-	state = {
-		shareURL: 'https://creeeyessee.web.app'
-	};
-
 	render() {
 		return (
 			<GameContext.Consumer>
 				{(context) => {
-					const { currentScore, ranking, rankingMsg, globalScoreArray, getSeconds, getMinutes } = context;
+					const { currentScore, ranking, rankingMsg, globalRankingArray, getSeconds, getMinutes } = context;
 
 					return (
-						<div className="resultContainer">
+						<React.Fragment>
 							<div className="resultMain">
 								<div>
 									<img src="./imageStock/595959.png" />
 								</div>
 								<div>Score: {currentScore}</div>
 								<div>Rank: top {ranking}%</div>
-								<div>(Among {globalScoreArray.length + 1} eyes)</div>
+								<div>(Among {globalRankingArray.length + 1} eyes)</div>
 								<div> {rankingMsg} </div>
 								{/* <div>
 									Time: {getMinutes()}:{getSeconds()}
 								</div> */}
-								<FacebookShareButton url={this.state.shareURL}>
+								<FacebookShareButton url="https://creeeyessee.web.app">
 									<FacebookIcon size={60} borderRadius={10} />
 								</FacebookShareButton>
 							</div>
 							<div className="resultFooter">
-								<div>
-									Developed by <a href="https://www.linkedin.com/in/crystalwang8/">Crystal Wang</a>
-								</div>
+								Developed by <a href="https://www.linkedin.com/in/crystalwang8/">Crystal Wang</a>
 							</div>
-						</div>
+						</React.Fragment>
 					);
 				}}
 			</GameContext.Consumer>

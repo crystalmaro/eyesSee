@@ -1,48 +1,48 @@
 import React, { Component } from 'react';
 import ThemeToggle from './ThemeToggle';
 import Tutorial from './Tutorial';
-import { Route, BrowserRouter, NavLink } from 'react-router-dom';
+import About from './About';
+import { Route, BrowserRouter, NavLink, Link } from 'react-router-dom';
 import { ThemeContext } from '../contexts/ThemeContext';
 import '../css/intro.css';
+import 'intro.js/introjs.css';
+import '../css/tutorial.css';
+import '../css/about.css';
 
 class Intro extends Component {
 	render() {
 		return (
 			<ThemeContext.Consumer>
 				{(context) => {
-					const { isLightTheme, light, dark } = context;
+					const { isLightTheme, light, dark, toggleTutorial } = context;
 					const theme = isLightTheme ? light : dark;
 					return (
-						<main>
-							<div className="introLogo">
-								<img src={theme.logo} />
-							</div>
-
-							<div className="introContainer">
-								<div className="introCard">
-									<div className="introCardTitle">WHY</div>
-									<section>
-										<div>placeholder text</div>
-										{/* <div>Design and User Interface can sometimes be overlooked.</div>
-										<div>The objective is to put emphasis on the devil in detail.</div> */}
-									</section>
-								</div>
-
-								<div className="introCard">
-									<div className="introCardTitle">WHAT</div>
-									<section>
-										<div>placeholder text</div>
-										{/* <div>
-											Raise awareness and appreciation to UI/UX Designers and Front-end
-											Developers.
+						<React.Fragment>
+							<div className="introTop">
+								<section className="introTopFirst">
+									<div>
+										<img className="introLogo" src="./imageStock/595959.png" />
+									</div>
+								</section>
+								<section className="introTopSecond">
+									<div className="selectOff">
+										Let's take your design sensitivity to the next level
+									</div>
+									<div className="selectOff">Train your artistic sensibility and literacy.</div>
+									<div>
+										<div className="tutorialButton selectOff" onClick={toggleTutorial}>
+											Tutorial
 										</div>
-										<div>Strengthen design literacy and sensitivity</div> */}
-									</section>
-								</div>
+										<Link to="/game">Game</Link>
+									</div>
+								</section>
 							</div>
-
 							<Tutorial />
-						</main>
+							<About />
+							<footer className="introFooter">
+								Copyright &copy; 2019 Crystal Wang. All rights reserved.
+							</footer>
+						</React.Fragment>
 					);
 				}}
 			</ThemeContext.Consumer>

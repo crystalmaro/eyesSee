@@ -27,7 +27,7 @@ class Game extends Component {
 		let content;
 		if (this.context.randomRound.length >= 20) {
 			content = (
-				<main>
+				<React.Fragment>
 					<Header />
 					{/* <Stopwatch /> */}
 					{/* <LevelTransition /> */}
@@ -35,16 +35,16 @@ class Game extends Component {
 					<Message />
 					<Button />
 					<Progress />
-				</main>
+				</React.Fragment>
 			);
 		} else {
 			content = (
-				<main>
+				<React.Fragment>
 					<Loading />
-				</main>
+				</React.Fragment>
 			);
 		}
-		return <main>{content}</main>;
+		return <React.Fragment>{content}</React.Fragment>;
 	}
 }
 

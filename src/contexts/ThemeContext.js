@@ -12,7 +12,7 @@ class ThemeContextProvider extends Component {
 		stepsEnabled: false,
 		steps: [
 			{
-				element: '.tutorialPage > .gameContainer',
+				element: '.tutorialContainer > .gameContainer',
 				intro: '🔍Please pick one.'
 			},
 			{

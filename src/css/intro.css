@@ -151,7 +151,9 @@ Intro 2
 	box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 1);
 	cursor: pointer;
 }
-
+.introFooter {
+	font-size: 14px;
+}
 /* =============================================
 Media Query
 ============================================= */
