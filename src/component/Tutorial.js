@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import Intro from './Intro';
 import Game from './Game';
 import { ThemeContext } from '../contexts/ThemeContext';
@@ -26,18 +26,19 @@ class Tutorial extends Component {
 			}
 		],
 		introRound: 0,
-		introMsg: 'Which UI is more correct?',
-		origClass: 'imgBox',
+		introMsg: [ 'Which UI is more correct?', 'Please read the rules below.' ],
+
+    origClass: 'imgBox',
 		compareClass: 'button',
 		isClicked: false,
 		yesOnTop: true,
 		isCorrect: true,
 		yesImg: './imageStock/yes.png',
 		noImg: './imageStock/no.png',
-		isIntroDone: false,
+		isIntroDone: false
 		// ! ===== below isnt currently being used
-		min: 1,
-		sec: 0
+		// min: 1,
+		// sec: 0
 	};
 
 	// ============================
@@ -46,7 +47,7 @@ class Tutorial extends Component {
 	clickImg = (e) => {
 		this.overlapImages(e);
 		this.checkImageSelection(e);
-		this.setState({ introMsg: 'Please read the rules below.' });
+		// this.setState({ introMsg: 'Please read the rules below.' });
 		if (this.state.introRound == this.state.introData.length - 1) {
 			this.setState({ isIntroDone: true });
 			return;
@@ -82,24 +83,22 @@ class Tutorial extends Component {
 		this.resetRound(e);
 	};
 	resetRound = (e) => {
-		if (this.state.isClicked) {
-			switch (this.state.introRound == this.state.introRound.length - 1) {
-				case false:
-					this.setState((preState) => {
-						// increment current round count
-						return { introRound: preState.introRound + 1 };
-					});
+		if (this.state.isClicked && this.state.introRound !== this.state.introRound.length - 1) {
+			this.setState(
+				(preState) => {
+					return { introRound: preState.introRound + 1 };
+				},
+				// callback
+				() => {
 					this.setState({
-						// reset state for the next round
 						origClass: 'imgBox',
 						isClicked: false,
 						yesOnTop: true,
-						isCorrect: true
+						isCorrect: true,
+						compareClass: 'button'
 					});
-					break;
-				// case true:
-				// 	break;
-			}
+				}
+			);
 			return;
 		}
 	};
@@ -134,19 +133,6 @@ class Tutorial extends Component {
 			return;
 		}
 	};
-	// ============================
-	// Step-by-step Guide
-	// ============================
-	// componentDidMount() {
-	// 	introJs().start();
-	// }
-	// onExit = () => {
-	// 	this.setState(() => ({ stepsEnabled: false }));
-	// };
-
-	// toggleDemo = () => {
-	// 	this.setState(() => ({ stepsEnabled: true }));
-	// };
 
 	render() {
 		return (
@@ -163,11 +149,9 @@ class Tutorial extends Component {
 									className="introMsg selectOff"
 									style={this.state.isClicked ? { display: 'none' } : { display: 'block' }}
 								>
-									{this.state.introMsg}
+									{this.state.introMsg[this.state.introRound]}
 								</div>
 							</div>
-
-							{/* <Hints enabled={this.state.hintsEnabled} hints={this.state.hints} /> */}
 
 							<div className="gameContainer">
 								<div
@@ -196,10 +180,6 @@ class Tutorial extends Component {
 									<img src={this.state.isCorrect ? this.state.yesImg : this.state.noImg} />
 									<div className="message">{this.state.introData[this.state.introRound].reason}</div>
 								</div>
-								{/* <div
-									className="messageTheme"
-									style={this.state.introRound == 0 ? { display: 'flex' } : { display: 'none' }}
-								/> */}
 							</div>
 
 							<div
@@ -220,9 +200,9 @@ class Tutorial extends Component {
 									className={this.state.isClicked ? 'button isClicked' : 'button'}
 								>
 									{this.state.isIntroDone ? (
-										<NavLink to="/game">
+										<Link to="/game">
 											<strong>START GAME</strong>
-										</NavLink>
+										</Link>
 									) : (
 										'NEXT'
 									)}

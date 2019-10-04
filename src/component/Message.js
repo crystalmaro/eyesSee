@@ -14,9 +14,6 @@ class Message extends Component {
 								<img src={isCorrect ? yesImg : noImg} />
 								<div className="message">{imgData[randomRound[currentRound]].reason}</div>
 							</div>
-							{/* <div>
-                Click and hold <span>COMPARE</span> to compare
-              </div> */}
 						</div>
 					);
 				}}

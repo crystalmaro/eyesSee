@@ -64,12 +64,6 @@ Game Header
 	width: 90px;
 	height: 40px;
 }
-@media (min-width: 650px) {
-	.gameHeader > .logo {
-		width: 180px;
-		height: 80px;
-	}
-}
 .gameHeader > .logo > img {
 	width: 100%;
 	vertical-align: middle;
@@ -111,24 +105,19 @@ Game Header
 	margin-top: -3px;
 	color: inherit;
 }
-.stopwatch {
-	font-size: 20px;
-	margin-top: -20px;
-}
 @media (min-width: 650px) {
 	.gameHeader {
 		font-size: 30px;
+	}
+	.gameHeader > .logo {
+		width: 180px;
+		height: 80px;
 	}
 	.score {
 		margin-left: 10px;
 		margin-top: -5px;
 	}
-	.stopwatch {
-		font-size: 30px;
-		margin-top: 30px;
-	}
 }
-
 /* =======================
 Game Container
 ======================= */
@@ -137,7 +126,6 @@ Game Container
 	margin: auto;
 	cursor: pointer;
 	justify-content: center;
-	justify-items: center;
 	grid-template-columns: 300px;
 	grid-template-rows: 80px 80px 25px 80px 80px;
 	width: 300px;
@@ -146,17 +134,13 @@ Game Container
 .imgBox {
 	width: 300px;
 	border-radius: 10px;
-	position: relative;
 }
 .imgBox:hover {
 	margin-top: 4px;
 	margin-right: 4px;
 }
-.imgBox.clicked:hover {
-	margin: 0;
-}
 .imgBox > img {
-	box-shadow: 0px 5px 10px 0px #b0b0b0;
+	box-shadow: 0px 3px 5px -1px #b0b0b0;
 	width: 100%;
 	border-radius: 10px;
 }
@@ -178,11 +162,7 @@ Game Container
 		margin-top: 50px;
 	}
 	.imgBox {
-		border-radius: 10px;
 		width: 330px;
-	}
-	.imgBox > img {
-		box-shadow: 0px 5px 10px 0px #b0b0b0;
 	}
 	.imgBox:nth-child(1) {
 		grid-column-start: 1;
@@ -203,10 +183,8 @@ Game Container
 		grid-template-rows: 233px;
 		width: 890px;
 		height: 240px;
-		margin-top: 50px;
 	}
 	.imgBox {
-		border-radius: 10px;
 		width: 429px;
 	}
 }
@@ -219,6 +197,9 @@ Game Container - Click Events
 	grid-column-start: 1;
 	grid-column-end: 2;
 	height: 100%;
+}
+.imgBox.clicked:hover {
+	margin: 0;
 }
 .imgBox.clicked:nth-child(1) {
 	-webkit-animation: slide-in-top 0.3s ease;
@@ -267,9 +248,6 @@ Game Container - Click Events
 		-webkit-transform: translateY(0);
 		transform: translateY(0);
 	}
-}
-.imgBox.clicked > img {
-	box-shadow: 0px 5px 10px 0px #b0b0b0;
 }
 @media (min-width: 650px) {
 	.imgBox.clicked {
@@ -327,7 +305,7 @@ Game Container - Click Events
 		}
 	}
 	.imgBox.clicked > img {
-		box-shadow: 0px 5px 10px 0px #b0b0b0;
+		box-shadow: 0px 3px 5px -1px #b0b0b0;
 	}
 }
 /* =======================
@@ -345,18 +323,15 @@ Button Container
 .button,
 .button.isClicked {
 	font-size: 20px;
-	text-align: center;
-	vertical-align: middle;
 	line-height: 23px;
 	cursor: pointer;
 	color: #595959;
-	background-color: #ffb7b0;
+	background-color: #c7e6ff;
 	width: 130px;
-	max-height: 23px;
 	padding: 7px 0;
 	box-shadow: 0px 2px 5px -1px #b0b0b0;
 	border: 1px solid #3b3837;
-	border-radius: 5px;
+	border-radius: 10px;
 	position: relative;
 }
 .button.isClicked:hover {
@@ -423,7 +398,6 @@ Message Container
 		transform: scale(1);
 	}
 }
-
 @media (min-width: 650px) {
 	.messageContainer {
 		margin-top: 40px;
@@ -449,17 +423,13 @@ Progress Container
 	position: relative;
 	box-shadow: 0px 5px 15px -7px #b0b0b0;
 }
-
 .progressFront {
 	position: absolute;
 	background-color: #ffb7b0;
-	/* height: 94%; */
 	height: 98%;
 	border-radius: 14px 0 0 14px;
-	transition: 0.5s;
-	/* border: 1px solid #ffb7b0; */
+	transition: all 0.5s ease 0s;
 }
-
 .progressNumber {
 	margin-left: 110px;
 	position: absolute;
@@ -467,7 +437,6 @@ Progress Container
 	text-align: center;
 	font-size: 13px;
 }
-
 @media (min-width: 650px) {
 	.progressBack {
 		width: 500px;

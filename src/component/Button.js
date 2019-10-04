@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GameContext } from '../contexts/GameContext';
-import { Route, Router, BrowserRouter, NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Result from './Result';
 
 class Button extends Component {

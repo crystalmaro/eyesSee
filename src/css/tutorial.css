@@ -5,7 +5,6 @@ Tutorial Header
 	width: 330px;
 	margin: auto;
 }
-
 .tutorialContainer > .tutorialHeader > .theme {
 	width: 20px;
 	cursor: pointer;
@@ -63,7 +62,6 @@ Tutorial Header
 /* =======================
 Tutorial Game Container
 ======================= */
-
 .tutorialContainer > .gameContainer > .imgBox:nth-child(1) {
 	-webkit-animation: first-slide-in-left 0.7s both;
 	animation: first-slide-in-left 0.7s both;

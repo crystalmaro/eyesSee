@@ -32,9 +32,6 @@ class ThemeContextProvider extends Component {
 	// ============================
 	// Step-by-step Guide
 	// ============================
-	// componentDidMount() {
-	// 	introJs().start();
-	// }
 	onExit = () => {
 		this.setState(() => ({ stepsEnabled: false }));
 	};

@@ -40,7 +40,6 @@
 	-webkit-animation: typing 3.5s steps(40, end);
 	animation: typing 3.5s steps(40, end);
 }
-/* The typing effect */
 @-webkit-keyframes typing {
 	from {
 		-webkit-width: 0;
@@ -61,7 +60,6 @@
 		width: 100%;
 	}
 }
-
 .resultMain > div:last-child {
 	margin-top: 25px;
 	-webkit-animation: jello-horizontal 1s 5 both;
@@ -128,7 +126,6 @@
 		transform: scale3d(1, 1, 1);
 	}
 }
-
 .resultFooter {
 	font-size: 14px;
 	text-align: left;
@@ -137,7 +134,6 @@
 	position: absolute;
 	margin: 10px;
 }
-
 .resultFooter > a {
 	color: #ffb7b0;
 }
