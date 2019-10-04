@@ -1,4 +1,4 @@
-.resultContainer > .resultMain {
+.resultMain {
 	-webkit-background-color: rgb(255, 183, 176);
 	background-color: rgb(255, 183, 176);
 	top: 50%;
@@ -18,21 +18,21 @@
 	font-size: 20px;
 }
 @media (min-width: 650px) {
-	.resultContainer > .resultMain {
+	.resultMain {
 		width: 400px;
 		height: 400px;
 	}
 }
-.resultContainer > .resultMain > div:nth-child(1) {
+.resultMain > div:nth-child(1) {
 	width: 150px;
 }
-.resultContainer > .resultMain > div:nth-child(1) > img {
+.resultMain > div:nth-child(1) > img {
 	width: 100%;
 }
-.resultContainer > .resultMain > div:nth-child(5) {
+.resultMain > div:nth-child(5) {
 	font-size: 12px;
 }
-.resultContainer > .resultMain > div:not(:last-child):not(:first-child) {
+.resultMain > div:not(:last-child):not(:first-child) {
 	overflow: hidden;
 	/* Ensures the content is not revealed until the animation */
 	white-space: nowrap;
@@ -62,7 +62,7 @@
 	}
 }
 
-.resultContainer > .resultMain > div:last-child {
+.resultMain > div:last-child {
 	margin-top: 25px;
 	-webkit-animation: jello-horizontal 1s 5 both;
 	animation: jello-horizontal 1s 5 both;

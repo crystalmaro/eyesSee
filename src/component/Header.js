@@ -16,7 +16,7 @@ function Header() {
 			</div>
 			<div className={gameContext.gameHeaderRight}>
 				<ThemeToggle />
-				<div className={gameContext.scoreClass}>
+				<div className="score">
 					{gameContext.currentScore > 0 ? gameContext.currentScore > 1000 ? (
 						` ${gameContext.currentScore}`
 					) : (

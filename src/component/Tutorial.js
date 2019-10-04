@@ -11,25 +11,6 @@ import Stopwatch from './Stopwatch';
 
 class Tutorial extends Component {
 	state = {
-		// stepsEnabled: false,
-		// steps: [
-		// 	{
-		// 		element: '.tutorialPage > .gameContainer',
-		// 		intro: '🔍One of the cards is MORE CORRECT.'
-		// 	},
-		// 	{
-		// 		element: '.theme',
-		// 		intro: 'theme toggle'
-		// 	}
-		// ],
-		hintsEnable: true,
-		hints: [
-			{
-				element: '.gameContainer > div:first-child',
-				hint: 'free answer: the first card is more correct',
-				hintPosition: 'bottom-right'
-			}
-		],
 		introData: [
 			{
 				key: 1,
@@ -54,50 +35,21 @@ class Tutorial extends Component {
 		yesImg: './imageStock/yes.png',
 		noImg: './imageStock/no.png',
 		isIntroDone: false,
+		// ! ===== below isnt currently being used
 		min: 1,
 		sec: 0
 	};
-
-	// componentDidMount() {
-	// 	this.myInterval = setInterval(() => {
-	// 		const { sec, min } = this.state;
-
-	// 		if (sec > 0) {
-	// 			this.setState(({ sec }) => ({
-	// 				sec: sec - 1
-	// 			}));
-	// 		}
-	// 		if (sec === 0) {
-	// 			if (min === 0) {
-	// 				clearInterval(this.myInterval);
-	// 			} else {
-	// 				1;
-	// 				this.setState(({ min }) => ({
-	// 					min: min - 1,
-	// 					sec: 59
-	// 				}));
-	// 			}
-	// 		}
-	// 	}, 1000);
-	// }
-	// componentWillUnmount() {
-	// 	clearInterval(this.myInterval);
-	// }
 
 	// ============================
 	// UI events - click image
 	// ============================
 	clickImg = (e) => {
-		// 1. overlap both images & show current round answer
 		this.overlapImages(e);
-		// 2. decide which image on top & decide current round answer
-		this.checkImage(e);
-
+		this.checkImageSelection(e);
 		this.setState({ introMsg: 'Please read the rules below.' });
-
-		// 5. NEXT button changes to RESULT on last round, after image selection
 		if (this.state.introRound == this.state.introData.length - 1) {
 			this.setState({ isIntroDone: true });
+			return;
 		}
 	};
 	overlapImages = (e) => {
@@ -107,7 +59,7 @@ class Tutorial extends Component {
 			compareClass: 'button isClicked'
 		});
 	};
-	checkImage = (e) => {
+	checkImageSelection = (e) => {
 		switch (e.target.parentNode.id) {
 			case 'no':
 				this.setState({
@@ -165,6 +117,7 @@ class Tutorial extends Component {
 					this.setState({ yesOnTop: true, isCorrect: true });
 					break;
 			}
+			return;
 		}
 	};
 	compareMouseUp = (e) => {
@@ -178,6 +131,7 @@ class Tutorial extends Component {
 					this.setState({ yesOnTop: true, isCorrect: true });
 					break;
 			}
+			return;
 		}
 	};
 	// ============================
@@ -201,7 +155,7 @@ class Tutorial extends Component {
 					const { isLightTheme, light, dark, stepsEnabled, steps, onExit } = context;
 					const theme = isLightTheme ? light : dark;
 					return (
-						<div className="tutorialPage">
+						<div className="tutorialContainer">
 							<Steps enabled={stepsEnabled} steps={steps} initialStep={0} onExit={onExit} />
 							<div className="tutorialHeader">
 								<ThemeToggle />

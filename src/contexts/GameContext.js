@@ -8,7 +8,6 @@ class GameContextProvider extends Component {
 	state = {
 		origClass: 'imgBox',
 		compareClass: 'button',
-		scoreClass: 'score',
 		gameHeaderRight: 'gameHeaderRight',
 		isClicked: false,
 		yesOnTop: true,
@@ -26,12 +25,14 @@ class GameContextProvider extends Component {
 		totalRound: [], // array of number 0 - 19
 		randomRound: [], // randomized EasyRound, followed by randomize HardRound
 		// ===== Firebase masterScore data
-		globalScoreArray: [],
+		globalRankingArray: [],
+		// ! ===== below isnt currently being used
 		timer: 10, // TODO 10 sec for testing, will be 60 on production
-		isTimerOn: true
-		// isTransitionOn: true
+		isTimerOn: true,
+		isTransitionOn: true
 	};
 
+	// ! ===== below isnt currently being used
 	isTransitionOn = () => {
 		this.setState({ isTransitionOn: !this.state.isTransitionOn });
 	};
@@ -41,71 +42,74 @@ class GameContextProvider extends Component {
 	// ============================
 	loadFirebase = (e) => {
 		const db = firebase.firestore();
-		// ===== masterScore
-		db.collection('masterScore').doc('scoreInfo').get().then((doc) => {
-			if (doc.exists) {
-				this.setState({
-					// ===== NEW Firebase masterScore data (ARRAY)
-					globalScoreArray: doc.data().scoreData.sort(function(a, b) {
-						return b - a;
-					})
-				});
-			} else {
-				console.log('firebase error');
-			}
-		});
+		this.loadGlobalRanking(db);
+		this.loadImageStock(db);
+	};
 
-		// ===== imageStock
-		db.collection('imageStock').get().then((querySnapshot) => {
-			querySnapshot.forEach((doc) => {
-				// 1. load and save firebase data into state
-				let imgData = [ ...this.state.imgData, doc.data() ];
-				// 2. generate a number array for the length of this.state.imgData
-				let totalRound = [ ...this.state.totalRound, this.state.imgData.length ];
-				this.setState({ imgData, totalRound });
+	loadGlobalRanking = (db) => {
+		db.collection('masterScore').doc('scoreInfo').get().then((doc) => {
+			this.setState({
+				globalRankingArray: doc.data().scoreData.sort((a, b) => {
+					return b - a;
+				})
 			});
-			// 3. slice() returns a new array, without mutating the original
-			let totalEasyRound = this.state.totalRound.slice(0, 10);
-			let totalHardRound = this.state.totalRound.slice(10);
-			// 4.0 generate randomized index order for array
-			if (this.state.randomRound.length < 20) {
-				// 4.1 - EASY
-				for (let a = totalEasyRound, i = a.length; i--; ) {
-					let randomRound = [
-						...this.state.randomRound,
-						a.splice(Math.floor(Math.random() * (i + 1)), 1)[0]
-					];
-					this.setState({ randomRound });
-				}
-				// 4.2 - HARD
-				for (let a = totalHardRound, i = a.length; i--; ) {
-					let randomRound = [
-						...this.state.randomRound,
-						a.splice(Math.floor(Math.random() * (i + 1)), 1)[0]
-					];
-					this.setState({ randomRound });
-				}
-			}
 		});
+	};
+
+	loadImageStock = (db) => {
+		db
+			.collection('imageStock')
+			.get()
+			.then((querySnapshot) => {
+				querySnapshot.forEach((doc) => {
+					this.setState({
+						// 1. load and save firebase data into state
+						imgData: [ ...this.state.imgData, doc.data() ],
+						// 2. generate a number array for the length of this.state.imgData
+						totalRound: [ ...this.state.totalRound, this.state.imgData.length ]
+					});
+				});
+			})
+			.then(() => this.generateRandomRound());
+	};
+
+	generateRandomRound = () => {
+		// 3. randomize round
+		let totalEasyRound = this.state.totalRound.slice(0, 10);
+		let totalHardRound = this.state.totalRound.slice(10);
+		// 4.0 generate randomized index order for array
+		if (this.state.randomRound.length < 20) {
+			// 4.1 - EASY
+			for (let a = totalEasyRound, i = a.length; i--; ) {
+				this.setState({
+					randomRound: [ ...this.state.randomRound, a.splice(Math.floor(Math.random() * (i + 1)), 1)[0] ]
+				});
+			}
+			// 4.2 - HARD
+			for (let a = totalHardRound, i = a.length; i--; ) {
+				this.setState({
+					randomRound: [ ...this.state.randomRound, a.splice(Math.floor(Math.random() * (i + 1)), 1)[0] ]
+				});
+			}
+			return;
+		}
 	};
 
 	// ============================
 	// UI events - click image
 	// ============================
 	clickImg = (e) => {
+		// ! ===== below isnt currently being used
 		this.setState({ isTimerOn: false });
-		// 1. overlap both images & show current round answer
+
 		this.overlapImages(e);
-		// 2. decide which image on top & decide current round answer
-		this.checkImage(e);
-		// 3. scorekeeping
+		this.checkImageSelection(e);
 		this.addScore(e);
-		// 4. progress bar incrementation
 		this.addProgressBar(e);
-		// 5. NEXT button changes to RESULT on last round, after image selection
-		if (this.state.currentRound == this.state.randomRound.length - 1) {
+		if (this.state.currentRound == this.state.totalRound.length - 1) {
 			this.setState({ isResultReady: true });
 			this.calculateRanking(e);
+			return;
 		}
 	};
 	overlapImages = (e) => {
@@ -115,7 +119,7 @@ class GameContextProvider extends Component {
 			compareClass: 'button isClicked'
 		});
 	};
-	checkImage = (e) => {
+	checkImageSelection = (e) => {
 		switch (e.target.parentNode.id) {
 			case 'no':
 				this.setState({
@@ -146,6 +150,7 @@ class GameContextProvider extends Component {
 					});
 					break;
 			}
+			return;
 		}
 	};
 	addProgressBar = (e) => {
@@ -153,42 +158,45 @@ class GameContextProvider extends Component {
 			this.setState((preState) => {
 				return { progressBar: preState.progressBar + 100 / this.state.totalRound.length };
 			});
+			return;
 		}
 	};
+
 	calculateRanking = (e) => {
 		// 1. calculate accuracy rate
 		let point = Math.round(this.state.currentScore / 3000 * 100);
 		// 2. add current score into array
-		let newArr = this.state.globalScoreArray.slice();
+		let newArr = this.state.globalRankingArray.slice();
 		newArr.push(point);
 		// 3. sort the array in descending order
-		newArr.sort(function(a, b) {
+		newArr.sort((a, b) => {
 			return b - a;
 		});
 		// 4. final score = arr.indexOf(percentage) / arr.length
 		let index = Number(newArr.indexOf(point)) + 1;
 		let ranking = Math.round(index / newArr.length * 100);
+		let rankingMsg;
 		switch (true) {
 			case ranking > 0 && ranking <= 10:
-				var rankingMsg = "Here's the Golden Ticket to join my developing team!";
+				rankingMsg = "Here's the Golden Ticket to join my developing team!";
 				break;
 			case ranking > 10 && ranking <= 20:
-				var rankingMsg = "My grandma's eyes are better than yours, just saying.";
+				rankingMsg = "My grandma's eyes are better than yours, just saying.";
 				break;
 			case ranking > 20 && ranking <= 40:
-				var rankingMsg = 'You need to get your eyes checked, like seriously.';
+				rankingMsg = 'You need to get your eyes checked, like seriously.';
 				break;
 			case ranking > 40 && ranking <= 60:
-				var rankingMsg = 'Might as well donate your eyes.';
+				rankingMsg = 'Might as well donate your eyes.';
 				break;
 			case ranking > 60 && ranking <= 80:
-				var rankingMsg = 'This is not a guessing game...';
+				rankingMsg = 'This is not a guessing game...';
 				break;
 			case ranking > 80 && ranking <= 100:
-				var rankingMsg = "Excellent job!! (No, not really you're horrible.)";
+				rankingMsg = "Excellent job!! (No, not really you're horrible.)";
 				break;
 			default:
-				var rankingMsg = 'Play again!';
+				rankingMsg = 'Play again!';
 		}
 		// 5. save the ranking to state, and pass the ranking to <Result />
 		this.setState({
@@ -206,7 +214,7 @@ class GameContextProvider extends Component {
 	// ============================
 	clickNext = (e) => {
 		this.resetRound(e);
-		this.setState({ isTimerOn: true });
+		// this.setState({ isTimerOn: true });
 	};
 	resetRound = (e) => {
 		if (this.state.isClicked && this.state.currentRound !== this.state.currentRound.length - 1) {
@@ -214,6 +222,7 @@ class GameContextProvider extends Component {
 				(preState) => {
 					return { currentRound: preState.currentRound + 1 };
 				},
+				// callback
 				() => {
 					this.setState({
 						origClass: 'imgBox',
@@ -225,6 +234,7 @@ class GameContextProvider extends Component {
 					});
 				}
 			);
+			return;
 		}
 	};
 
@@ -242,6 +252,7 @@ class GameContextProvider extends Component {
 					this.setState({ yesOnTop: true, isCorrect: true });
 					break;
 			}
+			return;
 		}
 	};
 	compareMouseUp = (e) => {
@@ -255,6 +266,7 @@ class GameContextProvider extends Component {
 					this.setState({ yesOnTop: true, isCorrect: true });
 					break;
 			}
+			return;
 		}
 	};
 	// ============================
