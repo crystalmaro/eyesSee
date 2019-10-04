@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Intro from './component/Intro';
 import Tutorial from './component/Tutorial';
+import Loading from './component/Loading';
 import Game from './component/Game';
 import Result from './component/Result';
 // import { Header, ThemeToggle } from './component/Header';

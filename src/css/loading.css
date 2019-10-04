@@ -34,6 +34,9 @@
 	position: absolute;
 	top: 15%;
 	left: 50%;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
 	transform: translate(-50%, -50%);
 	font-size: 70px;
 }
@@ -45,17 +48,17 @@
 
 .one {
 	animation-delay: 0s;
-	color: #29c6cd;
+	background-color: #29c6cd;
 }
 .two {
 	animation-delay: 100ms;
-	color: #f6e4c4;
+	background-color: #f6e4c4;
 }
 .three {
 	animation-delay: 200ms;
-	color: #fea386;
+	background-color: #fea386;
 }
 .four {
 	animation-delay: 300ms;
-	color: #f19584;
+	background-color: #f19584;
 }

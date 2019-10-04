@@ -6,7 +6,7 @@ export const GameContext = createContext();
 
 class GameContextProvider extends Component {
 	state = {
-    gameHeaderRight: 'gameHeaderRight',
+		gameHeaderRight: 'gameHeaderRight',
 
 		origClass: 'imgBox',
 		compareClass: 'button',
@@ -14,8 +14,8 @@ class GameContextProvider extends Component {
 		yesOnTop: true,
 		isCorrect: true,
 		yesImg: './imageStock/yes.png',
-    noImg: './imageStock/no.png',
-    
+		noImg: './imageStock/no.png',
+
 		currentRound: 0,
 		currentScore: 0,
 		progressBar: 0,
@@ -101,9 +101,6 @@ class GameContextProvider extends Component {
 	// UI events - click image
 	// ============================
 	clickImg = (e) => {
-		// ! ===== below isnt currently being used
-		this.setState({ isTimerOn: false });
-
 		this.overlapImages(e);
 		this.checkImageSelection(e);
 		this.addScore(e);
