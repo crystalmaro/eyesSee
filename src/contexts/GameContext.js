@@ -58,6 +58,17 @@ class GameContextProvider extends Component {
 		});
 	};
 
+	// loadGlobalRanking = async () => {
+	// 	const db = firebase.firestore();
+	// 	let scoreInfo = await db.collection('masterScore').doc('scoreInfo').get();
+	// 	let doc = scoreInfo.data();
+	// 	this.setState({
+	// 		globalRankingArray: doc.scoreData.sort((a, b) => {
+	// 			return b - a;
+	// 		})
+	// 	});
+	// };
+
 	loadImageStock = (db) => {
 		db
 			.collection('imageStock')
