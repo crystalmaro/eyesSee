@@ -6,14 +6,16 @@ export const GameContext = createContext();
 
 class GameContextProvider extends Component {
 	state = {
+    gameHeaderRight: 'gameHeaderRight',
+
 		origClass: 'imgBox',
 		compareClass: 'button',
-		gameHeaderRight: 'gameHeaderRight',
 		isClicked: false,
 		yesOnTop: true,
 		isCorrect: true,
 		yesImg: './imageStock/yes.png',
-		noImg: './imageStock/no.png',
+    noImg: './imageStock/no.png',
+    
 		currentRound: 0,
 		currentScore: 0,
 		progressBar: 0,

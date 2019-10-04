@@ -28,13 +28,11 @@ firebase.initializeApp(firebaseConfig);
 class App extends Component {
 	render() {
 		return (
-			// <FirebaseDatabaseProvider firebase={firebase}>
 			<BrowserRouter>
 				<ThemeContextProvider>
 					<GameContextProvider>
 						<ThemeContext.Consumer>
 							{(context) => {
-								//  theme switching re-set all states in GAME
 								const { isLightTheme, light, dark } = context;
 								const theme = isLightTheme ? light : dark;
 								return (
@@ -50,8 +48,6 @@ class App extends Component {
 					</GameContextProvider>
 				</ThemeContextProvider>
 			</BrowserRouter>
-
-			// </FirebaseDatabaseProvider>
 		);
 	}
 }

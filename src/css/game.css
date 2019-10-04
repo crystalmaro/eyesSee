@@ -350,7 +350,8 @@ Button Container
 	line-height: 23px;
 	cursor: pointer;
 	color: #595959;
-	background-color: #ffb7b0;
+	background-color: #c7e6ff;
+	/* background-color: #ffb7b0; */
 	width: 130px;
 	max-height: 23px;
 	padding: 7px 0;
