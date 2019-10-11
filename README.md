@@ -7,7 +7,7 @@ A modern UI photo hunt game, that educates and heightens design sensibility and 
 
 ## Table of Content
 * [Technologies](#Technologies)
-* [Features & Demo](#Features-&-Demo)
+* [Features and Demo](#Features-and-Demo)
     * [Step-by-Step Tutorial](#Step-by-Step-Tutorial)
     * [Color Theme Toggle](#Color-Theme-Toggle)
     * [Data Loading Handling](#Data-Loading-Handling)
@@ -29,7 +29,7 @@ A modern UI photo hunt game, that educates and heightens design sensibility and 
 * Facebook Sharing
 * Intro.js
 ---
-## Features & Demo
+## Features and Demo
 
 ### Step-by-Step Tutorial
 
@@ -37,12 +37,12 @@ Tutorial toggle button for step-by-step guide and feature introduction on landin
 
 <img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/CSc3tPp.jpg" width="220x" /> <img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/mIb6oU5.png" width="220x" /> <img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/O0ImCeV.png" width="220x" />
 
-
-
 ### Color Theme Toggle
 Background color options based on user's preference and selection
-<img style="margin-left:30px" src="https://i.imgur.com/OZl8UkU.png" width="40px"/> - for light theme <img style="margin-left:50px" src="https://i.imgur.com/uhCSMK4.png" width="40px"/> - for dark theme
-<img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/DyauZvU.png" width="220x" /> <img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/fGKAQUH.png" width="220x" />
+
+|<img style="margin-left:30px" src="https://i.imgur.com/OZl8UkU.png" width="30px"/> light theme|<img style="margin-left:50px" src="https://i.imgur.com/uhCSMK4.png" width="30px"/> dark theme|
+|:--:|:--:|
+|<img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/DyauZvU.png" width="220x" />|<img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/fGKAQUH.png" width="220x" />| 
 
 ### Data Loading Handling
 Loading animation written by pure CSS, when fetching data from Firebase Firestore
@@ -80,6 +80,7 @@ Facebook sharing functionality acts as media to reach broader user audience
 ## React Component Structure
 <img src="https://i.imgur.com/MwJhVu8.png" width="800x" />
 
+**React Rouer**
 ### Intro.js
 <img style="border:3px solid rgb(198,133,128); border-radius:20px" src="https://i.imgur.com/pXmPLgH.png" width="500x" />
 
