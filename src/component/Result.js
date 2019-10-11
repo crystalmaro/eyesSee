@@ -23,7 +23,7 @@ class Result extends Component {
 		return (
 			<GameContext.Consumer>
 				{(context) => {
-					const { currentScore, ranking, rankingMsg, globalRankingArray, getSeconds, getMinutes } = context;
+					const { currentScore, ranking, rankingMsg, globalRankingArray } = context;
 
 					return (
 						<React.Fragment>

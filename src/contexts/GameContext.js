@@ -27,16 +27,7 @@ class GameContextProvider extends Component {
 		totalRound: [], // array of number 0 - 19
 		randomRound: [], // randomized EasyRound, followed by randomize HardRound
 		// ===== Firebase masterScore data
-		globalRankingArray: [],
-		// ! ===== below isnt currently being used
-		timer: 10, // TODO 10 sec for testing, will be 60 on production
-		isTimerOn: true,
-		isTransitionOn: true
-	};
-
-	// ! ===== below isnt currently being used
-	isTransitionOn = () => {
-		this.setState({ isTransitionOn: !this.state.isTransitionOn });
+		globalRankingArray: []
 	};
 
 	// ============================
@@ -57,17 +48,6 @@ class GameContextProvider extends Component {
 			});
 		});
 	};
-
-	// loadGlobalRanking = async () => {
-	// 	const db = firebase.firestore();
-	// 	let scoreInfo = await db.collection('masterScore').doc('scoreInfo').get();
-	// 	let doc = scoreInfo.data();
-	// 	this.setState({
-	// 		globalRankingArray: doc.scoreData.sort((a, b) => {
-	// 			return b - a;
-	// 		})
-	// 	});
-	// };
 
 	loadImageStock = (db) => {
 		db
@@ -224,7 +204,6 @@ class GameContextProvider extends Component {
 	// ============================
 	clickNext = (e) => {
 		this.resetRound(e);
-		// this.setState({ isTimerOn: true });
 	};
 	resetRound = (e) => {
 		if (this.state.isClicked && this.state.currentRound !== this.state.currentRound.length - 1) {
@@ -279,33 +258,6 @@ class GameContextProvider extends Component {
 			return;
 		}
 	};
-	// ============================
-	// timer - stopwatch
-	// ============================
-	// ! below is reserved for Stopwatch (class component)
-	// ! but running the timer every second,
-	// ! changes the state within GameContext,
-	// ! when <Game> detects changes within render/return
-	// ! as being wrapped by <GameContext.Consumer>
-	// ! it re-renders and re-run the random function within <Card>
-	// 10/01/2019 currently not being used
-	getSeconds = () => {
-		return ('0' + this.state.timer % 60).slice(-2);
-	};
-	getMinutes = () => {
-		return Math.floor(this.state.timer / 60);
-	};
-	setTimer = () => {
-		// this.setState((preState) => {
-		// 	return { timer: preState.timer + 1 };
-		// });
-
-		// if(this.state.isTimerOn && this.state.timer >0){
-		this.setState((preState) => {
-			return { timer: preState.timer - 1 };
-		});
-		// }
-	};
 
 	render() {
 		return (
@@ -316,11 +268,7 @@ class GameContextProvider extends Component {
 					compareMouseDown: this.compareMouseDown,
 					compareMouseUp: this.compareMouseUp,
 					clickNext: this.clickNext,
-					loadFirebase: this.loadFirebase,
-					getSeconds: this.getSeconds,
-					getMinutes: this.getMinutes,
-					setTimer: this.setTimer, // 10/01/2019 currently not being used
-					isTransitionOn: this.isTransitionOn // 10/01/2019 currently not being used
+					loadFirebase: this.loadFirebase
 				}}
 			>
 				{this.props.children}

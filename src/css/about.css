@@ -76,9 +76,6 @@
 	.aboutContainer > .aboutCard > .aboutImg > img {
 		width: 100%;
 	}
-	.aboutContainer > .aboutCard > .aboutText {
-		/* text-align: left; */
-	}
 	.aboutContainer > .aboutCard:nth-child(1) > .aboutText {
 		width: 70%;
 		margin-left: 40px;

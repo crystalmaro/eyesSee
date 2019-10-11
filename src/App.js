@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-
 import Intro from './component/Intro';
-import Tutorial from './component/Tutorial';
-import Loading from './component/Loading';
 import Game from './component/Game';
 import Result from './component/Result';
-// import { Header, ThemeToggle } from './component/Header';
-// import { FirebaseDatabaseProvider } from '@react-firebase/database';
-// import firebaseConfig from 'firebase';
 import firebase from 'Firebase';
 import '@firebase/firestore';
-import { Route, BrowserRouter, NavLink } from 'react-router-dom';
+import { Route, BrowserRouter } from 'react-router-dom';
 import ThemeContextProvider, { ThemeContext } from './contexts/ThemeContext';
 import GameContextProvider, { GameContext } from './contexts/GameContext';
 
@@ -39,7 +33,6 @@ class App extends Component {
 								return (
 									<main className="main" style={{ backgroundColor: theme.bg, color: theme.font }}>
 										<Route exact path="/" component={Intro} />
-										<Route path="/tutorial" component={Tutorial} />
 										<Route path="/game" component={Game} />
 										<Route path="/result" component={Result} />
 									</main>
