@@ -3,6 +3,8 @@
 ---
 A modern UI photo hunt game, that educates and heightens design sensibility and literacy on user interface. Concept inspired by [Can't Unsee](http://cantunsee.space).
 
+Demo: [http://creeeyessee.web.app](http://creeeyessee.web.app)
+
 <img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/Pue32lU.png" width="400x" />
 
 ## Table of Content
