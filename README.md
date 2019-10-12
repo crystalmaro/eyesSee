@@ -12,12 +12,15 @@ A modern UI photo hunt game, that educates and heightens design sensibility and 
     * [Color Theme Toggle](#Color-Theme-Toggle)
     * [Data Loading Handling](#Data-Loading-Handling)
     * [Correction Judgement](#Correction-Judgement)
+    * [Comparison Function](#Comparison-Function)
     * [Result Feedback Page](#Result-Feedback-Page)
     * [Facebook Sharing](#Facebook-Sharing)
 * [React Component Structure](#React-Component-Structure)
     * [Intro.js](#Intro.js)
     * [Game.js](#Game.js)
     * [Result.js](#Result.js)
+* [Contact](#Contact)
+ 
 ---
 ## Technologies
 * React
@@ -55,11 +58,17 @@ When one of the card is clicked, the logic detects the click event, and checks w
 
 Click Event Response:
 
+* Score calculation for correctness and difficulty level (Easy and Hard)
 * <img src="https://i.imgur.com/WhCGJCc.png" width="20px" /> or <img src="https://i.imgur.com/hAuQNny.png" width="20px" /> based on the logic calculation
 * Corresponding message for each set of cards
+* Progress bar length incrementation 
 
+<img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/t9d5osx.jpg" width="250x" /> <img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/rgGOGyq.png" width="250x" /> 
 
-<img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/t9d5osx.jpg" width="220x" /> <img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/rgGOGyq.png" width="220x" /> <img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/qYR5yCi.png" width="220x" />
+### Comparison Function
+After image/card selection, player has the option to see the difference between the two cards, by clicking and holding down the **COMPARE** button
+
+<img style="border: 1px solid black; border-radius: 20px" src="https://i.imgur.com/MwrlGUs.gif" width="250x" /> 
 
 
 ### Result Feedback Page
@@ -90,6 +99,8 @@ Facebook sharing functionality acts as media to reach broader user audience
 ### Result.js
 <img style="border: 3px solid rgb(252,237,174); border-radius:20px" src="https://i.imgur.com/st1rDFi.png" width="500x" />
 
-
+---
+## Contact
+Email: [crystalmaro@gmail.com](mailto:crystalmaro@gmail.com)
 
 
