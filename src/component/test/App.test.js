@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, { shallow, configure } from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 import { GameContext } from '../../contexts/GameContext';
 import Adapter from 'enzyme-adapter-react-16';
@@ -8,7 +8,6 @@ import Card from '../Card';
 import Button from '../Button';
 
 Enzyme.configure({ adapter: new Adapter() });
-// configure({ adapter: new Adapter() });
 
 it('<Button> component renders correctly', () => {
 	const tree = renderer

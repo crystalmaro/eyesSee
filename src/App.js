@@ -32,8 +32,8 @@ class App extends Component {
 								const theme = isLightTheme ? light : dark;
 								return (
 									<main className="main" style={{ backgroundColor: theme.bg, color: theme.font }}>
-										<Route exact path="/" component={Intro} />
-										<Route path="/game" component={Game} />
+										{/* <Route exact path="/" component={Intro} /> */}
+										<Route exact path="/" component={Game} />
 										<Route path="/result" component={Result} />
 									</main>
 								);

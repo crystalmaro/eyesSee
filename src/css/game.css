@@ -308,6 +308,57 @@ Game Container - Click Events
 		box-shadow: 0px 3px 5px -1px #b0b0b0;
 	}
 }
+
+/* =======================
+Result ready message
+======================= */
+
+.helloResult {
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 15px;
+	color: white;
+	margin: auto;
+	width: 300px;
+	z-index: 3;
+	-webkit-animation: bounce-out-bottom 4s ease-in-out both;
+	animation: bounce-out-bottom 4s ease-in-out both;
+}
+@keyframes bounce-out-bottom {
+	0% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+	}
+	25% {
+		-webkit-transform: translateY(30px);
+		transform: translateY(30px);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+	50% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+	}
+	75% {
+		-webkit-transform: translateY(75px);
+		transform: translateY(75px);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+		opacity: 0.9;
+	}
+	100% {
+		-webkit-transform: translateY(800);
+		transform: translateY(800);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+		opacity: 0;
+		display: none;
+	}
+}
+
 /* =======================
 Button Container
 ======================= */

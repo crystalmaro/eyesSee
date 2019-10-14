@@ -6,7 +6,7 @@ import Card from './Card';
 import Message from './Message';
 import Button from './Button';
 import Progress from './Progress';
-import Result from './Result';
+import ResultReady from './ResultReady';
 
 import GameContextProvider, { GameContext } from '../contexts/GameContext';
 

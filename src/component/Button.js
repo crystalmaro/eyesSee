@@ -17,26 +17,37 @@ class Button extends Component {
 						isClicked
 					} = context;
 					return (
-						<div className="buttonContainer" style={isClicked ? { display: 'flex' } : { display: 'none' }}>
+						<React.Fragment>
 							<div
-								onMouseDown={compareMouseDown}
-								onTouchStart={compareMouseDown}
-								onMouseUp={compareMouseUp}
-								onTouchEnd={compareMouseUp}
-								className={compareClass}
+								className="helloResult"
+								style={isResultReady ? { display: 'inline-block' } : { display: 'none' }}
 							>
-								COMPARE
+								Great job! Result calculating...
 							</div>
-							<div onClick={clickNext} className={isClicked ? 'button isClicked' : 'button'}>
-								{isResultReady ? (
-									<Link to="/result">
-										<strong>RESULT</strong>
-									</Link>
-								) : (
-									'NEXT'
-								)}
+							<div
+								className="buttonContainer"
+								style={isClicked ? { display: 'flex' } : { display: 'none' }}
+							>
+								<div
+									onMouseDown={compareMouseDown}
+									onTouchStart={compareMouseDown}
+									onMouseUp={compareMouseUp}
+									onTouchEnd={compareMouseUp}
+									className={compareClass}
+								>
+									COMPARE
+								</div>
+								<div onClick={clickNext} className={isClicked ? 'button isClicked' : 'button'}>
+									{isResultReady ? (
+										<Link to="/result">
+											<strong>RESULT</strong>
+										</Link>
+									) : (
+										'NEXT'
+									)}
+								</div>
 							</div>
-						</div>
+						</React.Fragment>
 					);
 				}}
 			</GameContext.Consumer>

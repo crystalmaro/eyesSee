@@ -7,7 +7,16 @@ class Message extends Component {
 		return (
 			<GameContext.Consumer>
 				{(context) => {
-					const { isClicked, isCorrect, yesImg, noImg, currentRound, imgData, randomRound } = context;
+					const {
+						isClicked,
+						isCorrect,
+						yesImg,
+						noImg,
+						currentRound,
+						imgData,
+						randomRound,
+						isResultReady
+					} = context;
 					return (
 						<div className="messageContainer" style={isClicked ? { display: 'flex' } : { display: 'none' }}>
 							<div className="result">
