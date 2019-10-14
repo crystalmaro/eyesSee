@@ -4,11 +4,11 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "webpack",
 		"watch": "webpack --mode development --watch",
 		"start": "webpack-dev-server --open",
-		"deploy": "webpack --mode production"
+		"deploy": "webpack --mode production",
+		"test": "jest"
 	},
 	"repository": {
 		"type": "git",
@@ -22,13 +22,17 @@
 	},
 	"homepage": "https://github.com/crystalmaro/eyesSee#readme",
 	"devDependencies": {
-		"@babel/core": "^7.5.5",
+		"@babel/core": "^7.6.4",
 		"@babel/plugin-proposal-class-properties": "^7.5.5",
-		"@babel/preset-env": "^7.5.5",
-		"@babel/preset-react": "^7.0.0",
+		"@babel/preset-env": "^7.6.3",
+		"@babel/preset-react": "^7.6.3",
+		"@testing-library/react": "^9.3.0",
 		"babel-eslint": "^10.0.3",
+		"babel-jest": "^24.9.0",
 		"babel-loader": "^8.0.6",
 		"css-loader": "^3.2.0",
+		"enzyme": "^3.10.0",
+		"enzyme-adapter-react-16": "^1.15.1",
 		"eslint": "^6.2.2",
 		"eslint-config-airbnb": "^18.0.1",
 		"eslint-config-prettier": "^6.1.0",
@@ -38,7 +42,9 @@
 		"eslint-plugin-prettier": "^3.1.0",
 		"eslint-plugin-react": "^7.14.3",
 		"image-webpack-loader": "^6.0.0",
+		"jest": "^24.9.0",
 		"prettier": "^1.18.2",
+		"react-test-renderer": "^16.10.2",
 		"style-loader": "^1.0.0",
 		"webpack": "^4.39.3",
 		"webpack-cli": "^3.3.7",
@@ -58,5 +64,10 @@
 		"react-router": "^5.0.1",
 		"react-router-dom": "^5.0.1",
 		"react-share": "^3.0.1"
+	},
+	"jest": {
+		"moduleNameMapper": {
+			"\\.(css|less|sass|scss)$": "<rootDir>/src/component/test/App.test.js"
+		}
 	}
 }

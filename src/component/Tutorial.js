@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
-import Intro from './Intro';
-import Game from './Game';
 import { ThemeContext } from '../contexts/ThemeContext';
 import ThemeToggle from './ThemeToggle';
-import { Steps, Hints } from 'intro.js-react';
+import { Steps } from 'intro.js-react';
 import 'intro.js/introjs.css';
 import '../css/tutorial.css';
-import Stopwatch from './Stopwatch';
 
 class Tutorial extends Component {
 	state = {
@@ -27,8 +24,7 @@ class Tutorial extends Component {
 		],
 		introRound: 0,
 		introMsg: [ 'Which UI is more correct?', 'Please read the rules below.' ],
-
-    origClass: 'imgBox',
+		origClass: 'imgBox',
 		compareClass: 'button',
 		isClicked: false,
 		yesOnTop: true,
@@ -36,9 +32,6 @@ class Tutorial extends Component {
 		yesImg: './imageStock/yes.png',
 		noImg: './imageStock/no.png',
 		isIntroDone: false
-		// ! ===== below isnt currently being used
-		// min: 1,
-		// sec: 0
 	};
 
 	// ============================
@@ -47,7 +40,6 @@ class Tutorial extends Component {
 	clickImg = (e) => {
 		this.overlapImages(e);
 		this.checkImageSelection(e);
-		// this.setState({ introMsg: 'Please read the rules below.' });
 		if (this.state.introRound == this.state.introData.length - 1) {
 			this.setState({ isIntroDone: true });
 			return;
@@ -138,8 +130,10 @@ class Tutorial extends Component {
 		return (
 			<ThemeContext.Consumer>
 				{(context) => {
-					const { isLightTheme, light, dark, stepsEnabled, steps, onExit } = context;
-					const theme = isLightTheme ? light : dark;
+					const { stepsEnabled, steps, onExit } = context;
+					{
+						/* const theme = isLightTheme ? light : dark; */
+					}
 					return (
 						<div className="tutorialContainer">
 							<Steps enabled={stepsEnabled} steps={steps} initialStep={0} onExit={onExit} />

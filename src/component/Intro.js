@@ -14,8 +14,7 @@ class Intro extends Component {
 		return (
 			<ThemeContext.Consumer>
 				{(context) => {
-					const { isLightTheme, light, dark, toggleTutorial } = context;
-					const theme = isLightTheme ? light : dark;
+					const { toggleTutorial } = context;
 					return (
 						<React.Fragment>
 							<div className="introTop">

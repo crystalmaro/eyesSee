@@ -1,6 +1,6 @@
 import React, { createContext, Component } from 'react';
-import 'intro.js/introjs.css';
-import '../css/tutorial.css';
+// import 'intro.js/introjs.css';
+// import '../css/tutorial.css';
 
 export const ThemeContext = createContext();
 
