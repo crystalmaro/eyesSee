@@ -1,9 +1,37 @@
 import React from 'react';
-import { shallow, configure } from 'enzyme';
+import Enzyme, { shallow, configure } from 'enzyme';
+import renderer from 'react-test-renderer';
+import { GameContext } from '../../contexts/GameContext';
 import Adapter from 'enzyme-adapter-react-16';
 import Tutorial from '../Tutorial';
+import Card from '../Card';
+import Button from '../Button';
 
-configure({ adapter: new Adapter() });
+Enzyme.configure({ adapter: new Adapter() });
+// configure({ adapter: new Adapter() });
+
+it('<Button> component renders correctly', () => {
+	const tree = renderer
+		.create(
+			<GameContext.Provider
+				value={{
+					isResultReady: false,
+					compareClass: 'button'
+				}}
+			>
+				<Button />
+			</GameContext.Provider>
+		)
+		.toJSON();
+	expect(tree).toMatchSnapshot();
+});
+
+describe('enzyme context snapshot for <Card>', () => {
+	it('should render children for snapshot', () => {
+		const tree = shallow(<Card />);
+		expect(tree).toMatchSnapshot();
+	});
+});
 
 describe('Tutorial component', () => {
 	const wrapper = shallow(<Tutorial />);

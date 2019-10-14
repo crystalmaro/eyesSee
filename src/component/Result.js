@@ -27,7 +27,7 @@ class Result extends Component {
 
 					return (
 						<React.Fragment>
-							<Confetti active={true} config={this.config} />
+							{/* <Confetti active={true} config={this.config} /> */}
 							<div className="resultMain">
 								<div>
 									<img src="./imageStock/595959.png" />
