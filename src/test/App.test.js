@@ -1,11 +1,11 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import { GameContext } from '../../contexts/GameContext';
+import { GameContext } from '../contexts/GameContext';
 import Adapter from 'enzyme-adapter-react-16';
-import Tutorial from '../Tutorial';
-import Card from '../Card';
-import Button from '../Button';
+import Tutorial from '../component/Tutorial';
+import Card from '../component/Card';
+import Button from '../component/Button';
 
 Enzyme.configure({ adapter: new Adapter() });
 

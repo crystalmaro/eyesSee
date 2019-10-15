@@ -67,7 +67,7 @@
 	},
 	"jest": {
 		"moduleNameMapper": {
-			"\\.(css|less|sass|scss)$": "<rootDir>/src/component/test/App.test.js"
+			"\\.(css|less|sass|scss)$": "<rootDir>/src/test/App.test.js"
 		}
 	}
 }

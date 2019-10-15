@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button> component renders correctly 1`] = `
+Array [
+  <div
+    className="helloResult"
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  >
+    Great job! Result calculating...
+  </div>,
+  <div
+    className="buttonContainer"
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  >
+    <div
+      className="button"
+    >
+      COMPARE
+    </div>
+    <div
+      className="button"
+    >
+      NEXT
+    </div>
+  </div>,
+]
+`;
+
+exports[`enzyme context snapshot for <Card> should render children for snapshot 1`] = `ShallowWrapper {}`;
