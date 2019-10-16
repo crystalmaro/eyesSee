@@ -4,3 +4,5 @@
 /.DS_Store
 /.prettierrc.json
 /imageStock/.DS_Store
+.env
+.firebaseConfig.js
