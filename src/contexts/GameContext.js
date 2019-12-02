@@ -1,13 +1,14 @@
 import React, { createContext, Component } from 'react';
+
 import firebase from 'Firebase';
 import '@firebase/firestore';
+import firebaseConfig from '../../firebaseConfig';
 
 export const GameContext = createContext();
 
 class GameContextProvider extends Component {
 	state = {
 		gameHeaderRight: 'gameHeaderRight',
-
 		origClass: 'imgBox',
 		compareClass: 'button',
 		isClicked: false,
@@ -15,7 +16,6 @@ class GameContextProvider extends Component {
 		isCorrect: true,
 		yesImg: './imageStock/yes.png',
 		noImg: './imageStock/no.png',
-
 		currentRound: 0,
 		currentScore: 0,
 		progressBar: 0,
@@ -34,6 +34,7 @@ class GameContextProvider extends Component {
 	// load firebase data - masterScore & imageStock
 	// ============================
 	loadFirebase = (e) => {
+		firebase.initializeApp(firebaseConfig);
 		const db = firebase.firestore();
 		this.loadGlobalRanking(db);
 		this.loadImageStock(db);

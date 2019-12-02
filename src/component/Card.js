@@ -6,16 +6,7 @@ class Card extends Component {
 		return (
 			<GameContext.Consumer>
 				{(context) => {
-					const {
-						clickImg,
-						yesOnTop,
-						origClass,
-						currentRound,
-						imgData,
-						randomRound,
-						currentScore,
-						isResultReady
-					} = context;
+					const { clickImg, yesOnTop, origClass, currentRound, imgData, randomRound } = context;
 					let first;
 					let second;
 

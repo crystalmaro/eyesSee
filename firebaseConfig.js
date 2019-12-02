@@ -1,4 +1,5 @@
-export const firebaseConfig = {
+// export const firebaseConfig = {
+const firebaseConfig = {
 	apiKey: 'AIzaSyD852w_vKRpGPs-0YJKStVWsh0PggZCsZ8',
 	authDomain: 'cwtest0807.firebaseapp.com',
 	databaseURL: 'https://cwtest0807.firebaseio.com',
@@ -7,3 +8,5 @@ export const firebaseConfig = {
 	messagingSenderId: '804525394189',
 	appId: '1:804525394189:web:43ae193bcc8257fe'
 };
+
+export default firebaseConfig;

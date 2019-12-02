@@ -1,0 +1,124 @@
+body,
+a,
+* {
+	margin: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	/* font-size: 1.2rem; */
+}
+li {
+	list-style-type: none;
+}
+
+#app {
+	border: 1px solid grey;
+	border-radius: 15px;
+	margin: auto;
+	margin-top: 50px;
+	padding: 20px;
+	width: 600px;
+}
+.new-todo {
+	width: 100%;
+	padding: 10px;
+	/* border-radius: 10px; */
+	/* border: 1px solid grey; */
+	border: none;
+	border-bottom: 1px solid grey;
+	margin: 10px 0;
+}
+/* .main {
+	border: 1px solid blue;
+} */
+ul {
+	list-style: none;
+	padding-left: 0;
+}
+.todo-list li {
+	padding: 10px 0;
+	border-bottom: 1px solid grey;
+	font-size: 1.25rem;
+}
+.todo-list li .destroy {
+	display: none;
+	font-size: inherit;
+	border: none;
+}
+.todo-list li:hover .destroy {
+	display: inline;
+	cursor: pointer;
+}
+
+.todo-list li.editing {
+	border-bottom: none;
+	padding: 0;
+}
+
+.todo-list li.editing .edit {
+	display: block;
+	padding: 10px;
+	font-size: inherit;
+	border: none;
+	border-bottom: 1px solid grey;
+	width: 100%;
+	/* width: 506px; */
+	/* padding: 13px 17px 12px 17px; */
+	/* margin: 0 0 0 43px; */
+}
+
+.todo-list li.editing .view {
+	display: none;
+}
+
+.edit {
+	background: #ccc;
+	display: none;
+}
+
+/* .todo-list li label {
+	color: rgb(255, 157, 28);
+} */
+
+.todo-list li.completed label {
+	color: grey;
+	text-decoration: line-through;
+}
+
+.todo-list li .view .toggle {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.info {
+	margin-top: 20px;
+	color: lightslategray;
+}
+
+.filters {
+	display: flex;
+	justify-content: space-evenly;
+	color: black;
+}
+
+.filters > div {
+	width: 120px;
+	text-align: center;
+	border: 1px solid grey;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.filters > div {
+	color: black;
+	cursor: pointer;
+}
+
+.filters > div:hover {
+	transform: scale(1.1);
+}
+
+.filters > div.selected {
+	font-weight: bold;
+}

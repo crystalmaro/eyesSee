@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://127.0.0.1:5500/%E7%8E%8B%E6%98%B1%E5%8B%BB-easychat-assignment.html -->
+<html lang="en" class="gr__127_0_0_1"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Easychat TodoList</title>
+  <link rel="stylesheet" href="./Easychat TodoList_files/style.css">
+  <script src="./Easychat TodoList_files/vue.js"></script>
+</head>
+<body data-gr-c-s-loaded="true" class="vsc-initialized">
+  <div id="app"><header><h2>Vue.js Todo List</h2> <input placeholder="Please add a todo" class="new-todo"></header> <section class="filters"><div class="selected">All</div> <div class="">Active</div> <div class="">Completed</div></section> <section class="main"><ul class="todo-list"><li class="completed"><div class="view"><input type="checkbox" class="toggle"> <label>are you</label> <button class="destroy">x</button></div> <input type="text" class="edit"></li><li class=""><div class="view"><input type="checkbox" class="toggle"> <label>test</label> <button class="destroy">x</button></div> <input type="text" class="edit"></li><li class=""><div class="view"><input type="checkbox" class="toggle"> <label>one two and</label> <button class="destroy">x</button></div> <input type="text" class="edit"></li></ul></section> <footer class="info"><div>Toggle the checkbox to mark as completed</div> <div>Double-click to edit a todo</div> <div>Hover over a todo to delete</div></footer></div>
+  <script src="./Easychat TodoList_files/app.js"></script>
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+<script>
+  // You can edit your JS code here
+  // new Vue({
+  //   el: '#app',
+  //   data: {
+  //     test: 'test Data'
+  //   }
+  // })
+  
+</script>
+</body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

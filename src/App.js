@@ -1,28 +1,10 @@
 import React, { Component } from 'react';
-// import dotenv from 'dotenv';
-import firebase from 'Firebase';
-import '@firebase/firestore';
-import firebaseConfig from '../firebaseConfig';
 import { Route, BrowserRouter } from 'react-router-dom';
 import ThemeContextProvider, { ThemeContext } from './contexts/ThemeContext';
-import GameContextProvider, { GameContext } from './contexts/GameContext';
+import GameContextProvider from './contexts/GameContext';
 import Intro from './component/Intro';
 import Game from './component/Game';
 import Result from './component/Result';
-
-// dotenv.config();
-
-// const firebaseConfig = {
-// 	apiKey: process.env.apiKey,
-// 	authDomain: process.env.authDomain,
-// 	databaseURL: process.env.databaseURL,
-// 	projectId: process.env.projectId,
-// 	storageBucket: process.env.storageBucket,
-// 	messagingSenderId: process.env.messagingSenderId,
-// 	appId: process.env.appId
-// };
-
-firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
 	render() {
