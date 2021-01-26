@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ContextType } from 'react';
 import '../css/game.css';
 import Loading from './Loading';
 import Header from './Header';
@@ -15,6 +15,7 @@ class Game extends Component {
 
 	componentDidMount() {
 		this.context.loadFirebase();
+		// React.ContextType.loadFirebase();
 	}
 
 	render() {

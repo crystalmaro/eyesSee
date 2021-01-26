@@ -3,11 +3,11 @@ import '../css/loading.css';
 
 function Loading() {
 	return (
-		<div class="orig">
-			<div class="dot orig four " />
-			<div class="dot orig three " />
-			<div class="dot orig two " />
-			<div class="dot orig one " />
+		<div className="orig">
+			<div className="dot orig four " />
+			<div className="dot orig three " />
+			<div className="dot orig two " />
+			<div className="dot orig one " />
 		</div>
 	);
 }
